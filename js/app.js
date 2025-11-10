@@ -6,7 +6,7 @@ const defaultConfig = {
   hero_description: "Vivienda de uso compartido que explora la frontera entre hogar, taller y patio vecinal.",
   manifesto_excerpt:
     "El Club del Chañar es un espacio donde la convivencia humana y la naturaleza encuentran equilibrio. Una invitación a participar desde la calma, la creatividad y el respeto.",
-  manifesto_link: "../Manifiesto_Fundacional.md",
+  manifesto_link: "#",
   space_description:
     "El predio ocupa un lote urbano de 10 × 25 m (250 m²) en Lomas del Chañar. Combina un jardín frontal, una gran galería cubierta y una terraza abierta que podemos configurar según cada uso de la comunidad.",
   norms: [
