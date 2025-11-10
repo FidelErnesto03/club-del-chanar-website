@@ -247,7 +247,7 @@ function hydrateUI(config) {
       manifestoDetails.appendChild(p);
     });
   }
-  if (config.location_embed) {
+  if (mapEmbed && config.location_embed) {
     mapEmbed.src = config.location_embed;
   }
 
