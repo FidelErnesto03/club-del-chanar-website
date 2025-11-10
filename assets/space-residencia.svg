@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="skyResidencia" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4eee2" />
+      <stop offset="100%" stop-color="#e1d6c1" />
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b37745" />
+      <stop offset="100%" stop-color="#8c5730" />
+    </linearGradient>
+  </defs>
+  <rect width="900" height="600" fill="url(#skyResidencia)" />
+  <rect y="380" width="900" height="220" fill="#ceb48f" />
+  <polygon points="220,210 450,80 680,210" fill="url(#roof)" />
+  <rect x="260" y="210" width="320" height="220" fill="#fffaf3" stroke="#b58a62" stroke-width="6" />
+  <rect x="310" y="260" width="80" height="110" fill="#f8f1e6" stroke="#a5784d" stroke-width="5" />
+  <rect x="450" y="260" width="80" height="110" fill="#f8f1e6" stroke="#a5784d" stroke-width="5" />
+  <rect x="380" y="350" width="80" height="140" fill="#b68457" />
+  <circle cx="420" cy="420" r="16" fill="#fdf5ec" />
+  <path d="M120 460 Q 200 420 280 460" fill="none" stroke="#58724a" stroke-width="10" stroke-linecap="round" />
+  <path d="M340 480 Q 420 430 500 480" fill="none" stroke="#58724a" stroke-width="10" stroke-linecap="round" />
+  <path d="M560 470 Q 640 420 720 470" fill="none" stroke="#58724a" stroke-width="10" stroke-linecap="round" />
+  <circle cx="760" cy="180" r="70" fill="#d8c8a4" opacity="0.5" />
+</svg>
