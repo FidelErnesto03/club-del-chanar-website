@@ -1,0 +1,317 @@
+{
+  "generatedAt": "2025-11-10T21:18:51.920Z",
+  "sections": [
+    {
+      "name": "01 El Camino",
+      "slug": "01_El_Camino",
+      "images": [
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_01.jpg",
+          "filename": "IMG_01.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_02.jpg",
+          "filename": "IMG_02.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20230812_114858_008.jpg",
+          "filename": "IMG_20230812_114858_008.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20240228_175633_390.jpg",
+          "filename": "IMG_20240228_175633_390.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20240302_152335_172.jpg",
+          "filename": "IMG_20240302_152335_172.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20240303_155318_425.jpg",
+          "filename": "IMG_20240303_155318_425.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20240528_123429_709.jpg",
+          "filename": "IMG_20240528_123429_709.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20240528_123932_129.jpg",
+          "filename": "IMG_20240528_123932_129.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20240913_085758_332.jpg",
+          "filename": "IMG_20240913_085758_332.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20240913_141955_986.jpg",
+          "filename": "IMG_20240913_141955_986.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20240913_142038_932.jpg",
+          "filename": "IMG_20240913_142038_932.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20240928_145528586.jpg",
+          "filename": "IMG_20240928_145528586.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20241011_183423787_HDR.jpg",
+          "filename": "IMG_20241011_183423787_HDR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20241011_183507517_MFNR_PORTRAIT.jpg",
+          "filename": "IMG_20241011_183507517_MFNR_PORTRAIT.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20241117_140930884_MFNR.jpg",
+          "filename": "IMG_20241117_140930884_MFNR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20241222_133742742_HDR.jpg",
+          "filename": "IMG_20241222_133742742_HDR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20241222_133755054_HDR.jpg",
+          "filename": "IMG_20241222_133755054_HDR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20241228_113603086_HDR.jpg",
+          "filename": "IMG_20241228_113603086_HDR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20250105_122531710_MFNR.jpg",
+          "filename": "IMG_20250105_122531710_MFNR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20250405_121021367_MFNR.jpg",
+          "filename": "IMG_20250405_121021367_MFNR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20250405_121124064_HDR.jpg",
+          "filename": "IMG_20250405_121124064_HDR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20250612_173220822_MFNR.jpg",
+          "filename": "IMG_20250612_173220822_MFNR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20250612_173258603.jpg",
+          "filename": "IMG_20250612_173258603.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20250712-WA0010.jpg",
+          "filename": "IMG_20250712-WA0010.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20250712-WA0014.jpg",
+          "filename": "IMG_20250712-WA0014.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20250726_152912260.jpg",
+          "filename": "IMG_20250726_152912260.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20250726_153107980_MFNR.jpg",
+          "filename": "IMG_20250726_153107980_MFNR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20251109_111754162_MFNR_PORTRAIT.jpg",
+          "filename": "IMG_20251109_111754162_MFNR_PORTRAIT.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20251109_111932880_MFNR_PORTRAIT.jpg",
+          "filename": "IMG_20251109_111932880_MFNR_PORTRAIT.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20251109_112014748.jpg",
+          "filename": "IMG_20251109_112014748.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20251109_112417567.jpg",
+          "filename": "IMG_20251109_112417567.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20251109_112626093.jpg",
+          "filename": "IMG_20251109_112626093.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20251109_113025530.jpg",
+          "filename": "IMG_20251109_113025530.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20251109_113753106.jpg",
+          "filename": "IMG_20251109_113753106.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20251109_113922954_MFNR~2.jpg",
+          "filename": "IMG_20251109_113922954_MFNR~2.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20251109_113951772_MFNR~2.jpg",
+          "filename": "IMG_20251109_113951772_MFNR~2.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20251109_114020311_HDR~2.jpg",
+          "filename": "IMG_20251109_114020311_HDR~2.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/01_El_Camino/IMG_20251109_114338242.jpg",
+          "filename": "IMG_20251109_114338242.jpg",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "name": "02 Club Fiat 600 25 Años",
+      "slug": "02_Club Fiat 600 25 Años",
+      "images": [
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/IMG_20251102_123423926_MFNR.jpg",
+          "filename": "IMG_20251102_123423926_MFNR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/IMG_20251102_123434902_HDR.jpg",
+          "filename": "IMG_20251102_123434902_HDR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/IMG_20251102_123443064_HDR.jpg",
+          "filename": "IMG_20251102_123443064_HDR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/IMG_20251102_123540857_MFNR.jpg",
+          "filename": "IMG_20251102_123540857_MFNR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/IMG_20251102_123640535_HDR.jpg",
+          "filename": "IMG_20251102_123640535_HDR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/IMG_20251102_123652930_MFNR.jpg",
+          "filename": "IMG_20251102_123652930_MFNR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/IMG_20251102_124136898_MFNR.jpg",
+          "filename": "IMG_20251102_124136898_MFNR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/IMG_20251102_124145343_HDR.jpg",
+          "filename": "IMG_20251102_124145343_HDR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/IMG_20251102_124156025_MFNR.jpg",
+          "filename": "IMG_20251102_124156025_MFNR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/IMG_20251102_153632141_HDR.jpg",
+          "filename": "IMG_20251102_153632141_HDR.jpg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/VID_20251102_123742558.mp4",
+          "filename": "VID_20251102_123742558.mp4",
+          "type": "video"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/VID_20251102_160124168.mp4",
+          "filename": "VID_20251102_160124168.mp4",
+          "type": "video"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/WhatsApp Image 2025-11-01 at 13.47.27.jpeg",
+          "filename": "WhatsApp Image 2025-11-01 at 13.47.27.jpeg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/WhatsApp Image 2025-11-02 at 14.14.09.jpeg",
+          "filename": "WhatsApp Image 2025-11-02 at 14.14.09.jpeg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/WhatsApp Image 2025-11-02 at 14.56.50.jpeg",
+          "filename": "WhatsApp Image 2025-11-02 at 14.56.50.jpeg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/WhatsApp Image 2025-11-02 at 20.35.46.jpeg",
+          "filename": "WhatsApp Image 2025-11-02 at 20.35.46.jpeg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/WhatsApp Image 2025-11-02 at 21.09.25.jpeg",
+          "filename": "WhatsApp Image 2025-11-02 at 21.09.25.jpeg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/WhatsApp Image 2025-11-02 at 21.37.45.jpeg",
+          "filename": "WhatsApp Image 2025-11-02 at 21.37.45.jpeg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/WhatsApp Image 2025-11-02 at 21.37.48.jpeg",
+          "filename": "WhatsApp Image 2025-11-02 at 21.37.48.jpeg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/WhatsApp Image 2025-11-02 at 21.37.51 (1).jpeg",
+          "filename": "WhatsApp Image 2025-11-02 at 21.37.51 (1).jpeg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/WhatsApp Image 2025-11-02 at 21.37.51.jpeg",
+          "filename": "WhatsApp Image 2025-11-02 at 21.37.51.jpeg",
+          "type": "image"
+        },
+        {
+          "src": "assets/gallery/02_Club Fiat 600 25 Años/WhatsApp Image 2025-11-02 at 21.37.52.jpeg",
+          "filename": "WhatsApp Image 2025-11-02 at 21.37.52.jpeg",
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
