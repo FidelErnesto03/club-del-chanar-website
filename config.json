@@ -1,0 +1,195 @@
+{
+  "hero_title": "El Club del Chañar",
+  "hero_subtitle": "La calma también produce.",
+  "hero_cta": "Quiero sumarme",
+  "hero_location": "Lomas del Chañar · Córdoba · Argentina",
+  "hero_description": "Espacio de convivencia que explora la frontera entre hogar, taller y patio vecinal. Un refugio para la creatividad consciente y la conexión con la naturaleza.",
+  "manifesto_excerpt": "El Club del Chañar es un espacio donde la convivencia humana y la naturaleza encuentran equilibrio. Una invitación a participar desde la calma, la creatividad y el respeto mutuo.",
+  "manifesto_details": [
+    "Un refugio donde el tiempo se expande y la productividad se redefine desde la serenidad. Donde cada gesto, cada encuentro y cada proyecto nace de la escucha profunda del territorio y la comunidad.",
+    "Creemos en la potencia de la calma activa, en la creación consciente y en la regeneración como práctica cotidiana. Aquí, el monte chañar no es solo escenario, es co-creador."
+  ],
+  "manifesto_link": "../Manifiesto_Fundacional.md",
+  "club_description": {
+    "lead": "Nacido en el corazón del barrio ecológico Lomas del Chañar, el Club se propone como espacio de encuentro donde la comunidad puede cultivar calma, creatividad y colaboración con la naturaleza.",
+    "description": "En sintonía con la visión ecológica del barrio, el Club del Chañar invita a habitar el paisaje con gratitud, oficios compartidos y prácticas que regeneran tanto el entorno natural como el tejido comunitario.",
+    "proposal_features": [
+      "Espacio de encuentro para la comunidad de Lomas del Chañar",
+      "Talleres de oficios sostenibles y creatividad consciente",
+      "Intercambio de saberes sobre vida ecológica y regenerativa",
+      "Punto de referencia para el desarrollo comunitario"
+    ],
+    "ecological_principles": [
+      "Respeto por la biodiversidad del monte chañar",
+      "Prácticas de sostenibilidad y regeneración",
+      "Fortalecimiento del tejido social comunitario",
+      "Integración armónica con el entorno natural"
+    ],
+    "invitation": "Una invitación abierta: Si formas parte de Lomas del Chañar o compartes nuestra visión, te invitamos a sumarte a este espacio donde la calma también produce y la comunidad se fortalece.",
+    "image": "assets/story-canopy.svg"
+  },
+  "principles": [
+    {
+      "title": "Uso consciente",
+      "description": "Cada persona es responsable del entorno que habilita: cuida tiempos, recursos y energía."
+    },
+    {
+      "title": "Respeto mutuo",
+      "description": "La convivencia se sostiene en la escucha y el silencio justo, privilegiando la calma del barrio."
+    },
+    {
+      "title": "Comunidad cerrada",
+      "description": "Acceso por invitación, membresía o reserva acompañada por un miembro activo."
+    },
+    {
+      "title": "Simplicidad funcional",
+      "description": "Todo elemento tiene propósito claro: bienestar, colaboración o creación."
+    },
+    {
+      "title": "Naturaleza integrada",
+      "description": "El árbol, la sombra y el viento participan del diseño y regulan los ritmos diarios."
+    },
+    {
+      "title": "Temporalidad consciente",
+      "description": "Trabajamos por etapas de experimentación: nada es definitivo, todo se evalúa y mejora."
+    }
+  ],
+  "spaces_overview": [
+    {
+      "name": "Jardín y patio de entrada",
+      "description": "Espacio abierto con vegetación, tránsito y recepción. Marca el ritmo de llegada con portón de madera e iluminación suave.",
+      "image": "assets/space-jardin.svg",
+      "services": [
+        "Área verde 10 × 10 m para encuentros breves",
+        "Portón y acceso peatonal controlado",
+        "Capacidad adicional de 10 a 15 personas"
+      ]
+    },
+    {
+      "name": "Galería principal",
+      "description": "Núcleo operativo techado y sin paredes laterales. Alberga la cocina, barra y baños para jornadas extensas.",
+      "image": "assets/space-taller.svg",
+      "services": [
+        "120 m² cubiertos con sonido ambiental",
+        "Asador, barra para 10 personas y dos baños",
+        "24 puestos con mesas bajas y mobiliario flexible"
+      ]
+    },
+    {
+      "name": "Cocina y almacén",
+      "description": "Local cerrado integrado a la galería con provisiones básicas para eventos, talleres culinarios o cafés comunitarios.",
+      "image": "assets/space-residencia.svg",
+      "services": [
+        "Heladera exhibidora y almacenamiento seco",
+        "Filtro de agua, cafetera, pava y microondas",
+        "Bacha y mesadas para staging de alimentos"
+      ]
+    },
+    {
+      "name": "Terraza superior",
+      "description": "Plataforma abierta de 8 × 15 m con barandas y mediasombra parcial; ideal para respiración guiada, proyecciones o descanso.",
+      "image": "assets/story-canopy.svg",
+      "services": [
+        "Iluminación tenue y luminarias de emergencia",
+        "Pisos cerámicos antideslizantes",
+        "Capacidad para 20-25 personas con reposeras"
+      ]
+    }
+  ],
+  "infrastructure": [
+    {
+      "title": "Conectividad y energía",
+      "details": "Internet satelital estable, disyuntor diferencial y tomas IP44/IP65 para interior y terraza."
+    },
+    {
+      "title": "Seguridad activa",
+      "details": "Portón controlado, cámaras con IA, extintores ABC + K, señalización fotoluminiscente."
+    },
+    {
+      "title": "Clima y bienestar",
+      "details": "Ventilación cruzada, calefacción a gas, guirnaldas cálidas y sonido ambiental de baja intensidad."
+    },
+    {
+      "title": "Higiene y apoyo",
+      "details": "Botiquín visible, limpieza profesional semanal, mobiliario móvil y kits de orden compartido."
+    }
+  ],
+  "shared_use": {
+    "intro": "El Club funciona como una casa compartida: organizamos turnos y montajes según la cantidad de personas y la energía disponible.",
+    "modes": [
+      {
+        "title": "Trabajo colaborativo",
+        "description": "Coworking vecinal, reuniones de proyecto y talleres que aprovechan la galería como aula abierta.",
+        "guides": [
+          "Capacidad recomendada: 25 personas sentadas",
+          "Reservar con al menos 48 h para coordinar mobiliario",
+          "Internet satelital disponible en toda la galería"
+        ]
+      },
+      {
+        "title": "Recreación tranquila",
+        "description": "Encuentros íntimos, charlas, lecturas o proyecciones al atardecer en patio o terraza.",
+        "guides": [
+          "Patio admite 10-15 personas adicionales",
+          "Uso de sonido ambiental a volumen moderado",
+          "Cuidar iluminación cálida para mantener la atmósfera"
+        ]
+      },
+      {
+        "title": "Bienestar y movimiento",
+        "description": "Yoga, respiración, stretching o funcional en la terraza o galería despejada.",
+        "guides": [
+          "Terraza: 20 personas en movimiento / 25 con reposeras",
+          "Muebles móviles para despejar circulaciones",
+          "Coordinar horarios para respetar el descanso del vecindario"
+        ]
+      },
+      {
+        "title": "Socialización responsable",
+        "description": "Asados, celebraciones pequeñas o ferias que usan cocina, barra y terraza de forma integrada.",
+        "guides": [
+          "Capacidad total sugerida: 45-50 personas simultáneas",
+          "Gestionar residuos y limpieza al finalizar",
+          "Priorizar proveedores y arte local"
+        ]
+      }
+    ],
+    "cta": "Cuéntanos qué tipo de encuentro imaginas y coordinamos el montaje que mejor acompañe al grupo."
+  },
+  "operations": {
+    "schedule": "Lunes a viernes · 08:00 a 20:00",
+    "capacity": "25 personas en galería · Hasta 45 combinando patio y terraza",
+    "access": "Acceso por invitación, membresía o reserva acompañada de un miembro responsable",
+    "channels": [
+      "Grupo privado de Telegram",
+      "Tablero físico en galería",
+      "Registro digital de asistencia"
+    ],
+    "memberships": [
+      {
+        "name": "Residente",
+        "details": "Uso regular hasta 5 días por semana · lockers personales",
+        "fee": "Aporte sugerido: $XX.XXX/mes"
+      },
+      {
+        "name": "Vecinal",
+        "details": "Reservas ocasionales por día completo",
+        "fee": "Aporte sugerido: $X.XXX por jornada"
+      },
+      {
+        "name": "Aliado",
+        "details": "Participa en proyectos específicos y apoyo operativo",
+        "fee": "Aporte voluntario acordado en cada ciclo"
+      }
+    ],
+    "commitments": [
+      "Ruido moderado (<55 dB) y música ambiental a bajo volumen",
+      "Prohibido fumar en áreas techadas",
+      "Cada persona limpia y ordena antes de retirarse",
+      "Asamblea mensual para decisiones colectivas"
+    ]
+  },
+  "sheet_webhook_url": "https://script.google.com/macros/s/XXXXXXXXXXXX/exec",
+  "contact_email": "clubdelchanar@gmail.com",
+  "location_embed": "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1987.4707880505805!2d-64.2908165320694!3d-31.195375085969985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDExJzQxLjgiUyA2NMKwMTcnMjUuMiJX!5e0!3m2!1ses-419!2sar!4v1762650362289!5m2!1ses-419!2sar"
+}
