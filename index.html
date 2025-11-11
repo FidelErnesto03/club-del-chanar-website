@@ -267,35 +267,22 @@
           <p class="eyebrow">Sumar presencia</p>
           <h2>Suscripción</h2>
         </div>
-        <form id="subscribe-form" novalidate>
-          <label>
-            Nombre completo
-            <input type="text" name="fullName" autocomplete="name" required minlength="3" />
-          </label>
-          <label>
-            Correo electrónico
-            <input type="email" name="email" autocomplete="email" required />
-          </label>
-          <label>
-            Interés principal
-            <select name="interest" required>
-              <option value="" disabled selected>Seleccionar…</option>
-              <option value="trabajo-remoto">Trabajo remoto y coworking</option>
-              <option value="eventos-comunitarios">Eventos y encuentros comunitarios</option>
-              <option value="ejercicio-bienestar">Ejercicio y bienestar</option>
-              <option value="talleres-creativos">Talleres creativos y oficios</option>
-              <option value="espacios-recreativos">Espacios de esparcimiento y recreación</option>
-              <option value="colaboracion-proyectos">Colaboración en proyectos</option>
-              <option value="apoyo-comunitario">Apoyo a la comunidad</option>
-            </select>
-          </label>
-          <label>
-            Mensaje
-            <textarea name="message" rows="4" placeholder="Comparte tu relación con el territorio o tus motivaciones"></textarea>
-          </label>
-          <button class="btn" type="submit">Enviar</button>
-          <p class="form-feedback" role="status" aria-live="polite"></p>
-        </form>
+        <div class="subscription__card">
+          <p>
+            Estamos migrando la recepción de nuevas personas a un formulario oficial de Google.
+            Allí podés contarnos tu vínculo con el territorio, intereses y motivaciones para sumarte.
+          </p>
+          <a
+            class="btn"
+            data-subscribe-link
+            href="https://forms.gle/CNuC2DoUemYpSWr86"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Abrir formulario
+          </a>
+          <p class="subscription__note">Se abrirá en una nueva pestaña para completar tus datos.</p>
+        </div>
       </section>
 
       <section class="section contact" id="contacto">

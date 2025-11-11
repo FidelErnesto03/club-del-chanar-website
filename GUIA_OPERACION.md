@@ -36,11 +36,11 @@ Este documento resume tareas habituales para mantener vivo el sitio sin tocar c�
 2. Desde `website/`, ejecuta `npm run build:gallery` para regenerar `gallery-manifest.json` y `js/gallery-data.js`.
 3. Sube las carpetas + ambos archivos; el sitio mostrará las secciones y el visor modal reproducirá imágenes y videos.
 
-## 6. Formulario y Google Sheets
+## 6. Formulario externo
 
-- La URL `sheet_webhook_url` debe apuntar al despliegue activo de Apps Script.
-- Cuando actualices el script o la hoja, vuelve a desplegar y reemplaza la URL.
-- Revisa la hoja antes de cada evento para asegurarte de que no haya filas duplicadas.
+- El sitio muestra un botón que abre el formulario configurado en `subscription_form_url` dentro de `config.json`.
+- Cada vez que Google forme un enlace nuevo (por ejemplo, al duplicar el form) actualiza ese campo y vuelve a publicar el archivo.
+- Si conectaste el Form a una hoja de cálculo, revisa allí las respuestas antes de cada evento.
 
 ## 7. Revisión de identidad visual
 
@@ -52,7 +52,7 @@ Antes de publicar cambios:
 
 ## 8. Checklist operativa mensual
 
-- [ ] Probar el formulario con una dirección real (borra la fila de test luego).
+- [ ] Abrir el enlace al formulario externo y enviar una prueba si necesitas validar el flujo.
 - [ ] Revisar que la galería muestre la foto de portada correcta.
 - [ ] Actualizar actividades o próximos eventos en el bloque de Membresías si aplica.
 - [ ] Validar Lighthouse (Performance y Accessibility ≥ 90).
