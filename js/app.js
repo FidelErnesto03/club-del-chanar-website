@@ -183,7 +183,7 @@ const defaultConfig = {
       "Asamblea mensual para decisiones colectivas",
     ],
   },
-  sheet_webhook_url: "",
+  subscription_form_url: "",
   contact_email: "clubdelchanar@gmail.com",
   location_embed: "",
 };
@@ -878,75 +878,22 @@ function setupSmoothScroll() {
   });
 }
 
-function setupForm(config) {
-  const form = document.getElementById("subscribe-form");
-  const feedback = form?.querySelector(".form-feedback");
-  if (!form || !feedback) return;
-  
-  // Mejorar validación en tiempo real
-  const inputs = form.querySelectorAll('input, select, textarea');
-  inputs.forEach(input => {
-    input.addEventListener('blur', () => {
-      if (!input.checkValidity()) {
-        input.classList.add('invalid');
-      } else {
-        input.classList.remove('invalid');
-      }
-    });
-  });
+function setupSubscriptionLink(config) {
+  const link = document.querySelector("[data-subscribe-link]");
+  if (!link) return;
 
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    feedback.textContent = "";
-    feedback.classList.remove("form-feedback--success", "form-feedback--error");
+  const currentHref = link.getAttribute("href") || "";
 
-    if (!form.checkValidity()) {
-      feedback.textContent = "Revisa los campos obligatorios.";
-      feedback.classList.add("form-feedback--error");
-      return;
-    }
+  if (config.subscription_form_url) {
+    link.href = config.subscription_form_url;
+    return;
+  }
 
-    const formData = {
-      fullName: form.fullName.value.trim(),
-      email: form.email.value.trim(),
-      interest: form.interest.value,
-      message: form.message.value.trim(),
-      timestamp: new Date().toISOString(),
-    };
-
-    if (!formData.email.includes("@")) {
-      feedback.textContent = "Ingresa un correo válido.";
-      feedback.classList.add("form-feedback--error");
-      return;
-    }
-
-    if (!config.sheet_webhook_url) {
-      feedback.textContent = "Configura el Google Apps Script antes de recibir envíos.";
-      feedback.classList.add("form-feedback--error");
-      return;
-    }
-
-    try {
-      const response = await fetch(config.sheet_webhook_url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json().catch(() => ({}));
-
-      if (!response.ok || result.status === "error") {
-        throw new Error(result.message || "No pudimos registrar tu suscripción");
-      }
-
-      form.reset();
-      feedback.textContent = result.message || "Gracias por sumarte. Te escribiremos pronto.";
-      feedback.classList.add("form-feedback--success");
-    } catch (error) {
-      feedback.textContent = error.message || "Ocurrió un error inesperado.";
-      feedback.classList.add("form-feedback--error");
-    }
-  });
+  if (!currentHref || currentHref.startsWith("#")) {
+    link.removeAttribute("href");
+    link.setAttribute("aria-disabled", "true");
+    link.textContent = "Formulario no disponible";
+  }
 }
 
 function setYear() {
@@ -957,16 +904,20 @@ function setYear() {
 }
 
 (async function init() {
-  setYear();
-  setupNav();
-  setupSmoothScroll();
-  const config = await loadConfig();
-  hydrateUI(config);
-  const sections = await loadGalleryManifest();
-  gallerySectionsData = sections;
-  const galleryContainer = document.getElementById("gallery-sections");
-  renderGallery(galleryContainer, sections);
-  setupGalleryModalInteractions();
-  setupGalleryModalInteractions();
-  setupForm(config);
+  try {
+    setYear();
+    setupNav();
+    setupSmoothScroll();
+    const config = await loadConfig();
+    hydrateUI(config);
+    setupSubscriptionLink(config);
+    const sections = await loadGalleryManifest();
+    gallerySectionsData = sections;
+    const galleryContainer = document.getElementById("gallery-sections");
+    renderGallery(galleryContainer, sections);
+    setupGalleryModalInteractions();
+    setupGalleryModalInteractions();
+  } catch (error) {
+    console.error("Error inicializando la página", error);
+  }
 })();

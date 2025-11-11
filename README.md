@@ -1,6 +1,6 @@
 # El Club del Chañar · Website
 
-Sitio estático one-page que representa la identidad del Club del Chañar, con estructura ligera (HTML + CSS + JS) y un formulario conectado a Google Sheets mediante Google Apps Script.
+Sitio estático one-page que representa la identidad del Club del Chañar, con estructura ligera (HTML + CSS + JS) y una sección de suscripción que redirige a un Google Form para recopilar datos.
 
 ## Estructura
 
@@ -12,15 +12,13 @@ website/
 ├─ js/app.js         # Comportamiento (config, galería, formulario)
 ├─ assets/logo.png   # Identidad visual
 ├─ README.md         # Esta guía de despliegue
-├─ GUIA_OPERACION.md # Cambios cotidianos (textos, álbum, contactos)
-└─ apps_script/
-   └─ subscribe_handler.gs # Script para Google Sheets
+└─ GUIA_OPERACION.md # Cambios cotidianos (textos, álbum, contactos)
 ```
 
 ## Requisitos
 
 - Cualquier servidor de archivos estático (Netlify, Vercel, GitHub Pages, nginx, etc.).
-- Fuente `config.json` actualizada con los textos, la galería local y la URL del Google Apps Script.
+- Fuente `config.json` actualizada con los textos, la galería local y la URL del Google Form.
 
 ## Cómo probar localmente
 
@@ -36,7 +34,7 @@ website/
 1. Sube la carpeta `website/` completa al hosting elegido.
 2. Configura cache busting básico (Netlify/Vercel lo hacen automáticamente).
 3. Habilita HTTPS.
-4. Verifica que `config.json` esté accesible públicamente y que el dominio del sitio esté autorizado en el Google Apps Script.
+4. Verifica que `config.json` esté accesible públicamente y que el enlace al Google Form sea el definitivo compartible.
 
 ## Configuración dinámica
 
@@ -50,7 +48,7 @@ Toda la personalización base ocurre en `config.json`:
 - `infrastructure`: lista de highlights operativos (`title`, `details`).
 - `shared_use`: `intro`, `modes` (cada uno con `title`, `description`, `guides`) y `cta`.
 - `operations`: `schedule`, `capacity`, `access`, `channels`, `memberships` (nombre/detalles/aporte) y `commitments`.
-- `sheet_webhook_url`, `contact_email`, `norms`, `space_description`: contenidos reutilizados en múltiples secciones.
+- `subscription_form_url`, `contact_email`, `norms`, `space_description`: contenidos reutilizados en múltiples secciones.
 
 Puedes incorporar nuevas ilustraciones colocando archivos en `assets/` y haciendo referencia al path en el JSON.
 
@@ -62,20 +60,18 @@ Puedes incorporar nuevas ilustraciones colocando archivos en `assets/` y haciend
 2. Sitúate en la carpeta `website/` y ejecuta `npm run build:gallery`. El script actualiza `gallery-manifest.json` y `js/gallery-data.js` con el tipo de cada archivo.
 3. Publica las carpetas junto con ambos archivos; el sitio mostrará tarjetas por sección y abrirá un visor modal que soporta imágenes y videos.
 
-### Google Sheets + Apps Script
+### Google Forms
 
-1. Crea una hoja con cabeceras: `timestamp`, `fullName`, `email`, `interest`, `message`.
-2. En la misma hoja, abre `Extensiones > Apps Script` y pega el contenido de `apps_script/subscribe_handler.gs`.
-3. Ajusta la constante `SHEET_ID` y el nombre de la hoja.
-4. Despliega como `Aplicación web` con acceso "Cualquiera con el enlace".
-5. Copia la URL pública (`https://script.google.com/macros/s/.../exec`) y colócala en `config.json` como `sheet_webhook_url`.
-6. Desde la consola del script, revisa el registro para verificar nuevos envíos.
+1. Crea el formulario en Google Forms con los campos deseados.
+2. (Opcional) Conecta el formulario a una hoja de cálculo desde el propio Forms para mantener un registro automático.
+3. Usa `Enviar > Link` para copiar la URL pública.
+4. Pega esa URL en `config.json` dentro de `subscription_form_url`. El botón de la sección “Suscripción” abrirá ese enlace en una pestaña nueva.
 
 ## Checklist de publicación
 
 - [ ] Imágenes optimizadas (<400 KB total la página).
 - [ ] Verificar contraste (WCAG AA) con Lighthouse o Stark.
-- [ ] Probar el formulario con casos válidos e inválidos.
+- [ ] Abrir el enlace externo del formulario para asegurarse de que es el definitivo.
 - [ ] Confirmar que la galería local muestre las imágenes esperadas.
 - [ ] Actualizar año en footer (automático vía JS, validar en la previsualización).
 
