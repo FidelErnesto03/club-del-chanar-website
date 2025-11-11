@@ -168,13 +168,13 @@
     "memberships": [
       {
         "name": "Residente",
-        "details": "Uso regular hasta 5 días por semana · lockers personales",
-        "fee": "Aporte sugerido: $XX.XXX/mes"
+        "details": "Uso regular hasta 5 días por semana",
+        "fee": "Aporte Mínimo: $31.500/mes"
       },
       {
         "name": "Vecinal",
         "details": "Reservas ocasionales por día completo",
-        "fee": "Aporte sugerido: $X.XXX por jornada"
+        "fee": "Aporte Mínimo: $4.500 por jornada"
       },
       {
         "name": "Aliado",
