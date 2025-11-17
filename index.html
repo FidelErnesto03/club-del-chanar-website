@@ -1,326 +1,218 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="El Club del Chañar · Comunidad que cultiva calma, creatividad y colaboración con la naturaleza en Lomas del Chañar, Córdoba." />
-    <title>El Club del Chañar - Comunidad de Calma y Creatividad</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="assets/logo.png" />
-  </head>
-  <body>
-    <header class="hero" id="inicio">
-      <nav class="nav" aria-label="Navegación principal">
-        <a class="nav__brand" href="#inicio" aria-label="Volver al inicio">
-          <img src="assets/logo.png" alt="Logo de El Club del Chañar" loading="lazy" />
-        </a>
-        <button class="nav__toggle" aria-expanded="false" aria-controls="primary-menu">Menú</button>
-        <div class="nav__links" id="primary-menu">
-          <a href="#manifesto">Manifiesto</a>
-          <a href="#club">El Club</a>
-          <a href="#principios">Principios</a>
-          <a href="#servicios">Servicios</a>
-          <a href="#infraestructura">Infraestructura</a>
-          <a href="#membresias">Membresías</a>
-          <a href="#uso-compartido">Uso compartido</a>
-          <a href="#operacion">Operación</a>
-          <a href="#galeria">Galería</a>
-          <a href="#suscripcion">Suscripción</a>
-          <a href="#contacto">Contacto</a>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="El Club del Chañar · Comunidad que cultiva calma y creatividad en Lomas del Chañar, Córdoba." />
+  <title>El Club del Chañar - Calma y productividad natural</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/logo.png" />
+</head>
+
+<body>
+  <header class="hero" id="inicio">
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="nav__brand" href="#inicio" aria-label="Volver al inicio">
+        <img src="assets/logo.png" alt="Logo de El Club del Chañar" loading="lazy" />
+      </a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="primary-menu">Menú</button>
+      <div class="nav__links" id="primary-menu">
+        <a href="#urgencia">El Club</a>
+        <a href="#servicios">Espacios</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#incluye">Beneficios</a>
+        <a href="#funciona">Proceso</a>
+        <a href="#planes">Planes</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+    <div class="hero__content">
+      <div class="hero__text">
+        <p class="eyebrow"></p>
+        <h1 id="hero-title"></h1>
+        <p class="hero__metric" id="hero-subtitle"></p>
+        <p class="hero__description" id="hero-description"></p>
+        <div class="hero__cta-group">
+          <a class="btn" href="#" target="_blank" rel="noopener" id="hero-cta"></a>
+          <a class="btn btn--ghost" data-scroll="#contacto" href="#contacto"></a>
         </div>
-      </nav>
-      <div class="hero__content">
-        <div class="hero__figure" aria-hidden="true">
-          <div class="hero__logo-card">
-            <div class="hero__logo-circle">
-              <img src="assets/logo.png" alt="" aria-hidden="true" />
-            </div>
+        <p class="hero__note"></p>
+      </div>
+      
+      <div class="hero__figure">
+        <div class="hero__logo-container">
+          <div class="hero__logo-circle">
+            <img src="assets/logo.png" alt="Logo del Club del Chañar" />
           </div>
           <div class="golden-ratio"></div>
         </div>
-        <div class="hero__text">
-          <p class="eyebrow">Comunidad creativa en el monte</p>
-          <h1 id="hero-title">El Club del Chañar</h1>
-          <p class="hero__location" id="hero-location">Lomas del Chañar · Córdoba · Argentina</p>
-          <p id="hero-subtitle">La calma también es productiva.</p>
-          <p class="hero__description" id="hero-description">
-            Espacio de convivencia que explora la frontera entre hogar, taller y patio vecinal. 
-            Un refugio para la creatividad consciente y la conexión con la naturaleza.
-          </p>
-          <button class="btn" data-scroll="#suscripcion" id="hero-cta">Quiero sumarme</button>
-        </div>
       </div>
-      <div class="hero__seeds" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </header>
+    </div>
+    <div class="hero__seeds" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
 
-    <main>
-      <section class="section manifesto" id="manifesto">
-        <div class="section__header">
-          <p class="eyebrow">Esencia</p>
-          <h2>Manifiesto</h2>
-        </div>
-        <div class="manifesto__content">
-          <div class="manifesto__text">
-            <p class="section__lead" id="manifesto-excerpt">
-              El Club del Chañar es un espacio donde la convivencia humana y la naturaleza encuentran equilibrio. 
-              Una invitación a participar desde la calma, la creatividad y el respeto mutuo.
-            </p>
-            <div class="manifesto__details">
-              <p>Un refugio donde el tiempo se expande y la productividad se redefine desde la serenidad. 
-              Donde cada gesto, cada encuentro y cada proyecto nace de la escucha profunda del territorio y la comunidad.</p>
-              <p>Creemos en la potencia de la calma activa, en la creación consciente y en la regeneración 
-              como práctica cotidiana. Aquí, el monte chañar no es solo escenario, es co-creador.</p>
-            </div>
-            <div class="manifesto__actions">
-              <a class="link" id="manifesto-link" href="#" target="_blank" rel="noopener">Manifiesto en desarrollo</a>
-            </div>
-          </div>
-          <div class="manifesto__media" aria-hidden="true">
-            <div class="manifesto__image">
-              <img src="assets/logo.png" alt="Logotipo El Club del Chañar" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section club-description" id="club">
-        <div class="section__header">
-          <p class="eyebrow">El Club</p>
-          <h2>Punto de encuentro para Lomas del Chañar</h2>
-        </div>
-        <div class="club-description__content">
-          <div class="club-description__text">
-            <p class="section__lead">
-              Nacido en el corazón del barrio ecológico Lomas del Chañar, el Club se propone como espacio de encuentro 
-              donde la comunidad puede cultivar calma, creatividad y colaboración con la naturaleza.
-            </p>
-            <p>
-              En sintonía con la visión ecológica del barrio, el Club del Chañar invita a habitar el paisaje con gratitud, 
-              oficios compartidos y prácticas que regeneran tanto el entorno natural como el tejido comunitario.
-            </p>
-            <div class="club-description__features">
-              <div class="features__column">
-                <h3>Nuestra propuesta para el barrio</h3>
-                <ul>
-                  <li>Espacio de encuentro para la comunidad de Lomas del Chañar</li>
-                  <li>Talleres de oficios sostenibles y creatividad consciente</li>
-                  <li>Intercambio de saberes sobre vida ecológica y regenerativa</li>
-                  <li>Punto de referencia para el desarrollo comunitario</li>
-                </ul>
-              </div>
-              <div class="features__column">
-                <h3>Coherencia con la visión ecológica</h3>
-                <ul>
-                  <li>Respeto por la biodiversidad del monte chañar</li>
-                  <li>Prácticas de sostenibilidad y regeneración</li>
-                  <li>Fortalecimiento del tejido social comunitario</li>
-                  <li>Integración armónica con el entorno natural</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="club-description__media">
-            <div class="club-description__image" aria-hidden="true"></div>
-            <p class="club-description__invitation">
-              <strong>Una invitación abierta:</strong> Si formas parte de Lomas del Chañar o compartes nuestra visión, 
-              te invitamos a sumarte a este espacio donde la calma también es productiva y la comunidad se fortalece.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section principles" id="principios">
-        <div class="section__header">
-          <p class="eyebrow">Principios rectores</p>
-          <h2>Cómo sostenemos el Club</h2>
-        </div>
-        <div class="principles__grid" id="principles-grid"></div>
-      </section>
-
-      <section class="section services" id="servicios">
-        <div class="section__header">
-          <p class="eyebrow">Servicios y espacios</p>
-          <h2>Lo que ofrece el Club</h2>
-          <p class="section__lead">Ambientes modulables, interiores frescos y áreas exteriores que invitan a producir con los tiempos del monte.</p>
-        </div>
-        <div class="services__grid" id="services-grid"></div>
-      </section>
-
-
-
-      <section class="section infrastructure" id="infraestructura">
-        <div class="section__header">
-          <p class="eyebrow">Infraestructura viva</p>
-          <h2>Lo que mantiene la calma operativa</h2>
-        </div>
-        <div class="infrastructure__grid" id="infrastructure-grid"></div>
-      </section>
-
-      <section class="section memberships" id="membresias">
-        <div class="section__header">
-          <p class="eyebrow">Comunidad</p>
-          <h2>Membresías</h2>
-        </div>
-        <div class="memberships__content">
-          <p>
-            Pertenecer al Club del Chañar es abrazar una forma de vivir en donde la calma empuja procesos profundos. Compartimos oficios, cuidamos el
-            territorio y aprendemos desde la escucha. No es una membresía comercial sino una invitación a co-crear un espacio que se sostiene en la
-            confianza y la responsabilidad compartida.
-          </p>
-          <div class="pillars">
-            <article>
-              <h3>Convivencia</h3>
-              <p>Círculos de cuidado, acuerdos claros y hospitalidad consciente.</p>
-            </article>
-            <article>
-              <h3>Creación</h3>
-              <p>Laboratorios de oficios, proyectos creativos y actividades de regeneración.</p>
-            </article>
-            <article>
-              <h3>Custodia</h3>
-              <p>Prácticas que fortalecen el monte, la biodiversidad y las memorias locales.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section shared-use" id="uso-compartido">
-        <div class="section__header">
-          <p class="eyebrow">Uso compartido</p>
-          <h2>Cómo habitamos juntos</h2>
-          <p class="section__lead" id="shared-intro">
-            El Club funciona como un bien común: cada uso se acuerda cuidando el monte, las personas y la disponibilidad energética.
-          </p>
-        </div>
-        <div class="shared-use__grid" id="shared-use-grid"></div>
-        <div class="shared-use__cta" id="shared-use-cta">Comparte tu intención y disponibilidad para co-diseñar un uso respetuoso del lugar.</div>
-      </section>
-
-      <section class="section operations" id="operacion">
-        <div class="section__header">
-          <p class="eyebrow">Operación</p>
-          <h2>Ritmo diario y membresías</h2>
-          <p class="section__lead" id="operations-access">Acceso por invitación, membresía o reserva acompañada de un miembro responsable.</p>
-        </div>
-        <div class="operations__grid">
-          <div class="operations__summary">
-            <article>
-              <h3>Horario</h3>
-              <p id="operations-schedule">Lunes a viernes · 08:00 a 20:00</p>
-            </article>
-            <article>
-              <h3>Capacidad</h3>
-              <p id="operations-capacity">25 personas en galería · Hasta 45 combinando patio y terraza</p>
-            </article>
-            <article>
-              <h3>Canales</h3>
-              <ul id="operations-channels"></ul>
-            </article>
-          </div>
-          <div class="operations__memberships" id="operations-memberships"></div>
-        </div>
-        <div class="operations__commitments">
-          <h3>Compromisos diarios</h3>
-          <ul id="operations-commitments"></ul>
-        </div>
-      </section>
-
-      <section class="section gallery" id="galeria">
-        <div class="section__header">
-          <p class="eyebrow">Memoria viva</p>
-          <h2>Galería</h2>
-          <p class="section__lead">
-            Un recorrido visual por la evolución del Club: los espacios que habitamos, las residencias, oficios y encuentros íntimos que vamos
-            compartiendo con la comunidad.
-          </p>
-        </div>
-        <div class="gallery__sections" id="gallery-sections" aria-live="polite"></div>
-      </section>
-
-      <div class="gallery-modal" id="gallery-modal" hidden>
-        <div class="gallery-modal__overlay" data-gallery-close></div>
-        <div class="gallery-modal__content" role="dialog" aria-modal="true">
-          <button class="gallery-modal__close" type="button" data-gallery-close aria-label="Cerrar visor">×</button>
-          <button class="gallery-modal__nav gallery-modal__nav--prev" type="button" data-gallery-prev aria-label="Anterior">◀</button>
-          <figure>
-            <img id="gallery-modal-image" src="" alt="" hidden />
-            <video id="gallery-modal-video" controls playsinline hidden></video>
-            <figcaption id="gallery-modal-caption"></figcaption>
-          </figure>
-          <button class="gallery-modal__nav gallery-modal__nav--next" type="button" data-gallery-next aria-label="Siguiente">▶</button>
-        </div>
+  <main>
+    <!-- Sección El Club -->
+    <section class="section activation" id="urgencia">
+      <div class="section__header">
+        <p class="eyebrow"></p>
+        <h2></h2>
       </div>
 
-      <section class="section subscription" id="suscripcion">
-        <div class="section__header">
-          <p class="eyebrow">Sumar presencia</p>
-          <h2>Suscripción</h2>
-        </div>
-        <div class="subscription__card">
-          <p>
-            Estamos migrando la recepción de nuevas personas a un formulario oficial de Google.
-            Allí podés contarnos tu vínculo con el territorio, intereses y motivaciones para sumarte.
-          </p>
-          <a
-            class="btn"
-            data-subscribe-link
-            href="https://forms.gle/CNuC2DoUemYpSWr86"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Abrir formulario
+      <div class="activation__layout section__body">
+        <div class="activation__visual">
+          <div class="club-description-card">
+            <h3></h3>
+            <p></p>
+          </div>
+          <a href="#contacto" class="croquis-link" data-scroll="#contacto">
+            <figure class="croquis-figure">
+              <img src="" alt="" loading="lazy" />
+              <figcaption></figcaption>
+            </figure>
           </a>
-          <p class="subscription__note">Se abrirá en una nueva pestaña para completar tus datos.</p>
         </div>
-      </section>
 
-      <section class="section contact" id="contacto">
-        <div class="section__header">
-          <p class="eyebrow">Cierre</p>
-          <h2>Contacto</h2>
+        <div class="activation__content">
+          <div class="activation__features"></div>
+          <a class="btn btn--primary" href="https://forms.gle/5hCsEExiJoxedYnDA" target="_blank" rel="noopener"></a>
         </div>
-        <div class="contact__grid">
-          <div>
-            <p>Escríbenos para coordinar una visita, proponer un taller o simplemente saludar.</p>
-            <a class="link" id="contact-email" href="mailto:clubdelchanar@gmail.com">clubdelchanar@gmail.com</a>
-            <p class="closing">La calma también es productiva.</p>
+      </div>
+    </section>
+
+    <!-- Sección Espacios -->
+    <section class="section spaces-compact" id="servicios">
+      <div class="section__header">
+        <p class="eyebrow"></p>
+        <h2></h2>
+        <p class="section__lead"></p>
+      </div>
+
+      <div class="spaces-grid section__body" id="spaces-grid"></div>
+    </section>
+
+    <!-- Sección Eventos -->
+    <section class="section events" id="eventos">
+      <div class="section__header">
+        <p class="eyebrow"></p>
+        <h2></h2>
+        <p class="section__lead"></p>
+      </div>
+
+      <div class="events__grid section__body" id="events-grid"></div>
+    </section>
+
+    <!-- Sección Beneficios -->
+    <section class="section include-list" id="incluye">
+      <div class="section__header">
+        <p class="eyebrow"></p>
+        <h2></h2>
+      </div>
+
+      <div class="benefits-grid section__body" id="benefits-grid"></div>
+    </section>
+
+    <!-- Sección Proceso -->
+    <section class="section process" id="funciona">
+      <div class="section__header">
+        <p class="eyebrow"></p>
+        <h2></h2>
+      </div>
+
+      <ul class="process-steps section__body" id="process-steps"></ul>
+    </section>
+
+    <!-- Sección Planes -->
+    <section class="section plans" id="planes">
+      <div class="section__header">
+        <p class="eyebrow"></p>
+        <h2></h2>
+        <p class="section__lead"></p>
+      </div>
+
+      <div class="plans__grid section__body" id="plans-grid"></div>
+
+      <div class="special-offer section__body" id="special-offer"></div>
+    </section>
+
+    <!-- Sección Galería -->
+    <section class="section gallery" id="galeria">
+      <div class="section__header">
+        <p class="eyebrow"></p>
+        <h2></h2>
+        <p class="section__lead"></p>
+      </div>
+
+      <div class="gallery__sections section__body" id="gallery-sections"></div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section class="section contact" id="contacto">
+      <div class="section__header">
+        <p class="eyebrow"></p>
+        <h2></h2>
+      </div>
+
+      <div class="contact__grid section__body">
+        <div class="contact__info">
+          <p class="contact__description"></p>
+          <div class="contact__channels">
+            <a class="btn btn--whatsapp contact__whatsapp" href="#" target="_blank" rel="noopener">
+              <span>WhatsApp</span>
+            </a>
+            <a class="btn btn--ghost contact__form" href="#" target="_blank" rel="noopener">
+              Formulario de contacto
+            </a>
           </div>
-          <div class="contact__card">
-            <p class="eyebrow">Ubicación</p>
-            <p>Lomas del Chañar · Córdoba · Argentina</p>
-            <iframe
-              id="map-embed"
-              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1987.4707880505805!2d-64.2908165320694!3d-31.195375085969985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDExJzQxLjgiUyA2NMKwMTcnMjUuMiJX!5e0!3m2!1ses-419!2sar!4v1762650362289!5m2!1ses-419!2sar"
-              width="600"
-              height="450"
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <div class="contact__details">
+            <p class="contact__hours"></p>
+            <p class="contact__response-time"></p>
           </div>
         </div>
-      </section>
-    </main>
+        <div class="contact__map">
+          <div class="map-placeholder">
+            <p>📍 Lomas del Chañar · Córdoba · Argentina</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <footer class="footer">
-      <small>© <span id="year">2025</span> El Club del Chañar · Comunidad sin fines de lucro</small>
-    </footer>
+  <footer class="footer">
+    <div class="footer__content">
+      <p class="footer__copyright">© 2025 El Club del Chañar. Todos los derechos reservados.</p>
+      <p class="footer__location">📍 Lomas del Chañar · Córdoba · Argentina</p>
+      <a class="footer__email" href="mailto:clubdelchanar@gmail.com">clubdelchanar@gmail.com</a>
+    </div>
+  </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.umd.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.umd.min.js"></script>
-    <script defer src="js/gallery-data.js"></script>
-    <script src="js/app.js" defer></script>
-  </body>
+  <div id="gallery-modal" class="gallery-modal" hidden>
+    <div class="gallery-modal__overlay" data-gallery-close></div>
+    <div class="gallery-modal__content">
+      <button class="gallery-modal__close" aria-label="Cerrar galería" data-gallery-close>×</button>
+      <button class="gallery-modal__prev" aria-label="Imagen anterior" data-gallery-prev>‹</button>
+      <figure>
+        <img id="gallery-modal-image" alt="" hidden />
+        <video id="gallery-modal-video" controls style="display:none;"></video>
+        <figcaption id="gallery-modal-caption"></figcaption>
+      </figure>
+      <button class="gallery-modal__next" aria-label="Siguiente imagen" data-gallery-next>›</button>
+    </div>
+  </div>
+
+  <script src="js/app.js" type="module"></script>
+</body>
+
 </html>
