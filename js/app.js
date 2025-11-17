@@ -1,193 +1,4 @@
-const defaultConfig = {
-  hero_title: "El Club del Chañar",
-  hero_subtitle: "La calma también produce.",
-  hero_cta: "Quiero sumarme",
-  hero_location: "Lomas del Chañar · Córdoba · Argentina",
-  hero_description: "Vivienda de uso compartido que explora la frontera entre hogar, taller y patio vecinal.",
-  manifesto_excerpt:
-    "El Club del Chañar es un espacio donde la convivencia humana y la naturaleza encuentran equilibrio. Una invitación a participar desde la calma, la creatividad y el respeto.",
-  manifesto_link: "#",
-  space_description:
-    "El predio ocupa un lote urbano de 10 × 25 m (250 m²) en Lomas del Chañar. Combina un jardín frontal, una gran galería cubierta y una terraza abierta que podemos configurar según cada uso de la comunidad.",
-  norms: [
-    "Respeto por la privacidad del barrio y de quienes comparten la jornada",
-    "Cuidar el equipamiento común como si fuera propio",
-    "Mantener limpieza y orden al finalizar cada actividad",
-    "Coordinar reservas para no sobrepasar la capacidad cómoda (50 personas)",
-  ],
-  story: {
-    title: "Un refugio contemporáneo en 250 m²",
-    description:
-      "Jardín, galería y terraza se articulan como una casa abierta que conserva el alma doméstica mientras habilita usos modernos: trabajar, cocinar, contemplar o celebrar con serenidad.",
-    image: "assets/story-canopy.svg",
-    facts: [
-      "Lote cerrado de 10 × 25 m con acceso controlado",
-      "Galería techada de 8 × 15 m con asador, baños y barra",
-      "Terraza superior de 120 m² con mediasombra e iluminación tenue",
-    ],
-  },
-  principles: [
-    {
-      title: "Uso consciente",
-      description: "Cada persona es responsable del entorno que habilita: cuida tiempos, recursos y energía.",
-    },
-    {
-      title: "Respeto mutuo",
-      description: "La convivencia se sostiene en la escucha y el silencio justo, privilegiando la calma del barrio.",
-    },
-    {
-      title: "Comunidad cerrada",
-      description: "Acceso por invitación, membresía o reserva acompañada por un miembro activo.",
-    },
-    {
-      title: "Simplicidad funcional",
-      description: "Todo elemento tiene propósito claro: bienestar, colaboración o creación.",
-    },
-    {
-      title: "Naturaleza integrada",
-      description: "El árbol, la sombra y el viento participan del diseño y regulan los ritmos diarios.",
-    },
-    {
-      title: "Temporalidad consciente",
-      description: "Trabajamos por etapas de experimentación: nada es definitivo, todo se evalúa y mejora.",
-    },
-  ],
-  spaces_overview: [
-    {
-      name: "Jardín y patio de entrada",
-      description: "Espacio abierto con vegetación, tránsito y recepción. Marca el ritmo de llegada con portón de madera e iluminación suave.",
-      image: "assets/space-jardin.svg",
-      services: [
-        "Área verde 10 × 10 m para encuentros breves",
-        "Portón y acceso peatonal controlado",
-        "Capacidad adicional de 10 a 15 personas",
-      ],
-    },
-    {
-      name: "Galería principal",
-      description: "Núcleo operativo techado y sin paredes laterales. Alberga la cocina, barra y baños para jornadas extensas.",
-      image: "assets/space-taller.svg",
-      services: [
-        "120 m² cubiertos con sonido ambiental",
-        "Asador, barra para 10 personas y dos baños",
-        "24 puestos con mesas bajas y mobiliario flexible",
-      ],
-    },
-    {
-      name: "Cocina y almacén",
-      description: "Local cerrado integrado a la galería con provisiones básicas para eventos, talleres culinarios o cafés comunitarios.",
-      image: "assets/space-residencia.svg",
-      services: [
-        "Heladera exhibidora y almacenamiento seco",
-        "Filtro de agua, cafetera, pava y microondas",
-        "Bacha y mesadas para staging de alimentos",
-      ],
-    },
-    {
-      name: "Terraza superior",
-      description: "Plataforma abierta de 8 × 15 m con barandas y mediasombra parcial; ideal para respiración guiada, proyecciones o descanso.",
-      image: "assets/story-canopy.svg",
-      services: [
-        "Iluminación tenue y luminarias de emergencia",
-        "Pisos cerámicos antideslizantes",
-        "Capacidad para 20-25 personas con reposeras",
-      ],
-    },
-  ],
-  infrastructure: [
-    {
-      title: "Conectividad y energía",
-      details: "Internet satelital estable, disyuntor diferencial y tomas IP44/IP65 para interior y terraza.",
-    },
-    {
-      title: "Seguridad activa",
-      details: "Portón controlado, cámaras con IA, extintores ABC + K, señalización fotoluminiscente.",
-    },
-    {
-      title: "Clima y bienestar",
-      details: "Ventilación cruzada, calefacción a gas, guirnaldas cálidas y sonido ambiental de baja intensidad.",
-    },
-    {
-      title: "Higiene y apoyo",
-      details: "Botiquín visible, limpieza profesional semanal, mobiliario móvil y kits de orden compartido.",
-    },
-  ],
-  shared_use: {
-    intro: "El Club funciona como una casa compartida: organizamos turnos y montajes según la cantidad de personas y la energía disponible.",
-    modes: [
-      {
-        title: "Trabajo colaborativo",
-        description: "Coworking vecinal, reuniones de proyecto y talleres que aprovechan la galería como aula abierta.",
-        guides: [
-          "Capacidad recomendada: 25 personas sentadas",
-          "Reservar con al menos 48 h para coordinar mobiliario",
-          "Internet satelital disponible en toda la galería",
-        ],
-      },
-      {
-        title: "Recreación tranquila",
-        description: "Encuentros íntimos, charlas, lecturas o proyecciones al atardecer en patio o terraza.",
-        guides: [
-          "Patio admite 10-15 personas adicionales",
-          "Uso de sonido ambiental a volumen moderado",
-          "Cuidar iluminación cálida para mantener la atmósfera",
-        ],
-      },
-      {
-        title: "Bienestar y movimiento",
-        description: "Yoga, respiración, stretching o funcional en la terraza o galería despejada.",
-        guides: [
-          "Terraza: 20 personas en movimiento / 25 con reposeras",
-          "Muebles móviles para despejar circulaciones",
-          "Coordinar horarios para respetar el descanso del vecindario",
-        ],
-      },
-      {
-        title: "Socialización responsable",
-        description: "Asados, celebraciones pequeñas o ferias que usan cocina, barra y terraza de forma integrada.",
-        guides: [
-          "Capacidad total sugerida: 45-50 personas simultáneas",
-          "Gestionar residuos y limpieza al finalizar",
-          "Priorizar proveedores y arte local",
-        ],
-      },
-    ],
-    cta: "Cuéntanos qué tipo de encuentro imaginas y coordinamos el montaje que mejor acompañe al grupo.",
-  },
-  operations: {
-    schedule: "Lunes a viernes · 08:00 a 20:00",
-    capacity: "25 personas en galería · Hasta 45 combinando patio y terraza",
-    access: "Acceso por invitación, membresía o reserva acompañada de un miembro responsable",
-    channels: ["Grupo privado de Telegram", "Tablero físico en galería", "Registro digital de asistencia"],
-    memberships: [
-      {
-        name: "Residente",
-        details: "Uso regular hasta 5 días por semana · lockers personales",
-        fee: "Aporte sugerido: $XX.XXX/mes",
-      },
-      {
-        name: "Vecinal",
-        details: "Reservas ocasionales por día completo",
-        fee: "Aporte sugerido: $X.XXX por jornada",
-      },
-      {
-        name: "Aliado",
-        details: "Participa en proyectos específicos y apoyo operativo",
-        fee: "Aporte voluntario acordado en cada ciclo",
-      },
-    ],
-    commitments: [
-      "Ruido moderado (<55 dB) y música ambiental a bajo volumen",
-      "Prohibido fumar en áreas techadas",
-      "Cada persona limpia y ordena antes de retirarse",
-      "Asamblea mensual para decisiones colectivas",
-    ],
-  },
-  subscription_form_url: "",
-  contact_email: "clubdelchanar@gmail.com",
-  location_embed: "",
-};
-
+// Configuración cargada dinámicamente desde config.json
 let gallerySectionsData = [];
 let galleryModalState = { sectionIndex: 0, imageIndex: 0 };
 let galleryInteractionsBound = false;
@@ -197,120 +8,539 @@ async function loadConfig() {
     const response = await fetch("config.json", { cache: "no-store" });
     if (!response.ok) throw new Error("No se pudo leer config.json");
     const data = await response.json();
-    // Los datos del archivo tienen prioridad sobre la configuración por defecto
-    return { ...defaultConfig, ...data };
+    return data;
   } catch (error) {
-    console.warn("Usando configuración por defecto", error);
-    return defaultConfig;
+    console.error("Error cargando configuración:", error);
+    throw error;
   }
 }
 
 function hydrateUI(config) {
-  const heroTitle = document.getElementById("hero-title");
-  const heroSubtitle = document.getElementById("hero-subtitle");
-  const heroCta = document.getElementById("hero-cta");
-  const heroLocation = document.getElementById("hero-location");
-  const heroDescription = document.getElementById("hero-description");
-  const manifestoExcerpt = document.getElementById("manifesto-excerpt");
-  const manifestoLink = document.getElementById("manifesto-link");
-  const manifestoDetails = document.querySelector(".manifesto__details");
-  const mapEmbed = document.getElementById("map-embed");
-  const contactEmail = document.getElementById("contact-email");
-  const clubDescription = document.querySelector(".club-description__text");
-  const servicesGrid = document.getElementById("services-grid");
-  const principlesGrid = document.getElementById("principles-grid");
-  const infrastructureGrid = document.getElementById("infrastructure-grid");
-  const sharedIntro = document.getElementById("shared-intro");
-  const sharedGrid = document.getElementById("shared-use-grid");
-  const sharedCta = document.getElementById("shared-use-cta");
-  const operationsAccess = document.getElementById("operations-access");
-  const operationsSchedule = document.getElementById("operations-schedule");
-  const operationsCapacity = document.getElementById("operations-capacity");
-  const operationsChannels = document.getElementById("operations-channels");
-  const operationsMemberships = document.getElementById("operations-memberships");
-  const operationsCommitments = document.getElementById("operations-commitments");
+  console.log('Iniciando hydrateUI con config:', config);
 
-  heroTitle.textContent = config.hero_title;
-  heroSubtitle.textContent = config.hero_subtitle;
-  heroCta.textContent = config.hero_cta;
-  if (heroLocation) heroLocation.textContent = config.hero_location || "";
-  if (heroDescription) heroDescription.textContent = config.hero_description || "";
-  manifestoExcerpt.textContent = config.manifesto_excerpt;
-  manifestoLink.href = config.manifesto_link;
-  
-  // Actualizar detalles del manifiesto
-  if (manifestoDetails && Array.isArray(config.manifesto_details) && config.manifesto_details.length) {
-    manifestoDetails.innerHTML = '';
-    config.manifesto_details.forEach(detail => {
-      const p = document.createElement('p');
-      p.textContent = detail;
-      manifestoDetails.appendChild(p);
+  // Actualizar metadata del sitio
+  if (config.site) {
+    if (config.site.title) document.title = config.site.title;
+    if (config.site.description) {
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) metaDescription.content = config.site.description;
+    }
+  }
+
+  // Actualizar Hero Section
+  hydrateHeroSection(config.hero);
+
+  // Actualizar Club Section
+  hydrateClubSection(config.club);
+
+  // Actualizar Spaces Section
+  hydrateSpacesSection(config.spaces);
+
+  // Actualizar Events Section
+  hydrateEventsSection(config.events);
+
+  // Actualizar Benefits Section
+  hydrateBenefitsSection(config.benefits);
+
+  // Actualizar Process Section
+  hydrateProcessSection(config.process);
+
+  // Actualizar Plans Section
+  hydratePlansSection(config.plans);
+
+  // Actualizar Gallery Section
+  hydrateGallerySection(config.gallery);
+
+  // Actualizar Contact Section
+  hydrateContactSection(config.contact);
+
+  // Actualizar Footer
+  hydrateFooter(config.footer);
+
+  // Actualizar URLs dinámicas
+  hydrateDynamicURLs(config.urls);
+
+  console.log('Todas las secciones hidratadas correctamente');
+}
+
+function hydrateHeroSection(hero) {
+  if (!hero) return;
+
+  const elements = {
+    eyebrow: document.querySelector('.hero__text .eyebrow'),
+    title: document.getElementById('hero-title'),
+    subtitle: document.getElementById('hero-subtitle'),
+    description: document.getElementById('hero-description'),
+    cta: document.getElementById('hero-cta'),
+    secondaryCta: document.querySelector('.hero__cta-group .btn--ghost'),
+    note: document.querySelector('.hero__note')
+  };
+
+  if (elements.eyebrow && hero.eyebrow) elements.eyebrow.textContent = hero.eyebrow;
+  if (elements.title && hero.title) elements.title.textContent = hero.title;
+  if (elements.subtitle && hero.subtitle) elements.subtitle.textContent = hero.subtitle;
+  if (elements.description && hero.description) elements.description.textContent = hero.description;
+
+  if (elements.cta) {
+    if (hero.cta) elements.cta.textContent = hero.cta;
+    if (hero.cta_url) {
+      elements.cta.href = hero.cta_url;
+      elements.cta.target = hero.cta_url.startsWith('#') ? '_self' : '_blank';
+    }
+  }
+
+  if (elements.secondaryCta) {
+    if (hero.secondary_cta) elements.secondaryCta.textContent = hero.secondary_cta;
+    if (hero.secondary_cta_url) {
+      elements.secondaryCta.href = hero.secondary_cta_url;
+      if (hero.secondary_cta_url.startsWith('#')) {
+        elements.secondaryCta.dataset.scroll = hero.secondary_cta_url;
+        elements.secondaryCta.target = '_self';
+      } else {
+        elements.secondaryCta.removeAttribute('data-scroll');
+        elements.secondaryCta.target = '_blank';
+      }
+    }
+  }
+
+  if (elements.note && hero.note) elements.note.textContent = hero.note;
+}
+
+function hydrateClubSection(club) {
+  if (!club) return;
+
+  const elements = {
+    eyebrow: document.querySelector('#urgencia .eyebrow'),
+    title: document.querySelector('#urgencia h2'),
+    description: document.querySelector('.club-description-card p'),
+    titleCard: document.querySelector('.club-description-card h3'),
+    croquisImg: document.querySelector('.croquis-figure img'),
+    croquisCaption: document.querySelector('.croquis-figure figcaption'),
+    cta: document.querySelector('#urgencia .btn--primary')
+  };
+
+  if (elements.eyebrow && club.eyebrow) elements.eyebrow.textContent = club.eyebrow;
+  if (elements.title && club.title) elements.title.textContent = club.title;
+  if (elements.titleCard && club.title) elements.titleCard.textContent = club.title;
+  if (elements.description && club.description) elements.description.innerHTML = club.description;
+  if (elements.croquisImg && club.croquis_image) {
+    elements.croquisImg.src = club.croquis_image;
+    if (club.croquis_alt) elements.croquisImg.alt = club.croquis_alt;
+  }
+  if (elements.croquisCaption && club.croquis_caption) elements.croquisCaption.textContent = club.croquis_caption;
+  if (elements.cta) {
+    if (club.cta) elements.cta.textContent = club.cta;
+    if (club.cta_url) {
+      elements.cta.href = club.cta_url;
+      elements.cta.target = club.cta_url.startsWith('#') ? '_self' : '_blank';
+    }
+  }
+
+  // Actualizar features
+  const featureWrapper = document.querySelector('.activation__features');
+  if (featureWrapper) {
+    featureWrapper.innerHTML = '';
+    if (Array.isArray(club.features)) {
+      club.features.forEach((feature) => {
+        const item = document.createElement('div');
+        item.className = 'activation__feature';
+        const icon = document.createElement('span');
+        icon.className = 'activation__bullet';
+        icon.textContent = feature.icon || '';
+        const content = document.createElement('div');
+        const title = document.createElement('h3');
+        title.textContent = feature.title || '';
+        const description = document.createElement('p');
+        description.innerHTML = feature.description || '';
+        content.append(title, description);
+        item.append(icon, content);
+        featureWrapper.appendChild(item);
+      });
+    }
+  }
+}
+
+function hydrateSpacesSection(spaces) {
+  if (!spaces) return;
+
+  const elements = {
+    eyebrow: document.querySelector('#servicios .eyebrow'),
+    title: document.querySelector('#servicios h2'),
+    lead: document.querySelector('#servicios .section__lead')
+  };
+
+  if (elements.eyebrow && spaces.eyebrow) elements.eyebrow.textContent = spaces.eyebrow;
+  if (elements.title && spaces.title) elements.title.textContent = spaces.title;
+  if (elements.lead && spaces.lead) elements.lead.textContent = spaces.lead;
+
+  const grid = document.getElementById('spaces-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  if (Array.isArray(spaces.items)) {
+    spaces.items.forEach((space) => {
+      const card = document.createElement('div');
+      card.className = 'space-item';
+      const icon = document.createElement('div');
+      icon.className = 'space-icon';
+      icon.textContent = space.icon || '';
+      const title = document.createElement('h3');
+      title.className = 'space-title';
+      title.textContent = space.title || '';
+      const description = document.createElement('p');
+      description.className = 'space-description';
+      description.textContent = space.description || '';
+      card.append(icon, title, description);
+      grid.appendChild(card);
     });
   }
-  if (mapEmbed && config.location_embed) {
-    mapEmbed.src = config.location_embed;
+}
+
+function hydrateEventsSection(events) {
+  if (!events) return;
+
+  const elements = {
+    eyebrow: document.querySelector('#eventos .eyebrow'),
+    title: document.querySelector('#eventos h2'),
+    lead: document.querySelector('#eventos .section__lead')
+  };
+
+  if (elements.eyebrow && events.eyebrow) elements.eyebrow.textContent = events.eyebrow;
+  if (elements.title && events.title) elements.title.textContent = events.title;
+  if (elements.lead && events.lead) elements.lead.textContent = events.lead;
+
+  // Actualizar items de eventos
+  const grid = document.getElementById('events-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  if (Array.isArray(events.items)) {
+    events.items.forEach((event) => {
+      const card = document.createElement('article');
+      card.className = 'events__card';
+      const icon = document.createElement('div');
+      icon.className = 'events__icon';
+      icon.textContent = event.icon || '';
+      const title = document.createElement('h3');
+      title.className = 'events__card__title';
+      title.textContent = event.title || '';
+      const description = document.createElement('p');
+      description.className = 'events__card__description';
+      description.textContent = event.description || '';
+      const detailsContainer = document.createElement('div');
+      detailsContainer.className = 'events__details';
+      if (Array.isArray(event.details)) {
+        event.details.forEach(detail => {
+          const span = document.createElement('span');
+          span.className = 'events__detail';
+          span.textContent = detail;
+          detailsContainer.appendChild(span);
+        });
+      }
+      card.append(icon, title, description, detailsContainer);
+      grid.appendChild(card);
+    });
+  }
+}
+
+function hydrateBenefitsSection(benefits) {
+  if (!benefits) return;
+
+  const elements = {
+    eyebrow: document.querySelector('#incluye .eyebrow'),
+    title: document.querySelector('#incluye h2')
+  };
+
+  if (elements.eyebrow && benefits.eyebrow) elements.eyebrow.textContent = benefits.eyebrow;
+  if (elements.title && benefits.title) elements.title.textContent = benefits.title;
+
+  const grid = document.getElementById('benefits-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  if (Array.isArray(benefits.items)) {
+    benefits.items.forEach((benefit) => {
+      const card = document.createElement('div');
+      card.className = 'benefit';
+      const icon = document.createElement('div');
+      icon.className = 'benefit__icon';
+      icon.textContent = benefit.icon || '';
+      const title = document.createElement('h3');
+      title.className = 'benefit__title';
+      title.textContent = benefit.title || '';
+      const description = document.createElement('p');
+      description.className = 'benefit__description';
+      description.textContent = benefit.description || '';
+      card.append(icon, title, description);
+      grid.appendChild(card);
+    });
+  }
+}
+
+function hydrateProcessSection(process) {
+  if (!process) return;
+
+  const elements = {
+    eyebrow: document.querySelector('#funciona .eyebrow'),
+    title: document.querySelector('#funciona h2')
+  };
+
+  if (elements.eyebrow && process.eyebrow) elements.eyebrow.textContent = process.eyebrow;
+  if (elements.title && process.title) elements.title.textContent = process.title;
+
+  // Actualizar steps del proceso
+  const list = document.getElementById('process-steps');
+  if (!list) return;
+  list.innerHTML = '';
+
+  if (Array.isArray(process.steps)) {
+    process.steps.forEach((step) => {
+      const item = document.createElement('li');
+      item.className = 'process-step';
+      const icon = document.createElement('span');
+      icon.className = 'process-step__icon';
+      icon.textContent = step.icon || step.number || '';
+      const content = document.createElement('div');
+      const title = document.createElement('h3');
+      title.className = 'process-step__title';
+      title.textContent = step.title || '';
+      const description = document.createElement('p');
+      description.className = 'process-step__description';
+      description.textContent = step.description || '';
+      content.append(title, description);
+      item.append(icon, content);
+      list.appendChild(item);
+    });
+  }
+}
+
+function hydratePlansSection(plans) {
+  if (!plans) return;
+
+  const elements = {
+    eyebrow: document.querySelector('#planes .eyebrow'),
+    title: document.querySelector('#planes h2'),
+    lead: document.querySelector('#planes .section__lead')
+  };
+
+  if (elements.eyebrow && plans.eyebrow) elements.eyebrow.textContent = plans.eyebrow;
+  if (elements.title && plans.title) elements.title.textContent = plans.title;
+  if (elements.lead && plans.lead) elements.lead.textContent = plans.lead;
+
+  // Actualizar items de planes
+  const grid = document.getElementById('plans-grid');
+  if (grid) {
+    grid.innerHTML = '';
+    if (Array.isArray(plans.items)) {
+      plans.items.forEach((plan) => {
+        const card = document.createElement('article');
+        card.className = 'plan-card';
+        if (plan.featured) card.classList.add('plan-card--featured');
+
+        const header = document.createElement('div');
+        header.className = 'plan-card__header';
+        const eyebrow = document.createElement('p');
+        eyebrow.className = 'eyebrow';
+        eyebrow.textContent = plan.eyebrow || '';
+        const title = document.createElement('h3');
+        title.textContent = plan.title || '';
+        const badge = document.createElement('div');
+        badge.className = 'plan-card__badge';
+        if (plan.badge) {
+          badge.textContent = plan.badge;
+        } else {
+          badge.style.display = 'none';
+        }
+        header.append(eyebrow, title, badge);
+
+        const priceBlock = document.createElement('div');
+        priceBlock.className = 'plan-card__price';
+        const compare = document.createElement('span');
+        compare.className = 'plan-card__compare';
+        if (plan.compare_price) {
+          compare.innerHTML = `<s>${plan.compare_price}</s>`;
+        } else {
+          compare.style.display = 'none';
+        }
+        const price = document.createElement('span');
+        price.className = 'plan-card__daily';
+        price.textContent = plan.price || '';
+        const period = document.createElement('span');
+        period.className = 'plan-card__period';
+        period.textContent = plan.period || '';
+        priceBlock.append(compare, price, period);
+
+        const featureList = document.createElement('ul');
+        if (Array.isArray(plan.features)) {
+          plan.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.textContent = feature;
+            featureList.appendChild(li);
+          });
+        }
+
+        const cta = document.createElement('a');
+        cta.className = plan.featured ? 'btn' : 'btn btn--ghost';
+        cta.textContent = plan.cta || '';
+        if (plan.cta_url) {
+          cta.href = plan.cta_url;
+          cta.target = plan.cta_url.startsWith('#') ? '_self' : '_blank';
+        }
+
+        card.append(header, priceBlock, featureList, cta);
+        grid.appendChild(card);
+      });
+    }
   }
 
-  contactEmail.href = `mailto:${config.contact_email}`;
-  contactEmail.textContent = config.contact_email;
+  // Actualizar oferta especial
+  const specialOffer = document.getElementById('special-offer');
+  if (specialOffer) {
+    specialOffer.innerHTML = '';
+    if (plans.special_offer && plans.special_offer.active) {
+      const title = document.createElement('h3');
+      title.className = 'special-offer__title';
+      title.textContent = plans.special_offer.title || '';
+      const description = document.createElement('p');
+      description.className = 'special-offer__description';
+      description.innerHTML = plans.special_offer.description || '';
+      specialOffer.append(title, description);
+    }
+  }
+}
 
-  // Actualizar sección del Club
-  if (config.club_description && clubDescription) {
-    const lead = clubDescription.querySelector('.section__lead');
-    const description = clubDescription.querySelector('p:nth-of-type(2)');
-    const proposalList = clubDescription.querySelector('.features__column:first-child ul');
-    const principlesList = clubDescription.querySelector('.features__column:last-child ul');
-    
-    if (lead && config.club_description.lead) {
-      lead.textContent = config.club_description.lead;
-    }
-    
-    if (description && config.club_description.description) {
-      description.textContent = config.club_description.description;
-    }
-    
-    if (proposalList && Array.isArray(config.club_description.proposal_features)) {
-      proposalList.innerHTML = '';
-      config.club_description.proposal_features.forEach(feature => {
+function hydrateGallerySection(gallery) {
+  if (!gallery) return;
+
+  const elements = {
+    eyebrow: document.querySelector('#galeria .eyebrow'),
+    title: document.querySelector('#galeria h2'),
+    lead: document.querySelector('#galeria .section__lead')
+  };
+
+  if (elements.eyebrow && gallery.eyebrow) elements.eyebrow.textContent = gallery.eyebrow;
+  if (elements.title && gallery.title) elements.title.textContent = gallery.title;
+  if (elements.lead && gallery.lead) elements.lead.textContent = gallery.lead;
+
+  // La galería se maneja por separado con gallerySectionsData
+  if (gallery.sections && Array.isArray(gallery.sections)) {
+    gallerySectionsData = gallery.sections;
+  }
+}
+
+function hydrateSubscriptionSection(subscription) {
+  if (!subscription) return;
+
+  const elements = {
+    eyebrow: document.querySelector('#suscripcion .eyebrow'),
+    title: document.querySelector('#suscripcion h2'),
+    description: document.querySelector('#suscripcion .subscription__description'),
+    cta: document.querySelector('#suscripcion .btn')
+  };
+
+  if (elements.eyebrow && subscription.eyebrow) elements.eyebrow.textContent = subscription.eyebrow;
+  if (elements.title && subscription.title) elements.title.textContent = subscription.title;
+  if (elements.description && subscription.description) elements.description.textContent = subscription.description;
+  if (elements.cta) {
+    if (subscription.cta) elements.cta.textContent = subscription.cta;
+    if (subscription.cta_url) elements.cta.href = subscription.cta_url;
+  }
+
+  // Actualizar features
+  if (subscription.features && Array.isArray(subscription.features)) {
+    const featuresList = document.querySelector('.subscription__features');
+    if (featuresList) {
+      featuresList.innerHTML = '';
+      subscription.features.forEach(feature => {
         const li = document.createElement('li');
         li.textContent = feature;
-        proposalList.appendChild(li);
+        featuresList.appendChild(li);
       });
     }
-    
-    if (principlesList && Array.isArray(config.club_description.ecological_principles)) {
-      principlesList.innerHTML = '';
-      config.club_description.ecological_principles.forEach(principle => {
-        const li = document.createElement('li');
-        li.textContent = principle;
-        principlesList.appendChild(li);
-      });
-    }
-    
+  }
+}
 
+function hydrateContactSection(contact) {
+  if (!contact) return;
+
+  const elements = {
+    eyebrow: document.querySelector('#contacto .eyebrow'),
+    title: document.querySelector('#contacto h2'),
+    description: document.querySelector('#contacto .contact__description'),
+    hours: document.querySelector('.contact__hours'),
+    responseTime: document.querySelector('.contact__response-time'),
+    whatsappLabel: document.querySelector('.contact__whatsapp span'),
+    formLink: document.querySelector('.contact__form')
+  };
+
+  if (elements.eyebrow && contact.eyebrow) elements.eyebrow.textContent = contact.eyebrow;
+  if (elements.title && contact.title) elements.title.textContent = contact.title;
+  if (elements.description && contact.description) elements.description.textContent = contact.description;
+  if (elements.hours && contact.hours) elements.hours.textContent = contact.hours;
+  if (elements.responseTime && contact.response_time) elements.responseTime.textContent = contact.response_time;
+  if (elements.whatsappLabel && contact.whatsapp_label) elements.whatsappLabel.textContent = contact.whatsapp_label;
+  if (elements.formLink) {
+    if (contact.form_url) elements.formLink.href = contact.form_url;
+    elements.formLink.textContent = contact.form_label || 'Formulario de contacto';
   }
 
-  renderServices(servicesGrid, config.spaces_overview);
-  renderPrinciples(principlesGrid, config.principles);
-  renderInfrastructure(infrastructureGrid, config.infrastructure);
-  renderSharedUse(sharedIntro, sharedGrid, sharedCta, config.shared_use);
-  renderOperations(
-    {
-      access: operationsAccess,
-      schedule: operationsSchedule,
-      capacity: operationsCapacity,
-      channels: operationsChannels,
-      memberships: operationsMemberships,
-      commitments: operationsCommitments,
-    },
-    config.operations
-  );
+  // Actualizar WhatsApp
+  if (contact.whatsapp) {
+    const whatsappLink = document.querySelector('.contact__whatsapp');
+    if (whatsappLink && contact.whatsapp.number) {
+      const number = contact.whatsapp.number.replace(/\D/g, '');
+      whatsappLink.href = `https://wa.me/${number}`;
+      if (contact.whatsapp.message) {
+        whatsappLink.href += `?text=${encodeURIComponent(contact.whatsapp.message)}`;
+      }
+    }
+  }
 }
+
+function hydrateFooter(footer) {
+  if (!footer) return;
+
+  const elements = {
+    copyright: document.querySelector('.footer__copyright'),
+    location: document.querySelector('.footer__location'),
+    email: document.querySelector('.footer__email')
+  };
+
+  if (elements.copyright && footer.copyright) elements.copyright.textContent = footer.copyright;
+  if (elements.location && footer.location) elements.location.textContent = footer.location;
+  if (elements.email && footer.email) {
+    elements.email.textContent = footer.email;
+    elements.email.href = `mailto:${footer.email}`;
+  }
+}
+
+function hydrateDynamicURLs(urls) {
+  if (!urls) return;
+
+  // Actualizar URLs de formularios
+  if (urls.subscription_form) {
+    const formLinks = document.querySelectorAll('a[href*="forms.gle"]');
+    formLinks.forEach(link => {
+      link.href = urls.subscription_form;
+    });
+  }
+
+  // Actualizar URLs de WhatsApp
+  if (urls.whatsapp) {
+    const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+    whatsappLinks.forEach(link => {
+      link.href = urls.whatsapp;
+    });
+  }
+}
+
+
 
 function setupNav() {
   const toggle = document.querySelector(".nav__toggle");
   const links = document.querySelector(".nav__links");
   const nav = document.querySelector(".nav");
+  const brand = document.querySelector(".nav__brand");
   if (!toggle || !links || !nav) return;
 
   // Toggle del menú móvil
@@ -319,34 +549,44 @@ function setupNav() {
     toggle.setAttribute("aria-expanded", String(isOpen));
   });
 
+  // Función de scroll suave para enlaces internos
+  function smoothScrollToTarget(href) {
+    const target = document.querySelector(href);
+    if (target) {
+      const headerHeight = 90; // Offset que coincide con scroll-margin-top
+      const extraOffset = 20; // Espacio adicional para detenerse antes
+
+      const targetRect = target.getBoundingClientRect();
+      const targetPosition = targetRect.top + window.pageYOffset - headerHeight - extraOffset;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
+      });
+    }
+  }
+
+  // Scroll suave para el logo del header
+  if (brand) {
+    brand.addEventListener("click", (event) => {
+      event.preventDefault();
+      smoothScrollToTarget("#inicio");
+      links.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  }
+
   // Cerrar menú al hacer clic en enlaces y aplicar scroll suave
   links.querySelectorAll("a").forEach((anchor) => {
     anchor.addEventListener("click", (event) => {
       const href = anchor.getAttribute("href");
-      
+
       // Solo procesar enlaces internos (que empiezan con #)
       if (href && href.startsWith("#")) {
         event.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          // Usar el mismo scroll suave que el botón "Quiero sumarme"
-          const headerHeight = 90; // Offset que coincide con scroll-margin-top
-          const extraOffset = 20; // Espacio adicional para detenerse antes
-          
-          // Offset adicional específico para la sección de Manifiesto
-          const isManifesto = target.id === 'manifesto';
-          const manifestoExtraOffset = isManifesto ? 40 : 0;
-          
-          const targetRect = target.getBoundingClientRect();
-          const targetPosition = targetRect.top + window.pageYOffset - headerHeight - extraOffset - manifestoExtraOffset;
-          
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth"
-          });
-        }
+        smoothScrollToTarget(href);
       }
-      
+
       links.classList.remove("is-open");
       toggle.setAttribute("aria-expanded", "false");
     });
@@ -573,6 +813,15 @@ function renderGallery(container, sections = []) {
     toggle.className = "gallery__toggle";
     toggle.dataset.galleryToggle = sectionIndex;
     toggle.textContent = "Ver álbum";
+
+    // Hacer que el botón "Ver álbum" abra directamente el modal con la primera imagen
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (images.length > 0) {
+        openGalleryModal(sectionIndex, 0);
+      }
+    });
+
     card.appendChild(toggle);
 
     if (images.length) {
@@ -884,8 +1133,8 @@ function setupSubscriptionLink(config) {
 
   const currentHref = link.getAttribute("href") || "";
 
-  if (config.subscription_form_url) {
-    link.href = config.subscription_form_url;
+  if (config.urls?.subscription_form) {
+    link.href = config.urls.subscription_form;
     return;
   }
 
@@ -903,12 +1152,15 @@ function setYear() {
   }
 }
 
-(async function init() {
+document.addEventListener('DOMContentLoaded', async function() {
   try {
+    console.log('Iniciando aplicación...');
     setYear();
     setupNav();
     setupSmoothScroll();
+    console.log('Cargando configuración...');
     const config = await loadConfig();
+    console.log('Configuración cargada:', config.hero?.title);
     hydrateUI(config);
     setupSubscriptionLink(config);
     const sections = await loadGalleryManifest();
@@ -917,7 +1169,29 @@ function setYear() {
     renderGallery(galleryContainer, sections);
     setupGalleryModalInteractions();
     setupGalleryModalInteractions();
+    setupScrollAnimations();
+    console.log('Aplicación inicializada correctamente');
   } catch (error) {
     console.error("Error inicializando la página", error);
   }
-})();
+});
+
+// Animaciones de scroll
+function setupScrollAnimations() {
+  const sections = document.querySelectorAll('.section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+}
