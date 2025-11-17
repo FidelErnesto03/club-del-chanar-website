@@ -470,7 +470,8 @@ function hydrateContactSection(contact) {
     hours: document.querySelector('.contact__hours'),
     responseTime: document.querySelector('.contact__response-time'),
     whatsappLabel: document.querySelector('.contact__whatsapp span'),
-    formLink: document.querySelector('.contact__form')
+    formLink: document.querySelector('.contact__form'),
+    map: document.getElementById('map-embed')
   };
 
   if (elements.eyebrow && contact.eyebrow) elements.eyebrow.textContent = contact.eyebrow;
@@ -494,6 +495,10 @@ function hydrateContactSection(contact) {
         whatsappLink.href += `?text=${encodeURIComponent(contact.whatsapp.message)}`;
       }
     }
+  }
+
+  if (elements.map && contact.map_embed) {
+    elements.map.src = contact.map_embed;
   }
 }
 

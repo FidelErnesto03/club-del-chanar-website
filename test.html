@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Config</title>
+</head>
+<body>
+    <h1>Test de carga de config.json</h1>
+    <div id="test-result">Cargando...</div>
+    
+    <script>
+        async function testConfig() {
+            try {
+                const response = await fetch('config.json');
+                if (!response.ok) throw new Error('No se pudo cargar config.json');
+                const config = await response.json();
+                document.getElementById('test-result').innerHTML = 
+                    '<h2>Config cargada exitosamente</h2>' +
+                    '<p>hero_title: ' + config.hero_title + '</p>' +
+                    '<p>hero_subtitle: ' + config.hero_subtitle + '</p>';
+            } catch (error) {
+                document.getElementById('test-result').innerHTML = 
+                    '<h2>Error: ' + error.message + '</h2>';
+            }
+        }
+        
+        testConfig();
+    </script>
+</body>
+</html>
