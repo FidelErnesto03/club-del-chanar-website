@@ -5,7 +5,7 @@ let galleryInteractionsBound = false;
 
 async function loadConfig() {
   try {
-    const response = await fetch("config.json", { cache: "no-store" });
+    const response = await fetch("./config.json", { cache: "no-store" });
     if (!response.ok) throw new Error("No se pudo leer config.json");
     const data = await response.json();
     return data;
@@ -876,7 +876,7 @@ async function loadGalleryManifest() {
     return window.__GALLERY_MANIFEST__.sections;
   }
   try {
-    const response = await fetch("gallery-manifest.json", { cache: "no-store" });
+    const response = await fetch("./gallery-manifest.json", { cache: "no-store" });
     if (!response.ok) throw new Error("No se encontró gallery-manifest.json");
     const data = await response.json();
     return Array.isArray(data.sections) ? data.sections : [];
