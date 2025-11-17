@@ -7,7 +7,7 @@
   "hero": {
     "eyebrow": "Activación del Club 2025",
     "title": "Reserva para trabajar con calma productiva",
-    "subtitle": "Participa en la activación del Club y vive la naturaleza y calma productiva desde el primer día.",
+    "subtitle": "Participa en la activación del Club, vive la naturaleza y la calma productiva desde el primer día.",
     "description": "Tour presencial, día de prueba y acompañamiento durante la preparación del espacio.",
     "cta": "Iniciar mi membresía",
     "cta_url": "https://forms.gle/5hCsEExiJoxedYnDA",
@@ -17,10 +17,10 @@
   },
   "club": {
     "eyebrow": "El Club",
-    "title": "Naturaleza y calma productiva",
+    "title": "Naturaleza y Calma Productiva",
     "description": "Un espacio donde el trabajo fluye con la tranquilidad del monte. Diseñado para quienes buscan concentración, creatividad y encuentros significativos en un entorno natural.",
     "croquis_image": "assets/croquis.jpeg",
-    "croquis_alt": "Croquis del Club del Chañar - Ubicación en Lomas del Chañar, Córdoba",
+    "croquis_alt": "Croquis del Club del Chañar - Barrio Lomas del Chañar, Rio Ceballos, Córdoba",
     "croquis_caption": "📍 Ubicación del Club en Lomas del Chañar - Ver en mapa",
     "features": [
       {
@@ -59,7 +59,7 @@
       },
       {
         "icon": "☕",
-        "title": "Barra de infusiones",
+        "title": "Barra de Infusiones",
         "description": "Café, té, yerba y kitchenette equipada para mantener la energía durante la jornada." 
       },
       {
@@ -112,10 +112,10 @@
     "eyebrow": "Proceso",
     "title": "Cómo funciona",
     "steps": [
-      {"icon": "📋", "title": "Comparte tus datos", "description": "Elegimos juntos el plan ideal para tu ritmo."},
-      {"icon": "🧭", "title": "Tour guiado", "description": "Recorrés el Club y coordinamos tu día de prueba."},
-      {"icon": "🔐", "title": "Acceso digital", "description": "Recibís portal, checklist y recordatorios."},
-      {"icon": "🌿", "title": "Activación completa", "description": "Trabajás con calma y acompañamiento humano."}
+      {"icon": "📋", "title": "Comparte tus datos", "description": "Suscribete, selecciona tu plan y obten tu código de acceso."},
+      {"icon": "🧭", "title": "Tour Guiado", "description": "Recorrés el Club y coordinamos tu día de prueba."},
+      {"icon": "🔐", "title": "Acceso Digital", "description": "Llegas al club y utilizas tu còdigo de acceso para conectarte."},
+      {"icon": "🌿", "title": "Calma Productiva", "description": "Trabajás con luz y ventilacion natural, en la combinacion ideal entre naturaleza y tecnología."}
     ]
   },
   "plans": {
@@ -125,14 +125,14 @@
     "items": [
       {
         "type": "daypass",
-        "eyebrow": "🟩 Daypass",
+        "eyebrow": "🟩 Pase Diario",
         "title": "Día completo",
         "price": "$3.500",
         "period": "por día",
         "compare_price": null,
         "badge": null,
-        "features": ["Espacio techado y abierto", "Internet Starlink", "Barra de infusiones", "Terraza y baños"],
-        "cta": "Iniciar Daypass",
+        "features": ["Espacio techado y abierto", "Internet Satelital", "Barra de infusiones", "Terraza y baños"],
+        "cta": "Iniciar Pase Diario",
         "cta_url": "https://forms.gle/5hCsEExiJoxedYnDA",
         "featured": false
       },
@@ -141,10 +141,10 @@
         "eyebrow": "🟦 Pase Semanal",
         "title": "5 días",
         "price": "$12.500",
-        "period": "total",
+        "period": "5 días",
         "compare_price": "$17.500",
         "badge": "Ahorro 28%",
-        "features": ["Todo del Daypass", "Reserva asegurada", "Prioridad de ubicación", "Continuidad garantizada"],
+        "features": ["Todo del Daypass", "Aperitivos del dìa", "Reserva asegurada", "Prioridad de ubicación", "Continuidad garantizada"],
         "cta": "Iniciar pase semanal",
         "cta_url": "https://forms.gle/5hCsEExiJoxedYnDA",
         "featured": false
@@ -157,7 +157,7 @@
         "period": "por mes",
         "compare_price": null,
         "badge": "Oferta inicial Ahorro 33%",
-        "features": ["Todo del pase semanal", "Acceso prioritario", "Participación en eventos", "Descuentos en talleres", "Lockers personales"],
+        "features": ["Todo del pase semanal", "Acceso prioritario", "Descuentos en Servicio de Eventos", "Descuestos Especiales en Talleres & Comunidad", "Invitaciones a eventos exclusivos"],
         "cta": "Iniciar suscripción",
         "cta_url": "https://forms.gle/5hCsEExiJoxedYnDA",
         "featured": true
