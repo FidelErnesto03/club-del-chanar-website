@@ -8,7 +8,7 @@
     "eyebrow": "Activación del Club 2025",
     "title": "Coworking natural y espacio de usos múltiples",
     "subtitle": "Un patio amplio, techado y al aire libre, pensado para trabajar, reunirse, dar talleres y celebrar en calma.",
-    "description": "Conocé el Club, probá una jornada de trabajo o reunión y descubrí cómo usar el espacio para tus proyectos.",
+    "description": "Conocé el Club, probá una jornada de trabajo o reunión y descubrí cómo usar el espacio para tus proyectos, talleres o encuentros íntimos.",
     "cta": "Iniciar mi membresía",
     "cta_url": "https://forms.gle/5hCsEExiJoxedYnDA",
     "secondary_cta": "Agendar tour presencial",
@@ -18,7 +18,7 @@
   "club": {
     "eyebrow": "El Club",
     "title": "Coworking íntimo en contacto con la naturaleza",
-    "description": "Un espacio vecinal de uso compartido donde podés trabajar, reunirte, dar talleres o hacer eventos pequeños, con la tranquilidad del monte y la comodidad de un patio cuidado.",
+    "description": "Un espacio vecinal de uso compartido donde podés trabajar, reunirte, dar talleres o hacer eventos pequeños, con la tranquilidad del monte y la comodidad de un patio cuidado. Además de venir solo con tu laptop, podés coordinar reuniones pequeñas y encuentros grupales íntimos, ideales para proyectos, presentaciones o actividades puntuales.",
     "croquis_image": "assets/croquis.jpeg",
     "croquis_alt": "Croquis del Club del Chañar - Barrio Lomas del Chañar, Rio Ceballos, Córdoba",
     "croquis_caption": "📍 Ubicación del Club en Lomas del Chañar - Ver en mapa",
@@ -45,7 +45,7 @@
   "spaces": {
     "eyebrow": "Espacios",
     "title": "Ambientes conectados para trabajar, reunirse y celebrar",
-    "lead": "El mismo lugar puede ser coworking, taller, reunión de equipo o encuentro social, según cómo lo uses.",
+    "lead": "El mismo lugar puede ser coworking, taller, reunión de equipo o encuentro social, según cómo lo uses. Cada ambiente puede usarse tanto para trabajo individual como para reuniones pequeñas, coworking grupal o talleres reducidos.",
     "items": [
       {
         "icon": "🏡",
@@ -64,7 +64,7 @@
       },
       {
         "icon": "🌤️",
-        "title": "Jardín",
+        "title": "Jardín ",
         "description": "Área exterior con conexión WiFi y mobiliario flexible, pensada para respirar, hacer asados, after office o actividades comunitarias."
       }
     ]
@@ -72,25 +72,40 @@
   "events": {
     "eyebrow": "Servicios de Eventos",
     "title": "Espacios para momentos especiales y encuentros de trabajo",
-    "lead": "Un lugar íntimo y cuidado para fiestas pequeñas, reuniones corporativas, talleres prácticos y actividades comunitarias.",
+    "lead": "Un lugar íntimo y cuidado para fiestas pequeñas, reuniones corporativas, talleres prácticos y actividades comunitarias. Si solo necesitás un espacio para una reunión o actividad reducida, también podés coordinar encuentros chicos sin reservar un evento completo.",
     "items": [
       {
         "icon": "🎉",
         "title": "Fiestas privadas",
         "description": "Cumpleaños, celebraciones familiares o encuentros entre amigos en un entorno natural único y de uso exclusivo.",
-        "details": ["Capacidad máxima: 45 personas", "Duración sugerida: 4-6 horas", "Sonido incluido", "Asador y kitchenette"]
+        "details": [
+          "Capacidad máxima: 45 personas",
+          "Duración sugerida: 4-6 horas",
+          "Sonido incluido",
+          "Asador y kitchenette"
+        ]
       },
       {
         "icon": "💼",
         "title": "Eventos corporativos",
         "description": "Workshops, jornadas de equipo y presentaciones en un contexto distinto a la oficina, pero con todo lo necesario para trabajar.",
-        "details": ["Proyector", "Micrófonos inalámbricos y WiFi", "Asador", "Kitchenette", "Catering opcional"]
+        "details": [
+          "Proyector",
+          "Micrófonos inalámbricos y WiFi",
+          "Asador",
+          "Kitchenette",
+          "Catering opcional"
+        ]
       },
       {
         "icon": "🎨",
         "title": "Talleres & comunidad",
         "description": "Encuentros creativos, formaciones y actividades abiertas a la comunidad, con montaje interior y/o exterior según la dinámica.",
-        "details": ["Flexibilidad: interior y exterior", "Capacidad: 15-30 personas", "Soporte: equipo de montaje y desmontaje"]
+        "details": [
+          "Flexibilidad: interior y exterior",
+          "Capacidad: 15-30 personas",
+          "Soporte: equipo de montaje y desmontaje"
+        ]
       }
     ]
   },
@@ -105,37 +120,37 @@
       },
       {
         "icon": "📡",
-        "title": "Internet satelital",
+        "title": "Internet Satelital",
         "description": "Conexión estable para trabajo remoto, videollamadas y presentaciones."
       },
       {
         "icon": "☕",
-        "title": "Barra de infusiones",
+        "title": "Barra de Infusiones",
         "description": "Café, té y yerba mate incluidos cada día, según disponibilidad."
       },
       {
         "icon": "🥐",
-        "title": "Aperitivos varios",
+        "title": "Aperitivos Varios",
         "description": "Medialunas, criollos, chipá y otros, según disponibilidad, para acompañar tu jornada."
       },
       {
         "icon": "🛋️",
-        "title": "Mobiliario flexible",
+        "title": "Mobiliario Flexible",
         "description": "Sillas, bancos y sillones rústicos para trabajar con laptop, reunirse o simplemente tomar un descanso. Podés traer tu propia reposera."
       },
       {
         "icon": "👁️",
-        "title": "Cámaras de seguridad",
-        "description": "Vigilancia y seguridad con inteligencia artificial 24/7."
+        "title": "Camaras de Seguridad",
+        "description": "Vigilancia y seguridad con Inteligencia Artificial 24/7."
       },
       {
         "icon": "💡",
-        "title": "Iluminación cálida",
+        "title": "Iluminación Cálida",
         "description": "Iluminación tenue y acogedora para extender reuniones o eventos hasta el atardecer."
       },
       {
         "icon": "🎶",
-        "title": "Sonido ambiental",
+        "title": "Sonido Ambiental",
         "description": "Audio integrado para ambientación suave diaria y soporte básico para eventos."
       }
     ]
@@ -151,12 +166,12 @@
       },
       {
         "icon": "🧭",
-        "title": "Tour guiado",
+        "title": "Tour Guiado",
         "description": "Recorrés el Club, vemos juntos cómo podrías usar el espacio y coordinamos tu día de prueba."
       },
       {
         "icon": "🔐",
-        "title": "Acceso digital",
+        "title": "Acceso Digital",
         "description": "Cuando empieces a usar el Club, vas a contar con un código o sistema de acceso digital según tu plan."
       },
       {
@@ -168,8 +183,8 @@
   },
   "plans": {
     "eyebrow": "Planes",
-    "title": "Acceso flexible",
-    "lead": "Elegí el plan que mejor se adapte a tu ritmo de trabajo, tus proyectos y la forma en la que querés usar el espacio.",
+    "title": "Acceso flexible a tus necesidades",
+    "lead": "Elegí el plan que mejor acompañe tu forma de trabajar, reunirte o coordinar actividades pequeñas. Todos los planes permiten traer invitados bajo modalidad de pase diario o tarifa grupal. Consultanos sin compromiso!!!.",
     "items": [
       {
         "type": "daypass",
@@ -179,7 +194,13 @@
         "period": "por día",
         "compare_price": null,
         "badge": null,
-        "features": ["Espacio techado y abierto", "Internet satelital", "Barra de infusiones", "Terraza y baños"],
+        "features": [
+          "Coworking individual en espacios techados y al aire libre",
+          "Acceso a la barra de infusiones",
+          "Internet satelital",
+          "Uso de la terraza y baños",
+          "Posibilidad de traer invitados (pase diario por invitado)"
+        ],
         "cta": "Iniciar Pase Diario",
         "cta_url": "https://forms.gle/5hCsEExiJoxedYnDA",
         "featured": false
@@ -192,8 +213,14 @@
         "period": "5 días",
         "compare_price": "$17.500",
         "badge": "Ahorro 28%",
-        "features": ["Todo del Daypass", "Aperitivos del día", "Reserva asegurada", "Prioridad de ubicación", "Continuidad garantizada"],
-        "cta": "Iniciar pase semanal",
+        "features": [
+          "Todo lo incluido en el Pase Diario",
+          "Aperitivos del día",
+          "Reserva asegurada de espacio",
+          "Prioridad de ubicación en galería o terraza",
+          "Reuniones pequeñas: tarifa grupal preferencial"
+        ],
+        "cta": "Iniciar Pase Semanal",
         "cta_url": "https://forms.gle/5hCsEExiJoxedYnDA",
         "featured": false
       },
@@ -205,8 +232,15 @@
         "period": "por mes",
         "compare_price": null,
         "badge": "Oferta inicial Ahorro 33%",
-        "features": ["Todo del pase semanal", "Acceso prioritario", "Descuentos en servicio de eventos", "Descuentos especiales en Talleres & Comunidad", "Invitaciones a eventos exclusivos"],
-        "cta": "Iniciar suscripción",
+        "features": [
+          "Todo lo incluido en el Pase Semanal",
+          "Acceso prioritario a reservas",
+          "2 reuniones pequeñas al mes con 3 invitados bonificados",
+          "Descuento del 25% en servicios de eventos",
+          "Descuentos especiales en Talleres & Comunidad",
+          "Invitaciones a encuentros exclusivos"
+        ],
+        "cta": "Iniciar Suscripción",
         "cta_url": "https://forms.gle/5hCsEExiJoxedYnDA",
         "featured": true
       }
@@ -214,7 +248,7 @@
     "special_offer": {
       "active": true,
       "title": "Oferta especial para miembros iniciales",
-      "description": "Únete antes del 15/12/2025 y accede a la membresía mensual por solo <strong>$20.000</strong> (antes $25.000). Solo para los primeros 10 miembros.",
+      "description": "Únete antes del 15/12/2025 y accede a la membresía mensual por solo <strong>$20.000</strong> (antes $25.000). Incluye reuniones pequeñas bonificadas y prioridad total de reservas. Solo para los primeros 10 miembros.",
       "valid_until": "15/12/2025",
       "spots_available": 10
     }
@@ -222,25 +256,30 @@
   "gallery": {
     "eyebrow": "Galería",
     "title": "Descubre el espacio",
-    "lead": "Imágenes reales del Club: galería, barra, terraza y jardín tal como los vas a encontrar. (La galería se irá actualizando con nuevos usos y montajes.)",
+    "lead": "Imágenes reales del Club: galería, barra, terraza y jardín tal como los vas a encontrar. La galería se irá actualizando con nuevos usos, montajes, talleres y encuentros.",
     "sections": []
   },
   "subscription": {
     "eyebrow": "Activación",
     "title": "Únete al Club",
-    "description": "Estamos preparando la apertura y la primera generación de miembros. Apartá tu lugar, recibí la guía y coordinemos tu día de prueba sin costo.",
+    "description": "Estamos preparando la apertura y la primera generación de miembros. Apartá tu lugar, recibí la guía y coordinemos tu día de prueba sin costo. Durante el tour podemos ver cómo usar el Club para reuniones pequeñas, talleres breves o encuentros con invitados.",
     "cta": "Apartar lugar",
-    "features": ["Tour presencial guiado", "Día de prueba sin costo", "Calendario prioritario", "Contacto directo con el anfitrión"],
+    "features": [
+      "Tour presencial guiado",
+      "Día de prueba sin costo",
+      "Calendario prioritario",
+      "Contacto directo con el anfitrión"
+    ],
     "cta_url": "https://forms.gle/5hCsEExiJoxedYnDA"
   },
   "contact": {
     "eyebrow": "Contacto",
     "title": "Hablemos de cómo querés usar el espacio",
-    "description": "Agendá una visita o consultá sobre disponibilidad para coworking, talleres o eventos. Respondemos de 09:00 a 19:00.",
+    "description": "Agendá una visita o consultá sobre disponibilidad para coworking, talleres o eventos. Respondemos de 09:00 a 19:00. Si tenés dudas sobre reuniones pequeñas o encuentros reducidos, escribinos y te contamos cómo coordinarlos.",
     "whatsapp_label": "WhatsApp",
     "whatsapp": {
       "number": "+54 9 3515 64-3361",
-      "message": "Hola, me interesa conocer más sobre cómo puedo usar El Club del Chañar (coworking, talleres o eventos)."
+      "message": "Hola, me interesa conocer más sobre cómo puedo usar El Club del Chañar (coworking, reuniones pequeñas, talleres o eventos)."
     },
     "form_label": "Formulario de suscripción",
     "form_url": "https://forms.gle/5hCsEExiJoxedYnDA",
