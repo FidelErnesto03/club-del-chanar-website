@@ -21,6 +21,7 @@
 | Rendimiento | ✓ | `dist/` publica solo la landing y ocho WebP optimizados; peso medido: aproximadamente 2,4 MB. |
 | Accesibilidad básica | ✓ | HTML semántico, labels, fieldset/legend, foco visible, skip link, estado aria-live y menú móvil etiquetado. |
 | Compatibilidad de hosting | ✓ | `CNAME`, `dist/`, `.nojekyll` y `.openai/hosting.json` presentes; build reproducible. |
+| Fuente de Sites | ⚠ | El repositorio de fuente fue creado, pero su endpoint devuelve HTTP 500 al aceptar la primera rama; no se guardó una versión ni se inició un despliegue. |
 | Secretos / basura | ✓ | No se agregaron credenciales, endpoints privados ni contenido de campaña; originales históricos no se eliminan. |
 
 ## Pruebas ejecutadas
@@ -40,3 +41,4 @@ HTTP estático de index y galeria.webp          PASS
 - Las fotografías disponibles son registros reales en distintas etapas del espacio; el sitio lo comunica y no las presenta como un catálogo final.
 - La reserva es una orientación sin backend: no bloquea fechas, no cobra y no almacena datos. La confirmación queda en la gestión.
 - No se verificaron claims inestables de la documentación de promoción (velocidades, calificaciones, presupuestos o proveedores); no se publicaron.
+- La publicación en Sites queda pendiente por un error del repositorio de fuente (`HTTP 500` durante `git push`); el PR de GitHub y el snapshot publicable están listos para reintento.
