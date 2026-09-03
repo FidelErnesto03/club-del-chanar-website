@@ -2,6 +2,7 @@
   "name": "club-del-chanar-site",
   "private": true,
   "scripts": {
+    "build": "bash scripts/build-site.sh",
     "build:gallery": "node scripts/build-gallery.js"
   }
 }
