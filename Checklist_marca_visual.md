@@ -1,10 +1,14 @@
-# Checklist de Marca Visual
+# Checklist de identidad visual
 
-| Elemento | Pregunta | Estado |
+| Elemento | Verificación | Estado |
 | --- | --- | --- |
-| Logotipo | ¿Se respeta la zona de protección y se usa archivo oficial (sin deformaciones)? | ☐ |
-| Colores | ¿Los colores corresponden a la paleta (Verde Chañar #58724A, Arena #D8C8A4, Madera #A77A4A, Neutro #E8E4D8, Blanco)? | ☐ |
-| Tipografías | ¿Títulos en Montserrat, subtítulos en Libre Baskerville, textos en Raleway/Open Sans? | ☐ |
-| Espacio en blanco | ¿Hay respiración suficiente en cada bloque y márgenes consistentes? | ☐ |
-| Fotografía | ¿Las imágenes refuerzan el tono naturalista y están optimizadas? | ☐ |
-| Armonía | ¿Se mantiene el equilibrio orgánico inspirado en la proporción áurea? | ☐ |
+| Logotipo | Se usa el archivo oficial sin deformarlo y conserva aire alrededor. | ✓ |
+| Paleta | Tierra Añeja `#3D312A`, Verde Oliva `#5E6953`, Amber Sunset `#DDA15E`, Arena Blanca `#F3EED9`, Carbon Suave `#2B2B2B`. | ✓ |
+| Tipografías | Lora para títulos y Plus Jakarta Sans para textos y navegación. | ✓ |
+| Recorrido | La landing se organiza como Portón → Jardín → Galería → Fuego → Terraza → Experiencias → Contacto/Reserva. | ✓ |
+| Fotografía | Se usan registros reales optimizados; el texto no promete más de lo que muestra la imagen. | ✓ |
+| Movimiento | Revelados breves con transform/opacity y parallax liviano; `prefers-reduced-motion` desactiva el movimiento. | ✓ |
+| Conversión | CTA a consulta, formulario orientativo y WhatsApp con mensaje prellenado. | ✓ |
+| Restricciones | Sin tarifas fijas, coworking masivo, testimonios o claims no verificados. | ✓ |
+
+Para cambiar la identidad, revisar primero el mandato y `docs/DECISIONES-CANONICAS-WEB.md`.

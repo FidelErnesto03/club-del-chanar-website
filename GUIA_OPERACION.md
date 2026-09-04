@@ -1,61 +1,25 @@
-# Guía de Operación · El Club del Chañar
+# Guía de operación · El Club del Chañar
 
-Este documento resume tareas habituales para mantener vivo el sitio sin tocar código.
+Esta guía conserva el punto de entrada histórico para el equipo. La web actual ya no usa un formulario externo ni una configuración de membresías: el asistente de reserva arma una consulta y abre WhatsApp para su revisión humana.
 
-## 1. Actualizar textos
+## Documentos de referencia
 
-1. Abre `config.json` en cualquier editor plano.
-2. Modifica los campos necesarios (`hero_title`, `hero_subtitle`, `space_description`, etc.).
-3. Guarda y sube el archivo al hosting.
-4. Refresca el sitio; los cambios aparecen de inmediato sin redeploy completo.
+- Política, capacidades, turnos y cancelaciones: `docs/DECISIONES-CANONICAS-WEB.md`.
+- Registro y seguimiento de leads: `docs/CRM-LEADS.md`.
+- Cambios de fotos, contacto y checklist: `GUIA_MANTENIMIENTO.md`.
 
-> Tip: Mantén el tono del manifiesto; usa frases breves y verbos en presente.
+## Operación diaria
 
-## 2. Actualizar normas o pilares
+1. Revisar las consultas nuevas que lleguen por WhatsApp.
+2. Calificar tipo de encuentro, cantidad de personas, fecha, turno y necesidades de sonido.
+3. Verificar capacidad, buffer de tres horas y anticipación mínima de 15 días.
+4. Enviar una propuesta a medida; no confirmar disponibilidad solo por el formulario.
+5. Registrar la oportunidad en la hoja de leads y mantener su etapa actualizada.
 
-- En `config.json`, edita la lista `"norms"`. Puedes agregar o quitar ítems sin cambiar HTML.
-- Para nuevos pilares de membresías, duplica uno de los `<article>` del bloque `#membresias` en `index.html` y ajusta el título/texto.
+## Fotos
 
-## 3. Sección “El lugar” y servicios
+Las imágenes públicas viven en `assets/recorrido/`. Deben ser fotografías reales, sin datos personales ni marcas de terceros que puedan inducir a error. Para reemplazarlas, seguir `GUIA_MANTENIMIENTO.md` y ejecutar `bash scripts/build-site.sh`.
 
-- `story`: cambia título, descripción, viñetas o la ilustración (`image`) desde `config.json`. Puedes apuntar a cualquier archivo dentro de `assets/`.
-- `spaces_overview`: cada objeto representa una tarjeta de servicios/espacios. Actualiza `name`, `description`, `services` o `image` para reflejar nuevos ambientes.
-- `shared_use`: ajusta `intro`, `cta` y las modalidades (`modes`). Cada modo acepta `title`, `description` y una lista `guides` con orientaciones prácticas para futuros miembros.
+## Identidad
 
-> Sugerencia: reutiliza el mismo tono del Manifiesto. Usa verbos en infinitivo o presente para los bullet points.
-
-## 4. Principios, infraestructura y operación
-
-- `principles`: responde a los principios rectores del Manifiesto. Mantén frases cortas con énfasis en verbos o valores (ej. “Uso consciente”).
-- `infrastructure`: detalla los sistemas de soporte (conectividad, seguridad, clima, higiene). Úsalo para comunicar mejoras sin tocar HTML.
-- `operations`: define horario, capacidad, canales de comunicación y tarjetas de membresía. Ajusta los aportes sugeridos o agrega/quita `memberships`. Los `commitments` se muestran como checklist en el sitio.
-
-## 5. Galería local
-
-1. Guarda imágenes (PNG/JPG/WEBP/SVG) o videos (MP4/WebM/MOV/M4V) en `assets/gallery/<nombre-seccion>/` (dentro de la carpeta `website/`).
-2. Desde `website/`, ejecuta `npm run build:gallery` para regenerar `gallery-manifest.json` y `js/gallery-data.js`.
-3. Sube las carpetas + ambos archivos; el sitio mostrará las secciones y el visor modal reproducirá imágenes y videos.
-
-## 6. Formulario externo
-
-- El sitio muestra un botón que abre el formulario configurado en `subscription_form_url` dentro de `config.json`.
-- Cada vez que Google forme un enlace nuevo (por ejemplo, al duplicar el form) actualiza ese campo y vuelve a publicar el archivo.
-- Si conectaste el Form a una hoja de cálculo, revisa allí las respuestas antes de cada evento.
-
-## 7. Revisión de identidad visual
-
-Antes de publicar cambios:
-
-- Verifica que el logo mantenga proporción y haya suficiente espacio libre alrededor.
-- Confirma que los colores usados correspondan a la paleta oficial (ver `css/styles.css`).
-- Usa las tipografías definidas (Montserrat, Libre Baskerville, Raleway/Open Sans).
-
-## 8. Checklist operativa mensual
-
-- [ ] Abrir el enlace al formulario externo y enviar una prueba si necesitas validar el flujo.
-- [ ] Revisar que la galería muestre la foto de portada correcta.
-- [ ] Actualizar actividades o próximos eventos en el bloque de Membresías si aplica.
-- [ ] Validar Lighthouse (Performance y Accessibility ≥ 90).
-- [ ] Confirmar que el enlace al Manifiesto funcione.
-
-Cualquier cambio mayor debe alinearse con el Manual de Identidad Visual y el Manifiesto Fundacional.
+La interfaz utiliza Tierra Añeja `#3D312A`, Verde Oliva `#5E6953`, Amber Sunset `#DDA15E`, Arena Blanca `#F3EED9` y Carbon Suave `#2B2B2B`, con Lora y Plus Jakarta Sans. Cualquier cambio mayor debe alinearse con el mandato y los documentos canónicos del proyecto.
