@@ -86,7 +86,7 @@
       "assets/img/carousel/terraza.webp",
       "assets/img/carousel/galeria-panoramica.webp"
     ],
-    "carouselInterval": 6000,
+    "carouselInterval": 4500,
     "logoPresentation": true,
     "logoWatermark": false
   },
