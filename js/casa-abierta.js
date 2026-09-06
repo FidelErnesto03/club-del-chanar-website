@@ -33,7 +33,7 @@
   }
 
   function init() {
-    fetch("data/config.json?v=14")
+    fetch("data/config.json?v=15")
       .then(function (r) { return r.json(); })
       .then(function (cfg) { bootstrap(cfg); })
       .catch(function (err) {
@@ -988,7 +988,7 @@
     /* Auto-rotación de escenas — pausa en hover/focus, respeta reduced-motion */
     var sceneAutoTimer = 0;
     var sceneAutoPaused = false;
-    var sceneInterval = 3500;
+    var sceneInterval = 2800;
 
     function startSceneAuto() {
       if (reduceMotion.matches || sceneAutoPaused || sceneButtons.length < 2) return;
