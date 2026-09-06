@@ -1,225 +1,418 @@
-<!DOCTYPE html>
-<html lang="es">
-
+<!doctype html>
+<html lang="es-AR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="El Club del Chañar · Comunidad que cultiva calma y creatividad en Lomas del Chañar, Córdoba." />
-  <title>El Club del Chañar - Calma y productividad natural</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="icon" href="assets/logo.png" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="El Club del Chañar es un lugar abierto al encuentro en Lomas del Chañar, Río Ceballos, Córdoba. Un lugar entre árboles para celebrar, pensar y crear con tiempo." />
+<meta name="theme-color" content="#3D312A" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="El Club del Chañar — Un lugar que se abre al encuentro" />
+<meta property="og:description" content="Un lugar entre árboles para celebrar, pensar y crear con tiempo. Uso exclusivo por turno en Lomas del Chañar, Río Ceballos, Córdoba." />
+<meta property="og:image" content="https://clubdelchanar.com/assets/img/hero/casa-entre-arboles.webp" />
+<meta property="og:image:width" content="1600" />
+<meta property="og:image:height" content="754" />
+<meta property="og:locale" content="es_AR" />
+<meta property="og:url" content="https://clubdelchanar.com" />
+<meta name="twitter:card" content="summary_large_image" />
+<title>El Club del Chañar — Un lugar que se abre al encuentro</title>
+<link rel="canonical" href="https://clubdelchanar.com/" />
+<link rel="icon" href="assets/img/logo.webp" type="image/webp" />
+<link rel="preload" as="image" href="assets/img/carousel/casa-entre-arboles.webp" fetchpriority="high" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Manrope:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Manrope:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="css/casa-abierta.css?v=48" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "El Club del Chañar",
+  "description": "Lugar de uso exclusivo por turno para encuentros sociales, jornadas corporativas, talleres y retiros en Lomas del Chañar, Río Ceballos, Córdoba.",
+  "url": "https://clubdelchanar.com/",
+  "image": "https://clubdelchanar.com/assets/img/carousel/casa-entre-arboles.webp",
+  "telephone": "+5493515643361",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Río Ceballos",
+    "addressRegion": "Córdoba",
+    "addressCountry": "AR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": "-31.23", "longitude": "-64.19" },
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Encuentros sociales", "description": "Hasta 45 personas, uso exclusivo por turno" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Jornadas corporativas", "description": "Hasta 25 personas, uso exclusivo por turno" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Talleres y retiros", "description": "Hasta 25 personas, uso exclusivo por turno" } }
+  ]
+}
+</script>
+<script>document.documentElement.classList.add("has-js");</script>
 </head>
-
 <body>
-  <header class="hero" id="inicio">
-    <nav class="nav" aria-label="Navegación principal">
-      <a class="nav__brand" href="#inicio" aria-label="Volver al inicio">
-        <img src="assets/logo.png" alt="Logo de El Club del Chañar" loading="lazy" />
-      </a>
-      <button class="nav__toggle" aria-expanded="false" aria-controls="primary-menu">Menú</button>
-      <div class="nav__links" id="primary-menu">
-        <a href="#urgencia">El Club</a>
-        <a href="#servicios">Espacios</a>
-        <a href="#eventos">Eventos</a>
-        <a href="#incluye">Beneficios</a>
-        <a href="#funciona">Proceso</a>
-        <a href="#planes">Planes</a>
-        <a href="#galeria">Galería</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </nav>
+
+<a class="skip-link" href="#contenido">Ir al contenido</a>
+
+<!-- §6.1 Header global -->
+<header class="masthead" data-masthead>
+  <a class="masthead__identity" href="#inicio" aria-label="El Club del Chañar, inicio">
+    <img src="assets/img/logo.webp" width="44" height="44" alt="" />
+    <span>El Club del Chañar</span>
+  </a>
+  <nav class="masthead__nav" aria-label="Navegación principal" data-nav>
+    <a href="#encuentros" data-nav-link="encuentros">Encuentros</a>
+    <a href="#la-casa" data-nav-link="la-casa">Cada Rincón</a>
+    <a href="#coordinacion" data-nav-link="coordinacion">Coordinación</a>
+    <a href="#experiencias" data-nav-link="experiencias">Experiencias</a>
+    <a href="#preguntas" data-nav-link="preguntas">Preguntas</a>
+    <a class="masthead__cta" href="#consultar">Consultar</a>
+  </nav>
+  <button class="masthead__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Menú móvil -->
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+  <nav aria-label="Navegación móvil" class="mobile-menu__nav">
+    <a href="#encuentros" data-nav-link="encuentros">Encuentros</a>
+    <a href="#la-casa" data-nav-link="la-casa">Cada Rincón</a>
+    <a href="#coordinacion" data-nav-link="coordinacion">Coordinación</a>
+    <a href="#experiencias" data-nav-link="experiencias">Experiencias</a>
+    <a href="#preguntas" data-nav-link="preguntas">Preguntas</a>
+    <a class="mobile-menu__cta" href="#consultar" data-mobile-menu-cta></a>
+  </nav>
+</div>
+
+<main id="contenido">
+  <!-- §6.2 Hero: El umbral — carrusel + logo animado -->
+  <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <div class="hero__picture" aria-hidden="true" data-hero-carousel>
+      <img class="hero__slide is-active" src="assets/img/carousel/casa-entre-arboles.webp" alt="" width="1600" height="754" fetchpriority="high" data-hero-slide="0" />
+      <img class="hero__slide" src="" alt="" width="1600" height="800" loading="lazy" data-hero-slide="1" />
+      <img class="hero__slide" src="" alt="" width="1600" height="900" loading="lazy" data-hero-slide="2" />
+      <img class="hero__slide" src="" alt="" width="1600" height="900" loading="lazy" data-hero-slide="3" />
+    </div>
+    <div class="hero__veil" aria-hidden="true"></div>
+    <div class="hero__door hero__door--left" aria-hidden="true"></div>
+    <div class="hero__door hero__door--right" aria-hidden="true"></div>
+
+    <!-- Logo de presentación (solo al iniciar) -->
+    <div class="hero__logo-presentation" data-hero-logo-presentation hidden>
+      <img src="assets/img/logo.webp" width="120" height="120" alt="" />
+    </div>
+
+    <!-- Marca de agua (después de la presentación) -->
+    <div class="hero__watermark" data-hero-watermark hidden>
+      <img src="assets/img/logo.webp" width="60" height="60" alt="" />
+    </div>
+
+    <a class="hero__location" data-hero-location href="#" target="_blank" rel="noopener noreferrer"></a>
+
     <div class="hero__content">
-      <div class="hero__text">
-        <p class="eyebrow"></p>
-        <h1 id="hero-title"></h1>
-        <p class="hero__metric" id="hero-subtitle"></p>
-        <p class="hero__description" id="hero-description"></p>
-        <div class="hero__cta-group">
-          <a class="btn" href="#" target="_blank" rel="noopener" id="hero-cta"></a>
-          <a class="btn btn--ghost" data-scroll="#contacto" href="#contacto"></a>
-        </div>
-        <p class="hero__note"></p>
-      </div>
-      
-      <div class="hero__figure">
-        <div class="hero__logo-container">
-          <div class="hero__logo-circle">
-            <img src="assets/logo.png" alt="Logo del Club del Chañar" />
-          </div>
-          <div class="golden-ratio"></div>
-        </div>
+      <h1 id="hero-title" data-hero-title></h1>
+      <p class="hero__subtitle" data-hero-subtitle></p>
+      <p class="hero__facts" data-hero-facts></p>
+    </div>
+
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#consultar" data-hero-cta-primary>
+        <span data-hero-cta-primary-text></span>
+      </a>
+      <a class="btn btn--secondary" href="#encuentros" data-open-house>
+        <span data-hero-cta-secondary-text></span>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- §6.4 Encuentros — selector populated by JS -->
+  <section class="encounters" id="encuentros" aria-labelledby="encounters-title">
+    <div class="encounters__controls">
+      <div class="encounters__top">
+        <h2 id="encounters-title" class="encounters__title">¿Qué querés que suceda?</h2>
+        <p class="encounters__clarification">Mientras estás, es tuyo. Un solo encuentro habita el Club cada vez, con todo el tiempo y el espacio para lo tuyo.</p>
+        <div class="scene-tabs" role="tablist" aria-label="Tipos de encuentro" data-scene-tabs></div>
       </div>
     </div>
-    <div class="hero__seeds" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </header>
-
-  <main>
-    <!-- Sección El Club -->
-    <section class="section activation" id="urgencia">
-      <div class="section__header">
-        <p class="eyebrow"></p>
-        <h2></h2>
-      </div>
-
-      <div class="activation__layout section__body">
-        <div class="activation__visual">
-          <div class="club-description-card">
-            <h3></h3>
-            <p></p>
-          </div>
-          <a href="#contacto" class="croquis-link" data-scroll="#contacto">
-            <figure class="croquis-figure">
-              <img src="" alt="" loading="lazy" />
-              <figcaption></figcaption>
-            </figure>
+    <div class="scene-stage" id="scene-stage" role="tabpanel">
+      <img class="scene-stage__image scene-stage__image--a is-active" src="" alt="" data-scene-image-a />
+      <img class="scene-stage__image scene-stage__image--b" src="" alt="" data-scene-image-b />
+      <div class="scene-stage__overlay" aria-hidden="true"></div>
+      <div class="scene-stage__vignette" aria-hidden="true"></div>
+      <div class="scene-stage__bottom">
+        <a class="encounters__next" href="#la-casa" aria-label="Recorré el Club">
+          <span>Recorré el Club</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="scene-stage__info" data-scene-info>
+          <p class="scene-stage__message" data-scene-message></p>
+          <p class="scene-stage__meta"><span data-scene-capacity></span><span data-scene-capacity-suffix></span></p>
+          <a class="btn btn--primary scene-stage__cta" href="#consultar" data-scene-cta>
+            <span data-scene-cta-text></span>
           </a>
         </div>
-
-        <div class="activation__content">
-          <div class="activation__features"></div>
-          <a class="btn btn--primary" href="https://forms.gle/5hCsEExiJoxedYnDA" target="_blank" rel="noopener"></a>
-        </div>
       </div>
-    </section>
-
-    <!-- Sección Espacios -->
-    <section class="section spaces-compact" id="servicios">
-      <div class="section__header">
-        <p class="eyebrow"></p>
-        <h2></h2>
-        <p class="section__lead"></p>
-      </div>
-
-      <div class="spaces-grid section__body" id="spaces-grid"></div>
-    </section>
-
-    <!-- Sección Eventos -->
-    <section class="section events" id="eventos">
-      <div class="section__header">
-        <p class="eyebrow"></p>
-        <h2></h2>
-        <p class="section__lead"></p>
-      </div>
-
-      <div class="events__grid section__body" id="events-grid"></div>
-    </section>
-
-    <!-- Sección Beneficios -->
-    <section class="section include-list" id="incluye">
-      <div class="section__header">
-        <p class="eyebrow"></p>
-        <h2></h2>
-      </div>
-
-      <div class="benefits-grid section__body" id="benefits-grid"></div>
-    </section>
-
-    <!-- Sección Proceso -->
-    <section class="section process" id="funciona">
-      <div class="section__header">
-        <p class="eyebrow"></p>
-        <h2></h2>
-      </div>
-
-      <ul class="process-steps section__body" id="process-steps"></ul>
-    </section>
-
-    <!-- Sección Planes -->
-    <section class="section plans" id="planes">
-      <div class="section__header">
-        <p class="eyebrow"></p>
-        <h2></h2>
-        <p class="section__lead"></p>
-      </div>
-
-      <div class="plans__grid section__body" id="plans-grid"></div>
-
-      <div class="special-offer section__body" id="special-offer"></div>
-    </section>
-
-    <!-- Sección Galería -->
-    <section class="section gallery" id="galeria">
-      <div class="section__header">
-        <p class="eyebrow"></p>
-        <h2></h2>
-        <p class="section__lead"></p>
-      </div>
-
-      <div class="gallery__sections section__body" id="gallery-sections"></div>
-    </section>
-
-    <!-- Sección Contacto -->
-    <section class="section contact" id="contacto">
-      <div class="section__header">
-        <p class="eyebrow"></p>
-        <h2></h2>
-      </div>
-
-      <div class="contact__grid section__body">
-        <div class="contact__info">
-          <p class="contact__description"></p>
-          <div class="contact__channels">
-            <a class="btn btn--whatsapp contact__whatsapp" href="#" target="_blank" rel="noopener">
-              <span>WhatsApp</span>
-            </a>
-            <a class="btn btn--ghost contact__form" href="#" target="_blank" rel="noopener">
-              Formulario de contacto
-            </a>
-          </div>
-          <div class="contact__details">
-            <p class="contact__hours"></p>
-            <p class="contact__response-time"></p>
-          </div>
-        </div>
-        <div class="contact__map">
-          <iframe
-            id="map-embed"
-            src=""
-            width="100%"
-            height="320"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer__content">
-      <p class="footer__copyright">© 2025 El Club del Chañar. Todos los derechos reservados.</p>
-      <p class="footer__location">📍 Lomas del Chañar · Córdoba · Argentina</p>
-      <a class="footer__email" href="mailto:clubdelchanar@gmail.com">clubdelchanar@gmail.com</a>
     </div>
-  </footer>
+  </section>
 
-  <div id="gallery-modal" class="gallery-modal" hidden>
-    <div class="gallery-modal__overlay" data-gallery-close></div>
-    <div class="gallery-modal__content">
-      <button class="gallery-modal__close" aria-label="Cerrar galería" data-gallery-close>×</button>
-      <button class="gallery-modal__prev" aria-label="Imagen anterior" data-gallery-prev>‹</button>
-      <figure>
-        <img id="gallery-modal-image" alt="" hidden />
-        <video id="gallery-modal-video" controls style="display:none;"></video>
-        <figcaption id="gallery-modal-caption"></figcaption>
-      </figure>
-      <button class="gallery-modal__next" aria-label="Siguiente imagen" data-gallery-next>›</button>
+
+  <!-- §6.5 El Club — menú gráfico + galería -->
+  <section class="casa" id="la-casa" aria-labelledby="casa-title">
+    <div class="casa__header" data-casa-header>
+      <h2 id="casa-title" class="casa__title">Cada Rincón</h2>
+      <p class="casa__hint">Elegí un espacio para recorrerlo</p>
+    </div>
+
+    <!-- Estado 1: Menú expandido -->
+    <div class="casa__menu" data-casa-menu>
+      <div class="casa__cards" data-casa-cards></div>
+      <div class="casa__invite">
+        <p>Cinco espacios, una sola experiencia. Recorrelos.</p>
+      </div>
+      <a class="casa__next" href="#coordinacion" aria-label="Coordiná tu encuentro">
+        <span>Coordiná tu encuentro</span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <!-- Estado 2: Galería activa -->
+    <div class="casa__gallery" data-casa-gallery hidden>
+      <button class="casa__back" data-casa-back type="button" aria-label="Volver al menú de espacios">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Espacios</span>
+      </button>
+      <div class="casa__stage">
+        <img class="casa__image" src="" alt="" data-casa-image />
+        <button class="casa__nav casa__nav--prev" data-casa-prev type="button" aria-label="Imagen anterior">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="casa__nav casa__nav--next" data-casa-next type="button" aria-label="Imagen siguiente">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="casa__expand" data-casa-expand type="button" aria-label="Ampliar imagen">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="casa__info">
+        <h3 class="casa__name" data-casa-name></h3>
+        <p class="casa__phrase" data-casa-phrase></p>
+        <ul class="casa__facts" data-casa-facts></ul>
+        <div class="casa__dots" data-casa-dots></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- §6.7 Cómo se coordina — populated by JS -->
+  <section class="coordination" id="coordinacion" aria-labelledby="coordination-title">
+    <div class="coordination__heading">
+      <h2 id="coordination-title">Cómo se coordina</h2>
+      <p>Como con alguien de confianza: contás qué imaginás y lo armamos juntos.</p>
+    </div>
+    <ol class="coordination__steps" data-coordination-steps></ol>
+    <div class="coordination__actions">
+      <a class="coordination__next" href="#experiencias" aria-label="Ya pasó. Podrías ser vos.">
+        <span>Ya pasó. Podrías ser vos.</span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- §6.8 Experiencias — carrusel con cambio automático -->
+  <section class="gallery" id="experiencias" aria-labelledby="gallery-title">
+    <div class="gallery__heading">
+      <h2 id="gallery-title">Experiencias</h2>
+      <p>Encuentros que ya vivieron el Club. Cada foto es una historia real.</p>
+    </div>
+    <div class="gallery__carousel" data-gallery-carousel></div>
+    <div class="gallery__dots" data-gallery-dots></div>
+    <a class="gallery__next" href="#preguntas" aria-label="Resolvé tus dudas">
+      <span>Resolvé tus dudas</span>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+
+  <!-- §6.9 Preguntas y ubicación — populated by JS -->
+  <section class="faq" id="preguntas" aria-labelledby="faq-title">
+    <div class="faq__heading">
+      <h2 id="faq-title">Preguntas y ubicación</h2>
+      <p>Lo que necesitás saber antes de escribirnos.</p>
+    </div>
+    <div class="faq__body">
+      <div class="faq__list" data-faq-list></div>
+      <aside class="faq__location" data-faq-location>
+        <div class="faq__location-card">
+          <span class="faq__location-label" data-faq-location-label></span>
+          <p class="faq__location-address" data-faq-location-address></p>
+          <p class="faq__location-access" data-faq-location-access></p>
+          <a class="faq__location-cta" data-faq-location-cta target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Cómo llegar</span>
+          </a>
+        </div>
+        <a class="faq__next" href="#consultar" aria-label="Consultá una fecha">
+          <span>Consultá una fecha</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </aside>
+    </div>
+  </section>
+
+
+  <!-- §6.10 Consulta final — populated by JS -->
+  <section class="consult" id="consultar" aria-labelledby="consult-title">
+    <div class="consult__inner">
+      <div class="consult__lead">
+        <h2 id="consult-title" data-inquiry-title></h2>
+        <p data-inquiry-intro></p>
+      </div>
+
+      <form class="inquiry" data-inquiry novalidate>
+        <div class="inquiry__fields" data-fields>
+          <div class="inquiry__row">
+            <label class="field">
+              <span class="field__label" data-field-label="eventType"></span>
+              <select class="field__input" name="eventType" autocomplete="off" required aria-describedby="err-eventType" data-event-type-select>
+                <option value="" data-event-type-placeholder></option>
+              </select>
+              <p class="field__error" id="err-eventType" role="alert"></p>
+            </label>
+            <label class="field">
+              <span class="field__label" data-field-label="date"></span>
+              <input class="field__input" name="date" type="date" autocomplete="off" required aria-describedby="err-date" />
+              <p class="field__error" id="err-date" role="alert"></p>
+            </label>
+          </div>
+
+          <div class="inquiry__row">
+            <label class="field">
+              <span class="field__label" data-field-label="shift"></span>
+              <select class="field__input" name="shift" autocomplete="off" required disabled aria-describedby="err-shift">
+                <option value="" data-shift-placeholder></option>
+              </select>
+              <p class="field__error" id="err-shift" role="alert"></p>
+            </label>
+            <label class="field">
+              <span class="field__label" data-field-label="people"></span>
+              <input class="field__input" name="people" type="number" min="1" inputmode="numeric" autocomplete="off" required aria-describedby="hint-people err-people" />
+              <p class="field__hint" id="hint-people" data-people-hint></p>
+              <p class="field__error" id="err-people" role="alert"></p>
+            </label>
+          </div>
+
+          <div class="inquiry__row">
+            <label class="field">
+              <span class="field__label" data-field-label="name"></span>
+              <input class="field__input" name="name" type="text" autocomplete="name" required aria-describedby="err-name" />
+              <p class="field__error" id="err-name" role="alert"></p>
+            </label>
+            <label class="field">
+              <span class="field__label" data-field-label="whatsapp"></span>
+              <input class="field__input" name="whatsapp" type="tel" autocomplete="tel" required aria-describedby="err-whatsapp" data-field-placeholder="whatsapp" />
+              <p class="field__error" id="err-whatsapp" role="alert"></p>
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field__label" data-field-label="detail"></span>
+            <textarea class="field__input field__textarea" name="detail" rows="2" data-field-placeholder="detail"></textarea>
+          </label>
+
+          <p class="inquiry__error" data-form-error></p>
+
+          <div class="inquiry__actions">
+            <a class="consult__wa-direct" data-wa-direct target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 8.5c.3-.8 1-1 1.5-1 .3 0 .5.2.7.6l.5 1.2c.1.3 0 .6-.2.8l-.4.4c.4 1 1.2 1.8 2.2 2.2l.4-.4c.2-.2.5-.3.8-.2l1.2.5c.4.2.6.4.6.7 0 .5-.2 1.2-1 1.5-.8.3-2.8-.1-4.5-1.8S8.2 9.3 8.5 8.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-wa-direct-label></span>
+            </a>
+            <button class="btn btn--primary" type="submit" data-submit>
+              <span data-submit-label></span>
+            </button>
+          </div>
+          <p class="inquiry__note" data-submit-note></p>
+        </div>
+
+        <div class="inquiry__preparing" data-preparing hidden>
+          <p data-preparing-label></p>
+        </div>
+
+        <div class="inquiry__success" data-success hidden aria-live="polite">
+          <div class="inquiry__success-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p data-success-label></p>
+          <div class="inquiry__success-actions">
+            <button class="btn btn--secondary" type="button" data-success-again>
+              <span data-success-again-label></span>
+            </button>
+            <a class="btn btn--secondary" href="#inicio" data-success-home>
+              <span data-success-home-label></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="inquiry__fallback" data-fallback hidden aria-live="polite">
+          <p data-fallback-notice></p>
+          <textarea class="inquiry__fallback-text" data-fallback-text rows="6" readonly></textarea>
+          <div class="inquiry__fallback-actions">
+            <button class="btn btn--primary" type="button" data-copy-message><span data-fallback-copy-label></span></button>
+            <a class="btn btn--secondary" href="#" target="_blank" rel="noopener noreferrer" data-fallback-wa><span data-fallback-open-label></span></a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- §6.11 Footer — populated by JS -->
+<footer class="footer" data-footer>
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="assets/img/logo.webp" width="40" height="40" alt="" />
+        <span>El Club del Chañar</span>
+      </div>
+      <nav class="footer__nav" aria-label="Navegación del pie" data-footer-nav></nav>
+    </div>
+    <div class="footer__middle">
+      <div class="footer__location" data-footer-location></div>
+      <div class="footer__contact" data-footer-contact></div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__notice" data-footer-notice></p>
+      <button class="footer__top-btn" type="button" aria-label="Volver arriba" data-back-to-top>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
     </div>
   </div>
+</footer>
 
-  <script src="js/app.js"></script>
+<!-- Lightbox -->
+<div class="lightbox" data-lightbox-modal hidden>
+  <div class="lightbox__backdrop" data-lightbox-close></div>
+  <figure class="lightbox__figure">
+    <img class="lightbox__image" data-lightbox-image alt="" />
+    <figcaption class="lightbox__caption" data-lightbox-caption></figcaption>
+  </figure>
+  <button class="lightbox__close" type="button" aria-label="Cerrar galería" data-lightbox-close>
+    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18L18 6" /></svg>
+  </button>
+  <button class="lightbox__prev" type="button" aria-label="Imagen anterior" data-lightbox-prev>
+    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" /></svg>
+  </button>
+  <button class="lightbox__next" type="button" aria-label="Imagen siguiente" data-lightbox-next>
+    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" /></svg>
+  </button>
+  <span class="lightbox__counter" data-lightbox-counter></span>
+</div>
+
+<!-- CTA fijo inferior móvil (AC-5) -->
+<a class="mobile-cta" href="#consultar" data-mobile-cta>
+  <span data-mobile-cta-text></span>
+</a>
+
+<script src="js/casa-abierta.js?v=21" defer></script>
 </body>
-
 </html>
