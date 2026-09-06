@@ -2095,7 +2095,23 @@ a[target="_blank"]::after {
   .masthead__nav { display: none; }
   .masthead__burger { display: flex; }
   .mobile-cta { display: flex; }
-  .hero__content { bottom: 180px; }
+  /* Hero móvil: velo vertical suave + sin caja de fondo para que la foto se vea */
+  .hero__veil {
+    background:
+      linear-gradient(0deg, var(--earth-94) 0%, var(--earth-68) 28%, transparent 60%);
+    animation: none;
+  }
+  .hero__content {
+    bottom: 180px;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    max-width: calc(100vw - var(--margin) * 2);
+  }
+  .hero__content h1 { text-shadow: 0 2px 16px rgba(0,0,0,0.5); }
+  .hero__subtitle { text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+  .hero__facts { text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
   .hero__actions { left: var(--margin); right: var(--margin); bottom: 40px; align-items: stretch; }
   .hero__actions .btn { width: 100%; }
   .casa__cards { gap: 12px; }
@@ -2115,8 +2131,8 @@ a[target="_blank"]::after {
 @media (max-width: 599px) {
   :root { --margin: 20px; }
   .hero { min-height: max(620px, 100svh); }
-  .hero__content { bottom: 200px; }
-  .hero__location { top: 80px; }
+  .hero__content { bottom: 180px; }
+  .hero__location { top: 80px; font-size: 1.25rem; padding: 8px 14px; }
   .casa__cards {
     flex-wrap: nowrap;
     overflow-x: auto;
