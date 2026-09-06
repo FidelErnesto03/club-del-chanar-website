@@ -1,0 +1,359 @@
+{
+  "site": {
+    "name": "El Club del Chañar",
+    "tagline": "Un lugar que se abre al encuentro",
+    "language": "es-AR",
+    "url": "https://clubdelchanar.com"
+  },
+  "ui": {
+    "galleryAriaPrefix": "Abrir imagen: ",
+    "lightboxCounterSeparator": " de ",
+    "copySuccessLabel": "Copiado",
+    "whatsappFallbackNotice": "No se pudo abrir WhatsApp automáticamente. Copiá el mensaje y escribinos:",
+    "whatsappFallbackCopyLabel": "Copiar mensaje",
+    "whatsappFallbackOpenLabel": "Abrir WhatsApp",
+    "sceneCapacitySuffix": " personas"
+  },
+  "whatsappMessage": {
+    "greeting": "Hola, quiero consultar una fecha en El Club del Chañar.",
+    "typeLabel": "Tipo",
+    "peopleLabel": "Personas",
+    "dateLabel": "Fecha estimada",
+    "shiftLabel": "Turno",
+    "nameLabel": "Nombre",
+    "whatsappLabel": "WhatsApp",
+    "detailLabel": "Detalle",
+    "closingLine": "Entiendo que la disponibilidad se confirma sin reservas automáticas.",
+    "typeLabels": {
+      "social": "celebración social",
+      "corporativo": "jornada corporativa",
+      "workshop": "taller o retiro",
+      "otro": "otro tipo de encuentro"
+    }
+  },
+  "contact": {
+    "whatsapp": "5493515643361",
+    "email": "clubdelchanar@gmail.com",
+    "mapsUrl": "https://maps.app.goo.gl/AUNZ2LM9cGRfkHcA6"
+  },
+  "location": {
+    "publicLabel": "Lomas del Chañar · Río Ceballos · Córdoba"
+  },
+  "capacity": {
+    "social": 45,
+    "corporate": 25,
+    "workshop": 25,
+    "otro": 45
+  },
+  "advanceNoticeDays": 15,
+  "shifts": [
+    {
+      "id": "diurno",
+      "label": "Diurno · 10:30 a 16:30",
+      "for": "social"
+    },
+    {
+      "id": "sunset",
+      "label": "Sunset · 16:30 a 22:30",
+      "for": "social"
+    },
+    {
+      "id": "corporativo",
+      "label": "Corporativo · 09:00 a 18:00",
+      "for": "corporativo"
+    },
+    {
+      "id": "taller",
+      "label": "Taller · 14:00 a 19:30",
+      "for": "workshop"
+    },
+    {
+      "label": "A coordinar",
+      "for": "otro"
+    }
+  ],
+  "hero": {
+    "title": "Un lugar que se abre al encuentro.",
+    "subtitle": "Entre árboles, para celebrar, pensar y crear con tiempo.",
+    "facts": "Hasta 45 para celebrar · hasta 25 para equipos y talleres · un grupo por turno",
+    "image": "assets/img/carousel/casa-entre-arboles.webp",
+    "imageAlt": "El Club del Chañar visto entre árboles al final de la tarde, con luz cálida filtrándose entre el follaje",
+    "ctaPrimary": "Consultar una fecha",
+    "ctaSecondary": "Descubrí lo que puede suceder",
+    "carousel": [
+      "assets/img/carousel/casa-entre-arboles.webp",
+      "assets/img/carousel/galeria-arbol.webp",
+      "assets/img/carousel/terraza.webp",
+      "assets/img/carousel/galeria-panoramica.webp"
+    ],
+    "carouselInterval": 6000,
+    "logoPresentation": true,
+    "logoWatermark": false
+  },
+  "experiences": [
+    {
+      "id": "celebrar",
+      "verb": "Celebrar",
+      "message": "Tu mesa, tu música, tu gente. Un hogar entre árboles para celebrar lo que importa.",
+      "capacity": 45,
+      "image": "assets/img/encounters/celebrar.webp",
+      "imageAlt": "Almuerzo social en la galería del Club, con mesa compartida, copas y luz cálida de tarde",
+      "shifts": [
+        "diurno",
+        "sunset"
+      ],
+      "cta": "Consultar una celebración"
+    },
+    {
+      "id": "pensar",
+      "verb": "Pensar",
+      "message": "Cambio de aire para pensar con foco. Aire, sombra y silencio para ordenar ideas.",
+      "capacity": 25,
+      "image": "assets/img/encounters/pensar.webp",
+      "imageAlt": "Mesa de madera bajo la sombra de los árboles, entorno sereno para pensar y debatir",
+      "shifts": [
+        "corporativo"
+      ],
+      "cta": "Consultar una jornada"
+    },
+    {
+      "id": "crear",
+      "verb": "Crear",
+      "message": "Un entorno que respira. Equipado para crear, aprender y compartir sin apuro.",
+      "capacity": 25,
+      "image": "assets/img/encounters/crear.webp",
+      "imageAlt": "Espacio del Club preparado para taller, con mesa amplia y materiales para crear y aprender",
+      "shifts": [
+        "taller"
+      ],
+      "cta": "Consultar un taller o retiro"
+    }
+  ],
+  "casa": [
+    {
+      "id": "galeria",
+      "name": "Galería",
+      "phrase": "Galería cubierta. El centro de una jornada cuando la conversación necesita resguardo.",
+      "imageDir": "assets/img/casa/galeria/",
+      "imageAlt": "Vista de la galería con mobiliario de madera",
+      "facts": [
+        "Cubierta",
+        "Mesa compartida"
+      ]
+    },
+    {
+      "id": "jardin",
+      "name": "Jardín y sombra",
+      "phrase": "Pausas, mesas compartidas y aire entre momentos.",
+      "imageDir": "assets/img/casa/jardin/",
+      "imageAlt": "Jardín con el árbol integrado, sombra y vegetación",
+      "facts": [
+        "Árbol central",
+        "Sombra natural"
+      ]
+    },
+    {
+      "id": "terraza",
+      "name": "Terraza",
+      "phrase": "Una escala más abierta para cerrar la tarde.",
+      "imageDir": "assets/img/casa/terraza/",
+      "imageAlt": "Terraza con vista abierta",
+      "facts": [
+        "Vista abierta",
+        "Aire y luz"
+      ]
+    },
+    {
+      "id": "fuego",
+      "name": "Fuego y barra",
+      "phrase": "El punto que reúne cuando la jornada se vuelve noche.",
+      "imageDir": "assets/img/casa/fuego/",
+      "imageAlt": "Barra y zona de fuego con iluminación cálida",
+      "facts": [
+        "Barra",
+        "Fuego"
+      ]
+    },
+    {
+      "id": "servicios",
+      "name": "Lo esencial",
+      "phrase": "Cocina equipada, baños y todo lo que hace funcionar al lugar.",
+      "imageDir": "assets/img/casa/servicios/",
+      "imageAlt": "Cocina, baños y servicios del lugar",
+      "facts": [
+        "Cocina equipada",
+        "Baños"
+      ]
+    }
+  ],
+  "coordination": [
+    {
+      "step": "Contás qué imaginás.",
+      "icon": "chat",
+      "detail": "Tipo de encuentro, fecha estimada y cantidad de personas. No hace falta tener todo definido."
+    },
+    {
+      "step": "Revisamos fecha, turno y escala.",
+      "icon": "calendar",
+      "detail": "Te contamos si la fecha está disponible y qué turno se ajusta mejor al encuentro."
+    },
+    {
+      "step": "Proponemos una forma de habitar el Club.",
+      "icon": "home",
+      "detail": "Visita previa para acordar espacios y servicios: música, WiFi, proyector, TV, catering, bebidas y equipamiento."
+    },
+    {
+      "step": "Confirmamos juntos.",
+      "icon": "check",
+      "detail": "La reserva se confirma sin bloqueo automático ni plataforma intermedia."
+    }
+  ],
+  "experiencias": {
+    "imageDir": "assets/img/experiencias/",
+    "alt": "Encuentro real en El Club del Chañar"
+  },
+  "faq": [
+    {
+      "question": "¿Para cuántas personas sirve?",
+      "answer": "Hasta 45 personas para encuentros sociales y hasta 25 para jornadas corporativas, talleres y retiros. Un solo grupo ocupa el Club en cada turno."
+    },
+    {
+      "question": "¿Qué tipo de encuentros encajan?",
+      "answer": "Celebraciones íntimas, jornadas de equipo, talleres, retiros y encuentros que buscan privacidad, tiempo y cuidado. El Club no se alquila como salón de fiestas masivas ni como coworking."
+    },
+    {
+      "question": "¿Cómo se cotiza y qué incluye?",
+      "answer": "Cada encuentro se cotiza según el tipo, el turno y la cantidad de personas. Los servicios se ajustan a lo que necesitás: desde el uso del espacio hasta una propuesta completa con catering, bebidas, música, WiFi, proyector, TV y equipamiento. Lo definimos juntos en una visita previa."
+    },
+    {
+      "question": "¿Cómo se consulta una fecha?",
+      "answer": "Escribinos por WhatsApp con el tipo de encuentro, fecha estimada, turno y cantidad de personas. Recomendamos consultar con al menos 15 días de anticipación para coordinar el formato y la propuesta."
+    },
+    {
+      "question": "¿La consulta confirma la reserva?",
+      "answer": "No. La consulta inicia una conversación. La disponibilidad se confirma sin reservas automáticas ni bloqueo de fechas."
+    },
+    {
+      "question": "Lluvia, acceso y música",
+      "answer": "La galería cubierta ofrece respaldo si el clima cambia. Se llega por camino de tierra, a 3 cuadras de la ruta E-53. La música se reproduce con el equipo provisto por el local y las restricciones de horario son negociables según el encuentro."
+    },
+    {
+      "question": "Menores, mascotas y accesibilidad",
+      "answer": "Sí, ambos son bienvenidos bajo plena responsabilidad de quienes ocupan el espacio. El Club admite accesibilidad: consultá por las particularidades del encuentro y coordinamos lo necesario."
+    }
+  ],
+  "inquiry": {
+    "title": "Contanos el encuentro que imaginás.",
+    "intro": "Cada encuentro se arma a medida. Contanos qué tenés en mente.",
+    "fields": [
+      {
+        "name": "eventType",
+        "type": "select",
+        "label": "Tipo de encuentro",
+        "required": true,
+        "options": [
+          { "value": "social", "label": "Celebración social" },
+          { "value": "corporativo", "label": "Jornada corporativa" },
+          { "value": "workshop", "label": "Taller o retiro" },
+          { "value": "otro", "label": "Otro" }
+        ]
+      },
+      {
+        "name": "date",
+        "type": "date",
+        "label": "Fecha estimada",
+        "required": true,
+        "min": "advanceNoticeDays"
+      },
+      {
+        "name": "shift",
+        "type": "select",
+        "label": "Turno",
+        "required": true,
+        "optionsFrom": "shifts"
+      },
+      {
+        "name": "people",
+        "type": "number",
+        "label": "Cantidad de personas",
+        "required": true,
+        "min": 1,
+        "maxFrom": "capacity"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "label": "Nombre",
+        "required": true
+      },
+      {
+        "name": "whatsapp",
+        "type": "tel",
+        "label": "WhatsApp",
+        "required": true,
+        "placeholder": "351 123 4567"
+      },
+      {
+        "name": "detail",
+        "type": "textarea",
+        "label": "Detalle opcional",
+        "required": false,
+        "placeholder": "Contanos algo sobre el encuentro que imaginás"
+      }
+    ],
+    "submitLabel": "Enviar consulta por WhatsApp",
+    "preparingLabel": "Preparamos tu consulta…",
+    "shiftPlaceholder": "Elegí una opción",
+    "errors": {
+      "eventType": "Elegí qué tipo de encuentro querés organizar.",
+      "dateEmpty": "Elegí una fecha con al menos {days} días de anticipación.",
+      "dateMin": "La fecha debe tener al menos {days} días de anticipación.",
+      "dateBlurEmpty": "Elegí una fecha.",
+      "shift": "Elegí el turno que mejor se ajusta al encuentro.",
+      "shiftBlur": "Elegí un turno.",
+      "people": "Indicá una cantidad entre 1 y {max} personas.",
+      "peopleBlurEmpty": "Indicá la cantidad.",
+      "name": "Decinos tu nombre.",
+      "whatsapp": "Necesitamos un WhatsApp para contactarte.",
+      "whatsappBlurEmpty": "Necesitamos un WhatsApp.",
+      "whatsappBlurShort": "Revisá el número.",
+      "email": "Revisá el correo.",
+      "formError": "Revisá los campos marcados."
+    },
+    "waDirectLabel": "o escribinos directo por WhatsApp",
+    "successLabel": "Tu consulta está en camino. Te respondemos por WhatsApp a la brevedad.",
+    "successHomeLabel": "Volver al inicio",
+    "eventTypePlaceholder": "Elegí una opción",
+    "shiftLockedPlaceholder": "Primero elegí el tipo",
+    "peopleHint": "Hasta {max} personas",
+    "submitNote": "Se abre WhatsApp con tu consulta ya armada. No enviamos nada sin vos.",
+    "successAgainLabel": "Hacer otra consulta"
+  },
+  "footer": {
+    "notice": "Consultas sujetas a disponibilidad y confirmación humana.",
+    "whatsappLabel": "WhatsApp",
+    "emailLabel": "Email",
+    "nav": [
+      {
+        "label": "Encuentros",
+        "href": "#encuentros"
+      },
+      {
+        "label": "Cada Rincón",
+        "href": "#la-casa"
+      },
+      {
+        "label": "Coordinación",
+        "href": "#coordinacion"
+      },
+      {
+        "label": "Experiencias",
+        "href": "#experiencias"
+      },
+      {
+        "label": "Preguntas",
+        "href": "#preguntas"
+      }
+    ]
+  }
+}
