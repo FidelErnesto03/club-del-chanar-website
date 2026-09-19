@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Manrope:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Manrope:wght@400;500;600&display=swap" />
-<link rel="stylesheet" href="css/casa-abierta.css?v=52" />
+<link rel="stylesheet" href="css/casa-abierta.css?v=53" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -109,6 +109,11 @@
         <span data-hero-cta-secondary-text></span>
       </a>
     </div>
+
+    <button class="rotation-toggle hero__rotate" type="button" data-hero-rotate aria-pressed="false" aria-label="Pausar el carrusel de imágenes">
+      <svg class="rotation-toggle__pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg class="rotation-toggle__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z" fill="currentColor"/></svg>
+    </button>
   </section>
 
 
@@ -119,6 +124,11 @@
         <h2 id="encounters-title" class="encounters__title" data-offers-title>¿Qué querés que suceda?</h2>
         <p class="encounters__clarification" data-offers-clarification></p>
         <div class="scene-tabs" role="tablist" aria-label="Formas de vivir el Club" data-scene-tabs></div>
+        <button class="rotation-toggle encounters__rotate" type="button" data-scenes-rotate aria-pressed="false" aria-label="Pausar la rotación de propuestas">
+          <svg class="rotation-toggle__pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="rotation-toggle__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z" fill="currentColor"/></svg>
+          <span class="rotation-toggle__label" data-scenes-rotate-label>Pausar rotación</span>
+        </button>
       </div>
     </div>
     <div class="scene-stage" id="scene-stage" role="tabpanel">
@@ -258,7 +268,16 @@
       <h2 id="gallery-title" data-experiencias-title>Así se vive El Club</h2>
       <p data-experiencias-intro>Encuentros que ya vivieron el Club. Cada foto es una historia real.</p>
     </div>
-    <div class="gallery__carousel" data-gallery-carousel></div>
+    <div class="gallery__stage">
+      <div class="gallery__carousel" data-gallery-carousel></div>
+      <button class="gallery__expand" type="button" data-gallery-expand aria-label="Ampliar imagen">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="rotation-toggle gallery__rotate" type="button" data-gallery-rotate aria-pressed="false" aria-label="Pausar el carrusel de imágenes">
+        <svg class="rotation-toggle__pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="rotation-toggle__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z" fill="currentColor"/></svg>
+      </button>
+    </div>
     <div class="gallery__dots" data-gallery-dots></div>
     <a class="gallery__next" href="#como-funciona" aria-label="Cómo funciona">
       <span>Cómo funciona</span>
@@ -404,7 +423,7 @@
 
         <div class="inquiry__fallback" data-fallback hidden aria-live="polite">
           <p data-fallback-notice></p>
-          <textarea class="inquiry__fallback-text" data-fallback-text rows="6" readonly></textarea>
+          <textarea class="inquiry__fallback-text" data-fallback-text rows="6" readonly aria-label="Mensaje generado para WhatsApp"></textarea>
           <div class="inquiry__fallback-actions">
             <button class="btn btn--primary" type="button" data-copy-message><span data-fallback-copy-label></span></button>
             <a class="btn btn--secondary" href="#" target="_blank" rel="noopener noreferrer" data-fallback-wa><span data-fallback-open-label></span></a>
@@ -463,6 +482,6 @@
 </a>
 
 <script src="js/events.js?v=2" defer></script>
-<script src="js/casa-abierta.js?v=25" defer></script>
+<script src="js/casa-abierta.js?v=26" defer></script>
 </body>
 </html>

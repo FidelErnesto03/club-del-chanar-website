@@ -177,7 +177,7 @@
     "subtitle": "Algunas cosas se reservan. Otras simplemente suceden.",
     "endpoint": "",
     "limit": 4,
-    "showMoreLabel": "Ver toda la agenda",
+    "showMoreLabel": "Pedir la agenda completa por WhatsApp",
     "hideWhenEmpty": false,
     "emptyTitle": "Estamos preparando lo próximo.",
     "emptyText": "Seguinos o escribinos para enterarte primero.",
