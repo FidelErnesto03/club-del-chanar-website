@@ -29,39 +29,21 @@
       "link": "agenda",
       "children": [
         { "label": "Próximamente en El Club", "href": "#agenda", "link": "agenda" },
-        { "label": "Cómo funciona", "href": "#como-funciona", "link": "como-funciona" }
+        { "label": "Así se vive El Club", "href": "#experiencias", "link": "experiencias" }
       ]
     },
-    {
-      "label": "Empresas",
-      "href": "#empresas",
-      "link": "empresas",
-      "children": [
-        { "label": "Jornadas de equipo", "href": "#empresas", "link": "empresas" },
-        { "label": "Usos e información", "href": "#empresas", "link": "empresas" },
-        { "label": "Consultar jornada", "href": "#consultar", "link": "consultar" }
-      ]
-    },
-    {
-      "label": "Organizá aquí",
-      "href": "#anfitriones",
-      "link": "anfitriones",
-      "children": [
-        { "label": "Proponer una experiencia", "href": "#anfitriones", "link": "anfitriones" },
-        { "label": "Preguntas frecuentes", "href": "#preguntas", "link": "preguntas" }
-      ]
-    },
+    { "label": "Empresas", "href": "#empresas", "link": "empresas" },
+    { "label": "Organizá aquí", "href": "#anfitriones", "link": "anfitriones" },
     {
       "label": "Preguntas",
       "href": "#preguntas",
       "link": "preguntas",
       "children": [
         { "label": "Preguntas frecuentes", "href": "#preguntas", "link": "preguntas" },
-        { "label": "Ubicación", "href": "#preguntas", "link": "preguntas" },
-        { "label": "Experiencias pasadas", "href": "#experiencias", "link": "experiencias" }
+        { "label": "Cómo funciona", "href": "#como-funciona", "link": "como-funciona" }
       ]
     },
-    { "label": "Consultar", "href": "#consultar", "cta": true }
+    { "label": "Consultar", "href": "#consultar", "link": "consultar", "cta": true }
   ],
   "ui": {
     "galleryAriaPrefix": "Abrir imagen: ",
@@ -474,8 +456,10 @@
       { "label": "El Club", "href": "#propuestas" },
       { "label": "Agenda", "href": "#agenda" },
       { "label": "Empresas", "href": "#empresas" },
-      { "label": "Organizá aquí", "href": "#anfitriones" },
       { "label": "Cada Rincón", "href": "#la-casa" },
+      { "label": "Organizá aquí", "href": "#anfitriones" },
+      { "label": "Experiencias", "href": "#experiencias" },
+      { "label": "Cómo funciona", "href": "#como-funciona" },
       { "label": "Preguntas", "href": "#preguntas" }
     ]
   }
