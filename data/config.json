@@ -10,37 +10,28 @@
     }
   },
   "nav": [
+    { "label": "El Club", "href": "#propuestas", "link": "propuestas" },
+    { "label": "Agenda", "href": "#agenda", "link": "agenda" },
     {
-      "label": "El Club",
-      "href": "#propuestas",
-      "link": "propuestas",
+      "label": "Empresas",
+      "href": "#empresas",
+      "link": "empresas",
       "children": [
-        { "label": "Las cuatro formas", "href": "#propuestas", "link": "propuestas" },
-        { "label": "Encuentros privados", "href": "#propuestas", "link": "propuestas", "scene": "private" },
-        { "label": "Jornadas de equipo", "href": "#propuestas", "link": "propuestas", "scene": "business" },
-        { "label": "Experiencias", "href": "#propuestas", "link": "propuestas", "scene": "experiences" },
-        { "label": "Club Lab", "href": "#propuestas", "link": "propuestas", "scene": "lab" },
-        { "label": "Cada Rincón", "href": "#la-casa", "link": "la-casa" }
+        { "label": "Se usa para", "href": "#empresas-usos", "link": "empresas" },
+        { "label": "Qué encontrás", "href": "#empresas-info", "link": "empresas" }
       ]
     },
-    {
-      "label": "Agenda",
-      "href": "#agenda",
-      "link": "agenda",
-      "children": [
-        { "label": "Próximamente en El Club", "href": "#agenda", "link": "agenda" },
-        { "label": "Así se vive El Club", "href": "#experiencias", "link": "experiencias" }
-      ]
-    },
-    { "label": "Empresas", "href": "#empresas", "link": "empresas" },
+    { "label": "Cada Rincón", "href": "#la-casa", "link": "la-casa" },
     { "label": "Organizá aquí", "href": "#anfitriones", "link": "anfitriones" },
+    { "label": "Experiencias", "href": "#experiencias", "link": "experiencias" },
+    { "label": "Cómo funciona", "href": "#como-funciona", "link": "como-funciona" },
     {
       "label": "Preguntas",
       "href": "#preguntas",
       "link": "preguntas",
       "children": [
         { "label": "Preguntas frecuentes", "href": "#preguntas", "link": "preguntas" },
-        { "label": "Cómo funciona", "href": "#como-funciona", "link": "como-funciona" }
+        { "label": "Ubicación", "href": "#ubicacion", "link": "preguntas" }
       ]
     },
     { "label": "Consultar", "href": "#consultar", "link": "consultar", "cta": true }

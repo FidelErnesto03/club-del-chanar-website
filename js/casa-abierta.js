@@ -1035,16 +1035,6 @@
     var mobileCta = document.querySelector("[data-mobile-cta]");
     var navLinks = Array.prototype.slice.call(document.querySelectorAll("[data-nav-link]"));
     var spySections = ["propuestas", "agenda", "empresas", "la-casa", "anfitriones", "experiencias", "como-funciona", "preguntas", "consultar"];
-    /* Cada sección pertenece a una opción del menú principal: así el menú
-       queda coherente con el orden de la página y siempre hay un activo. */
-    var spyOwner = {
-      "propuestas": "propuestas", "la-casa": "propuestas",
-      "agenda": "agenda", "experiencias": "agenda",
-      "empresas": "empresas",
-      "anfitriones": "anfitriones",
-      "como-funciona": "preguntas", "preguntas": "preguntas",
-      "consultar": "consultar"
-    };
     var mobileCtaCfg = (cfg.ui && cfg.ui.mobileCta) || {};
 
     function currentSection() {
@@ -1059,19 +1049,15 @@
 
     function updateActiveNav() {
       var current = currentSection();
-      var owner = spyOwner[current] || current;
+      var hash = window.location.hash;
       navLinks.forEach(function (link) {
-        /* Las sub-opciones de escena comparten destino: no se marcan. */
-        if (link.hasAttribute("data-nav-scene")) {
-          link.classList.remove("is-active");
-          link.removeAttribute("aria-current");
-          return;
-        }
         var value = link.getAttribute("data-nav-link");
         var inSub = !!link.closest(".nav-sub, .mobile-sub");
-        /* Nivel 1: la opción principal de la sección. Nivel 2: la
-           sub-opción exacta, solo si apunta a otra sección que la principal. */
-        var active = inSub ? (value === current && current !== owner) : (value === owner);
+        /* Nivel 1: la opción de la sección actual. Nivel 2: la sub-opción
+           del ancla en la que estamos, dentro de esa misma sección. */
+        var active = inSub
+          ? (value === current && hash === link.getAttribute("href"))
+          : (value === current);
         link.classList.toggle("is-active", active);
         if (active) link.setAttribute("aria-current", "true");
         else link.removeAttribute("aria-current");
