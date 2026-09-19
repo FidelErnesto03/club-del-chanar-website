@@ -17,7 +17,7 @@
   --surface-dark: var(--earth);
   --text: var(--charcoal);
   --text-light: var(--sand);
-  --text-muted: color-mix(in srgb, var(--charcoal) 62%, transparent);
+  --text-muted: color-mix(in srgb, var(--charcoal) 70%, transparent);
   --text-muted-light: color-mix(in srgb, var(--sand) 68%, transparent);
   --action: var(--amber);
   --action-hover: color-mix(in srgb, var(--amber) 80%, var(--charcoal) 20%);
@@ -1046,16 +1046,26 @@ textarea:focus-visible {
   gap: 7px;
 }
 .casa__dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
   border: none;
-  background: var(--line);
+  background: none;
   cursor: pointer;
   padding: 0;
+}
+.casa__dot::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line);
   transition: background 200ms var(--ease), transform 200ms var(--ease);
 }
-.casa__dot.is-active { background: var(--amber); transform: scale(1.4); }
-.casa__dot:hover { background: var(--olive); }
+.casa__dot.is-active::after { background: var(--amber); transform: scale(1.4); }
+.casa__dot:hover::after { background: var(--olive); }
 
 /* Reduced motion — specific overrides (complements global block at end of file) */
 @media (prefers-reduced-motion: reduce) {
@@ -1423,22 +1433,31 @@ textarea:focus-visible {
   margin: 24px auto 0;
 }
 .gallery__dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+.gallery__dot::after {
+  content: "";
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  border: none;
   background: var(--text-muted-light);
   opacity: 0.4;
-  cursor: pointer;
-  padding: 0;
   transition: opacity 300ms var(--ease), background 300ms var(--ease), transform 300ms var(--ease);
 }
-.gallery__dot.is-active {
+.gallery__dot.is-active::after {
   opacity: 1;
   background: var(--amber);
   transform: scale(1.3);
 }
-.gallery__dot:hover {
+.gallery__dot:hover::after {
   opacity: 0.8;
 }
 
@@ -2183,3 +2202,260 @@ a[target="_blank"]::after {
   .hero__logo-presentation { display: none !important; }
   .hero__watermark { transition: none; }
 }
+
+/* ============================================================
+   Agenda — Próximamente en El Club (§20–§42)
+   ============================================================ */
+.agenda {
+  padding: clamp(60px, 10vh, 120px) var(--margin);
+  background: var(--sand);
+}
+.agenda[hidden] { display: none; }
+.agenda__heading {
+  max-width: var(--reading);
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.agenda__heading p {
+  margin: 16px auto 0;
+  color: var(--text-muted);
+}
+.agenda__body {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.agenda-card {
+  display: flex;
+  flex-direction: column;
+  background: color-mix(in srgb, #ffffff 55%, var(--sand) 45%);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 300ms var(--ease-out), border-color 300ms var(--ease);
+}
+.agenda-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--amber-50);
+}
+.agenda-card__media { position: relative; overflow: hidden; }
+.agenda-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.agenda-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  padding: 20px 22px 24px;
+}
+.agenda-card__date {
+  font-family: var(--font-display);
+  font-size: var(--meta);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--wood);
+}
+.agenda-card__category {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+.agenda-card__title { font-size: clamp(1.375rem, 2vw, 1.875rem); }
+.agenda-card__desc { color: var(--text-muted); }
+.agenda-card__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 4px;
+  font-size: var(--meta);
+  font-weight: 500;
+  color: var(--text);
+}
+.agenda-card__fact--soldout { color: var(--wood); font-weight: 600; }
+.agenda-card__cta { align-self: flex-start; margin-top: 12px; }
+
+.agenda-card--featured {
+  grid-column: 1 / -1;
+  flex-direction: row;
+}
+.agenda-card--featured .agenda-card__media { flex: 1 1 55%; }
+.agenda-card--featured .agenda-card__image {
+  height: 100%;
+  aspect-ratio: auto;
+  min-height: 340px;
+}
+.agenda-card--featured .agenda-card__body {
+  flex: 1 1 45%;
+  justify-content: center;
+  padding: clamp(24px, 3vw, 48px);
+}
+.agenda-card--featured .agenda-card__title { font-size: clamp(1.875rem, 3vw, 3rem); }
+
+.agenda__empty {
+  max-width: var(--reading);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.agenda__empty[hidden] { display: none; }
+.agenda__empty-title {
+  font-family: var(--font-display);
+  font-size: var(--title-m);
+  line-height: 1.1;
+}
+.agenda__empty-text { color: var(--text-muted); }
+.agenda__actions {
+  max-width: var(--container);
+  margin: 40px auto 0;
+  text-align: center;
+}
+.agenda__actions[hidden] { display: none; }
+.agenda .btn--secondary {
+  color: var(--earth);
+  border-color: color-mix(in srgb, var(--earth) 28%, transparent);
+}
+.agenda .btn--secondary:hover {
+  color: var(--earth);
+  border-color: var(--amber);
+  background: var(--amber-16);
+}
+
+/* ============================================================
+   Club Empresas (§43–§45)
+   ============================================================ */
+.empresas {
+  padding: clamp(60px, 10vh, 120px) var(--margin);
+  background: var(--earth);
+  color: var(--text-light);
+}
+.empresas__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+.empresas__lead p {
+  margin-top: 20px;
+  color: var(--sand-72);
+}
+.empresas__cta { margin-top: 28px; }
+.empresas__lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.empresas__list h3 {
+  font-family: var(--font-body);
+  font-size: var(--meta);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 14px;
+}
+.empresas__list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.empresas__list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--sand-82);
+}
+.empresas__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+
+/* ============================================================
+   Anfitriones — Organizá algo aquí (§46–§47)
+   ============================================================ */
+.hosts {
+  padding: clamp(60px, 10vh, 120px) var(--margin);
+  background: var(--sand);
+}
+.hosts__inner {
+  max-width: var(--reading);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.hosts__inner p { color: var(--text-muted); }
+.hosts__examples {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 14px;
+  margin: 4px 0;
+}
+.hosts__examples li {
+  font-size: var(--meta);
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 16px;
+}
+.hosts__cta { margin-top: 8px; }
+
+/* ============================================================
+   Cómo funciona — dos recorridos (§51)
+   ============================================================ */
+.coordination__tracks {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+}
+.coordination__track-label {
+  font-family: var(--font-body);
+  font-size: var(--meta);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 24px;
+}
+.coordination__track .coordination__steps {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+.coordination__track .coordination__steps::before { display: none; }
+
+@media (max-width: 1199px) {
+  .agenda__body { grid-template-columns: repeat(2, 1fr); }
+  .empresas__inner { grid-template-columns: 1fr; }
+  .coordination__tracks { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 899px) {
+  .agenda__body { grid-template-columns: 1fr; }
+  .agenda-card--featured { flex-direction: column; }
+  .agenda-card--featured .agenda-card__image {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+  .empresas__lists { grid-template-columns: 1fr; }
+}
+

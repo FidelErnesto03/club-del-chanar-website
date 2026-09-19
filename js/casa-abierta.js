@@ -66,6 +66,38 @@
       setText("[data-hero-facts]", cfg.hero.facts);
       setText("[data-hero-cta-primary-text]", cfg.hero.ctaPrimary);
       setText("[data-hero-cta-secondary-text]", cfg.hero.ctaSecondary);
+      var heroPrimary = document.querySelector("[data-hero-cta-primary]");
+      if (heroPrimary && cfg.hero.ctaPrimaryHref) heroPrimary.href = cfg.hero.ctaPrimaryHref;
+      var heroSecondary = document.querySelector("[data-hero-cta-secondary]");
+      if (heroSecondary && cfg.hero.ctaSecondaryHref) heroSecondary.href = cfg.hero.ctaSecondaryHref;
+    }
+
+    /* -- Navegación (desktop + móvil) desde config (§13) -- */
+    if (cfg.nav) {
+      var navDesktop = document.querySelector("[data-nav]");
+      var navMobile = document.querySelector("[data-mobile-nav]");
+      if (navDesktop) navDesktop.innerHTML = "";
+      if (navMobile) navMobile.innerHTML = "";
+      cfg.nav.forEach(function (item) {
+        if (navDesktop) {
+          var link = el("a", {
+            href: item.href,
+            textContent: item.label,
+            "data-nav-link": item.link || ""
+          });
+          if (item.cta) link.className = "masthead__cta";
+          navDesktop.appendChild(link);
+        }
+        if (navMobile) {
+          var mLink = el("a", {
+            href: item.href,
+            textContent: item.label,
+            "data-nav-link": item.link || ""
+          });
+          if (item.cta) mLink.className = "mobile-menu__cta";
+          navMobile.appendChild(mLink);
+        }
+      });
     }
 
     /* -- Hero location (clickeable a Google Maps) -- */
@@ -81,32 +113,38 @@
       }
     }
 
-    /* -- Scene tabs + stage -- */
+    /* -- Selector de propuestas: cuatro formas de vivir el Club (§14–§19) -- */
+    var offerCfg = cfg.offers || {};
+    var offerItems = offerCfg.items || cfg.experiences || [];
     var scenes = {};
-    if (cfg.experiences) {
+    setText("[data-offers-title]", offerCfg.title);
+    setText("[data-offers-clarification]", offerCfg.clarification);
+    if (offerItems.length) {
       var tabsContainer = document.querySelector("[data-scene-tabs]");
       if (tabsContainer) {
         tabsContainer.innerHTML = "";
-        cfg.experiences.forEach(function (exp, i) {
-          scenes[exp.id] = {
-            src: exp.image,
-            alt: exp.imageAlt,
-            message: exp.message,
-            capacity: String(exp.capacity),
-            cta: exp.cta,
-            type: exp.id,
-            shifts: exp.shifts || []
+        offerItems.forEach(function (offer, i) {
+          var type = offer.type || offer.id;
+          scenes[offer.id] = {
+            src: offer.image,
+            alt: offer.imageAlt,
+            message: offer.message,
+            meta: offer.meta || (offer.capacity ? offer.capacity + " " + ((cfg.ui && cfg.ui.offersCapacitySuffix) || "personas") : ""),
+            capacity: String(offer.capacity || ""),
+            cta: offer.cta,
+            ctaTarget: offer.ctaTarget || "#consultar",
+            type: type
           };
           var btn = el("button", {
             className: "scene-tab" + (i === 0 ? " is-active" : ""),
             type: "button",
             role: "tab",
-            id: "scene-tab-" + exp.id,
+            id: "scene-tab-" + offer.id,
             "aria-selected": i === 0 ? "true" : "false",
             "aria-controls": "scene-stage",
             tabindex: i === 0 ? "0" : "-1",
-            "data-scene": exp.id,
-            textContent: exp.verb
+            "data-scene": offer.id,
+            textContent: offer.tab || offer.title
           });
           tabsContainer.appendChild(btn);
         });
@@ -152,25 +190,34 @@
       });
     }
 
-    /* Auto-cargar imágenes de un directorio (01.webp, 02.webp, ... hasta 404) */
+    /* Cargar imágenes de un espacio: index.json (preferido) o sondeo 01.webp… */
     function loadCasaImages(dir, callback) {
       var images = [];
-      var idx = 1;
-      function tryNext() {
-        var num = idx < 10 ? "0" + idx : "" + idx;
-        var src = dir + num + ".webp";
-        var img = new Image();
-        img.onload = function () {
-          images.push(src);
-          idx++;
-          tryNext();
-        };
-        img.onerror = function () {
-          callback(images);
-        };
-        img.src = src;
+      function probe() {
+        var idx = 1;
+        function tryNext() {
+          var num = idx < 10 ? "0" + idx : "" + idx;
+          var src = dir + num + ".webp";
+          var img = new Image();
+          img.onload = function () {
+            images.push(src);
+            idx++;
+            tryNext();
+          };
+          img.onerror = function () {
+            callback(images);
+          };
+          img.src = src;
+        }
+        tryNext();
       }
-      tryNext();
+      fetch(dir + "index.json")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (files) {
+          if (!Array.isArray(files) || !files.length) { probe(); return; }
+          callback(files.map(function (name) { return dir + name; }));
+        })
+        .catch(function () { probe(); });
     }
 
     /* Abrir galería de un espacio */
@@ -293,60 +340,52 @@
       else if (e.key === "Escape") closeCasaGallery();
     });
 
-    /* -- Coordination steps -- */
-    var stepIcons = {
-      chat: '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
-      calendar: '<rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
-      home: '<path d="M3 12l9-8 9 8M5 10v10h14V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
-      check: '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M22 4L12 14.01l-3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>'
-    };
-    if (cfg.coordination) {
-      var stepsContainer = document.querySelector("[data-coordination-steps]");
-      if (stepsContainer) {
-        stepsContainer.innerHTML = "";
-        cfg.coordination.forEach(function (item, i) {
-          var text = typeof item === "string" ? item : item.step;
-          var detail = typeof item === "object" && item.detail ? item.detail : "";
-          var iconKey = typeof item === "object" && item.icon ? item.icon : "";
-          var li = el("li");
-          var number = el("span", { className: "step__number", textContent: String(i + 1) });
-          if (detail) {
-            number.setAttribute("tabindex", "0");
-            number.setAttribute("aria-label", text);
-          }
-          li.appendChild(number);
-          if (iconKey && stepIcons[iconKey]) {
-            var iconSvg = el("span", { className: "step__icon", innerHTML: '<svg viewBox="0 0 24 24" aria-hidden="true">' + stepIcons[iconKey] + "</svg>" });
-            li.appendChild(iconSvg);
-          }
-          li.appendChild(el("p", { textContent: text }));
-          if (detail) {
-            var tooltip = el("span", { className: "step__tooltip", textContent: detail });
-            tooltip.setAttribute("id", "step-tooltip-" + (i + 1));
-            tooltip.setAttribute("role", "tooltip");
-            li.appendChild(tooltip);
-            number.setAttribute("aria-describedby", "step-tooltip-" + (i + 1));
-          }
-          stepsContainer.appendChild(li);
+    /* -- Cómo funciona: dos recorridos (§51) -- */
+    if (cfg.howItWorks) {
+      setText("[data-how-title]", cfg.howItWorks.title);
+      setText("[data-how-intro]", cfg.howItWorks.intro);
+      var tracksContainer = document.querySelector("[data-how-tracks]");
+      if (tracksContainer) {
+        tracksContainer.innerHTML = "";
+        (cfg.howItWorks.tracks || []).forEach(function (track) {
+          var group = el("div", { className: "coordination__track" });
+          if (track.label) group.appendChild(el("h3", { className: "coordination__track-label", textContent: track.label }));
+          var ol = el("ol", { className: "coordination__steps" });
+          (track.steps || []).forEach(function (text, i) {
+            var li = el("li");
+            li.appendChild(el("span", { className: "step__number", textContent: String(i + 1) }));
+            li.appendChild(el("p", { textContent: text }));
+            ol.appendChild(li);
+          });
+          group.appendChild(ol);
+          tracksContainer.appendChild(group);
         });
-        /* Reveal animado al entrar en viewport */
+        var revealTracks = function () {
+          Array.prototype.slice.call(tracksContainer.querySelectorAll(".coordination__steps")).forEach(function (ol) {
+            ol.classList.add("is-revealed");
+          });
+        };
         if ("IntersectionObserver" in window) {
-          var stepsObserver = new IntersectionObserver(function (entries) {
+          var tracksObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
               if (entry.isIntersecting) {
-                stepsContainer.classList.add("is-revealed");
-                stepsObserver.unobserve(stepsContainer);
+                revealTracks();
+                tracksObserver.unobserve(tracksContainer);
               }
             });
-          }, { threshold: 0.3 });
-          stepsObserver.observe(stepsContainer);
+          }, { threshold: 0.2 });
+          tracksObserver.observe(tracksContainer);
         } else {
-          stepsContainer.classList.add("is-revealed");
+          revealTracks();
         }
       }
     }
 
     /* -- Experiencias: carrusel automático con descubrimiento dinámico -- */
+    if (cfg.experiencias) {
+      setText("[data-experiencias-title]", cfg.experiencias.title);
+      setText("[data-experiencias-intro]", cfg.experiencias.intro);
+    }
     var galleryData = [];
     var carousel = document.querySelector("[data-gallery-carousel]");
     var dotsContainer = document.querySelector("[data-gallery-dots]");
@@ -569,6 +608,37 @@
       if (faqLocation) faqLocation.classList.add("is-revealed");
     }
 
+    /* -- Club Empresas (§43–§45) -- */
+    if (cfg.business) {
+      setText("[data-business-title]", cfg.business.title);
+      setText("[data-business-text]", cfg.business.text);
+      setText("[data-business-cta-label]", cfg.business.cta);
+      setText("[data-business-uses-label]", cfg.business.usesLabel);
+      setText("[data-business-info-label]", cfg.business.infoLabel);
+      var usesList = document.querySelector("[data-business-uses]");
+      if (usesList) {
+        usesList.innerHTML = "";
+        (cfg.business.uses || []).forEach(function (item) { usesList.appendChild(el("li", { textContent: item })); });
+      }
+      var infoList = document.querySelector("[data-business-info]");
+      if (infoList) {
+        infoList.innerHTML = "";
+        (cfg.business.info || []).forEach(function (item) { infoList.appendChild(el("li", { textContent: item })); });
+      }
+    }
+
+    /* -- Anfitriones (§46–§47) -- */
+    if (cfg.hosts) {
+      setText("[data-hosts-title]", cfg.hosts.title);
+      setText("[data-hosts-text]", cfg.hosts.text);
+      setText("[data-hosts-cta-label]", cfg.hosts.cta);
+      var examplesList = document.querySelector("[data-hosts-examples]");
+      if (examplesList) {
+        examplesList.innerHTML = "";
+        (cfg.hosts.examples || []).forEach(function (item) { examplesList.appendChild(el("li", { textContent: item })); });
+      }
+    }
+
     /* -- Inquiry form -- */
     if (cfg.inquiry) {
       setText("[data-inquiry-title]", cfg.inquiry.title);
@@ -608,23 +678,24 @@
         if (inquiryForm) inquiryForm.classList.add("is-revealed");
       }
 
-      /* Field labels, placeholders from config (flat fields array) */
-      if (cfg.inquiry.fields) {
-        cfg.inquiry.fields.forEach(function (field) {
-          var labelEl = document.querySelector('[data-field-label="' + field.name + '"]');
-          if (labelEl) labelEl.textContent = field.label;
-          var placeholderEl = document.querySelector('[data-field-placeholder="' + field.name + '"]');
-          if (placeholderEl && field.placeholder) placeholderEl.placeholder = field.placeholder;
-        });
-      }
+      /* Etiquetas y placeholders de campos desde config */
+      var fieldLabels = cfg.inquiry.fieldLabels || {};
+      Object.keys(fieldLabels).forEach(function (name) {
+        var labelEl = document.querySelector('[data-field-label="' + name + '"]');
+        if (labelEl) labelEl.textContent = fieldLabels[name];
+      });
+      var fieldPlaceholders = cfg.inquiry.fieldPlaceholders || {};
+      Object.keys(fieldPlaceholders).forEach(function (name) {
+        var placeholderEl = document.querySelector('[data-field-placeholder="' + name + '"]');
+        if (placeholderEl) placeholderEl.placeholder = fieldPlaceholders[name];
+      });
 
-      /* Event type select — populated from config */
+      /* Tipo de encuentro — poblado desde config (§52) */
       var eventTypeSelect = document.querySelector("[data-event-type-select]");
       var eventTypePlaceholder = document.querySelector("[data-event-type-placeholder]");
       if (eventTypePlaceholder && cfg.inquiry.eventTypePlaceholder) eventTypePlaceholder.textContent = cfg.inquiry.eventTypePlaceholder;
-      var eventTypeField = cfg.inquiry.fields.find(function (f) { return f.name === "eventType"; });
-      if (eventTypeSelect && eventTypeField && eventTypeField.options) {
-        eventTypeField.options.forEach(function (opt) {
+      if (eventTypeSelect && cfg.inquiry.options) {
+        cfg.inquiry.options.forEach(function (opt) {
           var optEl = el("option", { value: opt.value, textContent: opt.label });
           eventTypeSelect.appendChild(optEl);
         });
@@ -692,18 +763,24 @@
       });
     }
 
-    /* -- Mobile CTA text from config -- */
-    if (cfg.hero && cfg.hero.ctaPrimary) {
-      setText("[data-mobile-cta-text]", cfg.hero.ctaPrimary);
-      setText("[data-mobile-menu-cta]", cfg.hero.ctaPrimary);
-    }
+    /* -- Mobile CTA text from config (§68) -- */
+    setText("[data-mobile-cta-text]", (cfg.ui && cfg.ui.mobileCta && cfg.ui.mobileCta.default) || "Consultar");
 
     /* -- Fallback UI texts from config -- */
     if (cfg.ui) {
       setText("[data-fallback-notice]", cfg.ui.whatsappFallbackNotice);
       setText("[data-fallback-copy-label]", cfg.ui.whatsappFallbackCopyLabel);
       setText("[data-fallback-open-label]", cfg.ui.whatsappFallbackOpenLabel);
-      setText("[data-scene-capacity-suffix]", cfg.ui.sceneCapacitySuffix);
+    }
+
+    /* -- Agenda: carga y render vía events.js (§20–§42) -- */
+    if (window.ClubEvents && window.ClubEvents.init) {
+      window.ClubEvents.init(cfg);
+    }
+
+    /* -- Analítica: helper compartido (§75–§76) -- */
+    function track(name, params) {
+      if (window.ClubEvents && window.ClubEvents.track) window.ClubEvents.track(name, params);
     }
 
     /* ============================================================
@@ -767,24 +844,46 @@
     var masthead = document.querySelector("[data-masthead]");
     var mobileCta = document.querySelector("[data-mobile-cta]");
     var navLinks = Array.prototype.slice.call(document.querySelectorAll("[data-nav-link]"));
-    var spySections = ["encuentros", "la-casa", "coordinacion", "experiencias", "preguntas", "consultar"];
+    var spySections = ["propuestas", "agenda", "empresas", "la-casa", "anfitriones", "experiencias", "como-funciona", "preguntas", "consultar"];
+    var mobileCtaCfg = (cfg.ui && cfg.ui.mobileCta) || {};
 
-    function updateActiveNav() {
+    function currentSection() {
       var scrollPos = window.scrollY + 120;
       var current = null;
       for (var i = 0; i < spySections.length; i++) {
         var sec = document.getElementById(spySections[i]);
         if (sec && sec.offsetTop <= scrollPos) current = spySections[i];
       }
+      return current;
+    }
+
+    function updateActiveNav() {
+      var current = currentSection();
       navLinks.forEach(function (link) {
         link.classList.toggle("is-active", link.getAttribute("data-nav-link") === current);
       });
+    }
+
+    /* CTA móvil contextual (§68) */
+    function updateMobileCta(current) {
+      if (!mobileCta) return;
+      if (current === "agenda") {
+        setText("[data-mobile-cta-text]", mobileCtaCfg.agenda || "Ver próximos");
+        mobileCta.href = "#agenda";
+      } else if (current === "empresas") {
+        setText("[data-mobile-cta-text]", mobileCtaCfg.empresas || "Consultar jornada");
+        mobileCta.href = "#consultar";
+      } else {
+        setText("[data-mobile-cta-text]", mobileCtaCfg.default || "Consultar");
+        mobileCta.href = "#consultar";
+      }
     }
 
     if (masthead) {
       var consultSection = document.getElementById("consultar");
       var onScroll = function () {
         masthead.classList.toggle("is-scrolled", window.scrollY > 80);
+        var current = currentSection();
         if (mobileCta) {
           var heroEl = document.querySelector(".hero");
           var pastHero = heroEl && window.scrollY > heroEl.offsetHeight - 120;
@@ -794,6 +893,7 @@
             inConsult = rect.top < window.innerHeight && rect.bottom > 0;
           }
           mobileCta.classList.toggle("is-visible", pastHero && !inConsult && window.innerWidth < 900);
+          updateMobileCta(current);
         }
         updateActiveNav();
       };
@@ -876,20 +976,22 @@
 
     /* -- Hero CTA -- */
     var heroConsult = document.querySelector("[data-hero-cta-primary]");
-    if (heroConsult) heroConsult.addEventListener("click", function () {});
-    var heroOpenHouse = document.querySelector("[data-open-house]");
-    if (heroOpenHouse) heroOpenHouse.addEventListener("click", function () {
-      setScene(cfg.experiences[0].id);
+    if (heroConsult) heroConsult.addEventListener("click", function () {
+      track("click_whatsapp", { source: "hero" });
     });
+    var heroSecondary = document.querySelector("[data-hero-cta-secondary]");
+    if (heroSecondary && offerItems.length) {
+      heroSecondary.addEventListener("click", function () { setScene(offerItems[0].id); });
+    }
 
-    /* -- Scene selector — crossfade de doble capa + Ken Burns + texto escalonado -- */
+    /* -- Selector de propuestas — crossfade de doble capa + Ken Burns + texto escalonado -- */
     var sceneButtons = Array.prototype.slice.call(document.querySelectorAll("[data-scene]"));
     var sceneStage = document.querySelector(".scene-stage");
     var sceneImageA = document.querySelector("[data-scene-image-a]");
     var sceneImageB = document.querySelector("[data-scene-image-b]");
     var sceneInfo = document.querySelector("[data-scene-info]");
     var sceneMessage = document.querySelector("[data-scene-message]");
-    var sceneCapacity = document.querySelector("[data-scene-capacity]");
+    var sceneMeta = document.querySelector("[data-scene-meta]");
     var sceneCta = document.querySelector("[data-scene-cta]");
     var sceneTimer = 0;
     var sceneActiveLayer = "a";
@@ -953,10 +1055,12 @@
         /* Texto entra con delay respecto a la imagen */
         setTimeout(function () {
           if (sceneMessage) sceneMessage.textContent = s.message;
-          if (sceneCapacity) sceneCapacity.textContent = s.capacity;
+          if (sceneMeta) sceneMeta.textContent = s.meta || "";
           if (sceneCta) {
             sceneCta.querySelector("span").textContent = s.cta;
-            sceneCta.setAttribute("data-scene-type", key);
+            sceneCta.setAttribute("data-scene-type", s.type);
+            sceneCta.setAttribute("data-scene-key", key);
+            if (s.ctaTarget) sceneCta.href = s.ctaTarget;
           }
           if (sceneInfo) sceneInfo.classList.remove("is-swapping");
         }, instant ? 0 : 200);
@@ -1051,10 +1155,10 @@
     /* Hash activation */
     function checkHash() {
       var hash = window.location.hash;
-      if (hash.indexOf("encuentros") >= 0 || hash.indexOf("scene=") >= 0) {
+      if (hash.indexOf("propuestas") >= 0 || hash.indexOf("scene=") >= 0) {
         var match = hash.match(/scene=(\w+)/);
-        var key = match ? match[1] : (cfg.experiences[0] ? cfg.experiences[0].id : "celebrar");
-        if (scenes[key]) setScene(key);
+        var key = match ? match[1] : (offerItems[0] ? offerItems[0].id : null);
+        if (key && scenes[key]) setScene(key);
       }
     }
     window.addEventListener("hashchange", checkHash);
@@ -1206,8 +1310,12 @@
 
     function getCapacity(type, cfg) {
       if (!cfg || !cfg.capacity) return 0;
-      var keyMap = { social: "social", corporativo: "corporate", workshop: "workshop", otro: "otro" };
-      return cfg.capacity[keyMap[type]] || cfg.capacity.social || 0;
+      var keyMap = {
+        social: "social", corporativo: "corporate", workshop: "workshop", otro: "otro",
+        private: "private", business: "business", lab: "lab", experiencia: "experiencia", host: "host"
+      };
+      var key = keyMap[type] || type;
+      return cfg.capacity[key] || cfg.capacity.social || 0;
     }
 
     var shiftPlaceholderOpt = form.querySelector("[data-shift-placeholder]");
@@ -1351,44 +1459,74 @@
         else clearFieldError("whatsapp");
       });
     }
-    /* Event type select change — updates dependent shift/capacity */
+    /* Event type select change — updates dependent shift/capacity + labels */
     var eventTypeInputEl = form.elements.eventType;
+    var baseFieldLabels = cfg.inquiry.fieldLabels || {};
+    var labelOverrides = cfg.inquiry.labelOverrides || {};
+
+    function applyLabelOverrides(type) {
+      var overrides = labelOverrides[type] || {};
+      ["date", "people", "detail"].forEach(function (name) {
+        var labelEl = document.querySelector('[data-field-label="' + name + '"]');
+        if (labelEl) labelEl.textContent = overrides[name] || baseFieldLabels[name] || "";
+      });
+    }
+
     if (eventTypeInputEl) {
       eventTypeInputEl.addEventListener("change", function () {
         if (eventTypeInputEl.value) {
           formData.eventType = eventTypeInputEl.value;
           updateShiftOptions(eventTypeInputEl.value);
           updateCapacity(eventTypeInputEl.value);
+          applyLabelOverrides(eventTypeInputEl.value);
           clearFieldError("eventType");
         }
       });
     }
 
-    /* Preseleccionar tipo desde CTA contextual (AC-3) */
+    /* Preselección contextual del tipo desde los CTA (§54) */
+    function preselectType(value, delay) {
+      if (!value || !eventTypeInputEl) return;
+      var exists = false;
+      for (var i = 0; i < eventTypeInputEl.options.length; i++) {
+        if (eventTypeInputEl.options[i].value === value) { exists = true; break; }
+      }
+      if (!exists) return;
+      track("view_offer", { product: value });
+      setTimeout(function () {
+        eventTypeInputEl.value = value;
+        eventTypeInputEl.dispatchEvent(new Event("change"));
+      }, delay || 300);
+    }
+
     document.querySelectorAll("[data-scene-cta]").forEach(function (cta) {
       cta.addEventListener("click", function () {
-        var sceneType = cta.getAttribute("data-scene-type");
-        var typeMap = { celebrar: "social", pensar: "corporativo", crear: "workshop" };
-        var typeValue = typeMap[sceneType] || "social";
-        setTimeout(function () {
-          if (eventTypeInputEl) {
-            eventTypeInputEl.value = typeValue;
-            eventTypeInputEl.dispatchEvent(new Event("change"));
-          }
-        }, 300);
+        preselectType(cta.getAttribute("data-scene-type"));
       });
     });
 
-    /* Submit → WhatsApp */
+    var businessCta = document.querySelector("[data-business-cta]");
+    if (businessCta) businessCta.addEventListener("click", function () {
+      track("click_business", { source: "empresas" });
+      preselectType("business");
+    });
+    var hostsCta = document.querySelector("[data-hosts-cta]");
+    if (hostsCta) hostsCta.addEventListener("click", function () {
+      track("click_host", { source: "anfitriones" });
+      preselectType("host");
+    });
+
+    /* Submit → WhatsApp (§55) */
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!validateForm()) return;
 
       var wa = cfg.whatsappMessage || {};
       var typeLabels = wa.typeLabels || {};
+      var typeLabel = typeLabels[formData.eventType] || formData.eventType;
       var message = [
         wa.greeting || "",
-        (wa.typeLabel || "") + ": " + (typeLabels[formData.eventType] || formData.eventType),
+        (wa.typeLabel || "") + ": " + typeLabel,
         (wa.peopleLabel || "") + ": " + formData.people,
         (wa.dateLabel || "") + ": " + formData.date,
         (wa.shiftLabel || "") + ": " + formData.shift,
@@ -1396,10 +1534,13 @@
         (wa.whatsappLabel || "") + ": " + formData.whatsapp
       ];
       if (formData.detail) message.push((wa.detailLabel || "") + ": " + formData.detail);
+      message.push((wa.originLabel || "Origen") + ": Web / " + typeLabel);
       if (wa.closingLine) message.push(wa.closingLine);
 
       var text = message.join("\n");
       var url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(text);
+
+      track("submit_inquiry", { type: formData.eventType, people: formData.people });
 
       if (preparing) preparing.hidden = false;
       if (fieldsEl) fieldsEl.hidden = true;
@@ -1433,6 +1574,7 @@
         if (successEl) successEl.hidden = true;
         if (fallback) fallback.hidden = true;
         if (fieldsEl) fieldsEl.hidden = false;
+        applyLabelOverrides("");
         if (eventTypeInputEl) eventTypeInputEl.focus();
       });
     }
@@ -1460,7 +1602,7 @@
 
     /* Initialize first scene — respect hash entrante (AC-6) */
     var hashMatch = window.location.hash.match(/scene=(\w+)/);
-    var initialScene = hashMatch && hashMatch[1] ? hashMatch[1] : (cfg.experiences && cfg.experiences[0] ? cfg.experiences[0].id : null);
+    var initialScene = hashMatch && hashMatch[1] ? hashMatch[1] : (offerItems[0] ? offerItems[0].id : null);
     if (initialScene && scenes[initialScene]) setScene(initialScene);
   }
 
