@@ -458,7 +458,11 @@
     function showGallerySlide(idx) {
       var slides = carousel ? carousel.querySelectorAll(".gallery__slide") : [];
       var dots = dotsContainer ? dotsContainer.querySelectorAll(".gallery__dot") : [];
-      slides.forEach(function (s, si) { s.classList.toggle("is-active", si === idx); });
+      slides.forEach(function (s, si) {
+        var active = si === idx;
+        s.classList.toggle("is-active", active);
+        s.setAttribute("aria-hidden", active ? "false" : "true");
+      });
       dots.forEach(function (d, di) { d.classList.toggle("is-active", di === idx); });
       galleryIndex = idx;
     }
@@ -467,8 +471,9 @@
       if (galleryData.length) showGallerySlide((galleryIndex + 1) % galleryData.length);
     }
 
+    var galleryUserPaused = false;
     function startGalleryAuto() {
-      if (galleryTimer) return;
+      if (galleryTimer || galleryUserPaused || reduceMotion.matches) return;
       galleryTimer = setInterval(nextGallerySlide, galleryInterval);
     }
 
@@ -794,8 +799,13 @@
     var logoPresentation = document.querySelector("[data-hero-logo-presentation]");
     var watermark = document.querySelector("[data-hero-watermark]");
 
+    var carouselUserPaused = false;
+    function stopCarousel() {
+      if (carouselTimer) { clearInterval(carouselTimer); carouselTimer = 0; }
+    }
     function startCarousel() {
-      if (carouselSlides.length <= 1) return;
+      if (carouselSlides.length <= 1 || carouselUserPaused || reduceMotion.matches) return;
+      stopCarousel();
       var interval = (cfg.hero && cfg.hero.carouselInterval) ? cfg.hero.carouselInterval : 7000;
       carouselTimer = setInterval(function () {
         var current = carouselSlides[carouselIndex];
@@ -1092,10 +1102,11 @@
     /* Auto-rotación de escenas — pausa en hover/focus, respeta reduced-motion */
     var sceneAutoTimer = 0;
     var sceneAutoPaused = false;
+    var sceneUserPaused = false;
     var sceneInterval = 2800;
 
     function startSceneAuto() {
-      if (reduceMotion.matches || sceneAutoPaused || sceneButtons.length < 2) return;
+      if (reduceMotion.matches || sceneAutoPaused || sceneUserPaused || sceneButtons.length < 2) return;
       stopSceneAuto();
       sceneAutoTimer = setInterval(function () {
         var current = -1;
@@ -1190,6 +1201,21 @@
     var lbTrigger = null;
     var lbFocusable = [];
     var lbData = galleryData;
+    var lbBackground = [
+      document.querySelector("header"),
+      document.querySelector("main"),
+      document.querySelector("footer"),
+      document.querySelector(".mobile-cta")
+    ];
+
+    /* Aísla el contenido de fondo mientras el diálogo está abierto (§4) */
+    function setBackgroundInert(on) {
+      lbBackground.forEach(function (node) {
+        if (!node) return;
+        if (on) node.setAttribute("inert", "");
+        else node.removeAttribute("inert");
+      });
+    }
 
     function updateLbFocusable() {
       lbFocusable = Array.prototype.slice.call(lightbox.querySelectorAll("button, [href], [tabindex]:not([tabindex='-1'])"));
@@ -1212,6 +1238,7 @@
       lightbox.setAttribute("aria-modal", "true");
       lightbox.setAttribute("role", "dialog");
       document.body.style.overflow = "hidden";
+      setBackgroundInert(true);
       updateLbFocusable();
       var closeBtn = lightbox.querySelector("[data-lightbox-close]");
       if (closeBtn) closeBtn.focus();
@@ -1221,6 +1248,7 @@
       lightbox.hidden = true;
       lightbox.removeAttribute("aria-modal");
       document.body.style.overflow = "";
+      setBackgroundInert(false);
       if (lbTrigger) lbTrigger.focus();
     }
 
@@ -1255,6 +1283,59 @@
         var diff = e.changedTouches[0].screenX - touchStartX;
         if (Math.abs(diff) > 50) { diff > 0 ? lightboxPrev() : lightboxNext(); }
       }, { passive: true });
+    }
+
+    /* -- Control de pausa de rotación (WCAG 2.2.2) -- */
+    if (reduceMotion.matches) root.classList.add("rotations-off");
+
+    function setupRotationToggle(button, startFn, stopFn, pauseText, resumeText) {
+      if (!button) return;
+      var label = button.querySelector(".rotation-toggle__label");
+      function setPaused(paused) {
+        button.setAttribute("aria-pressed", String(paused));
+        var text = paused ? (resumeText || "Reanudar rotación") : (pauseText || "Pausar rotación");
+        button.setAttribute("aria-label", text);
+        if (label) label.textContent = text;
+      }
+      setPaused(false);
+      button.addEventListener("click", function () {
+        var paused = button.getAttribute("aria-pressed") === "true";
+        setPaused(!paused);
+        if (paused) startFn(); else stopFn();
+      });
+    }
+
+    setupRotationToggle(
+      document.querySelector("[data-hero-rotate]"),
+      function () { carouselUserPaused = false; startCarousel(); },
+      function () { carouselUserPaused = true; stopCarousel(); },
+      "Pausar el carrusel de imágenes",
+      "Reanudar el carrusel de imágenes"
+    );
+    setupRotationToggle(
+      document.querySelector("[data-gallery-rotate]"),
+      function () { galleryUserPaused = false; startGalleryAuto(); },
+      function () { galleryUserPaused = true; stopGalleryAuto(); },
+      "Pausar el carrusel de imágenes",
+      "Reanudar el carrusel de imágenes"
+    );
+    setupRotationToggle(
+      document.querySelector("[data-scenes-rotate]"),
+      function () { sceneUserPaused = false; startSceneAuto(); },
+      function () { sceneUserPaused = true; stopSceneAuto(); },
+      "Pausar la rotación de propuestas",
+      "Reanudar la rotación de propuestas"
+    );
+
+    /* -- Ampliar imagen (Experiencias) con acceso por teclado -- */
+    var galleryExpand = document.querySelector("[data-gallery-expand]");
+    if (galleryExpand) {
+      galleryExpand.addEventListener("click", function () {
+        if (lightbox && galleryData.length) {
+          lbData = galleryData;
+          openLightbox(galleryIndex, galleryExpand);
+        }
+      });
     }
 
     /* ============================================================
