@@ -169,7 +169,7 @@
     }
 
     var rest = upcoming.filter(function (e) { return e !== featured; });
-    return { featured: featured, rest: rest, total: upcoming.length };
+    return { featured: featured, rest: rest, total: upcoming.length, all: upcoming };
   }
 
   /* ---------- render de una tarjeta (§23) ---------- */
@@ -229,6 +229,61 @@
     return card;
   }
 
+  /* ---------- datos estructurados: Event (§64) ---------- */
+  function ymd(d) {
+    var m = d.getMonth() + 1, day = d.getDate();
+    return d.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (day < 10 ? "0" : "") + day;
+  }
+
+  function timeParts(str) {
+    if (!isNonEmpty(str)) return { start: null, end: null };
+    var parts = String(str).replace(/[–—]/g, "-").split("-");
+    function pick(s) {
+      var m = /(\d{1,2}):(\d{2})/.exec(s || "");
+      return m ? (m[1].length < 2 ? "0" + m[1] : m[1]) + ":" + m[2] : null;
+    }
+    return { start: pick(parts[0]), end: pick(parts[1]) };
+  }
+
+  function eventSchema(list) {
+    var base = (cfg.site && cfg.site.url) ? String(cfg.site.url).replace(/\/$/, "") : "";
+    return list.map(function (e) {
+      var t = timeParts(e.time);
+      var node = {
+        "@type": "Event",
+        "name": e.title,
+        "startDate": ymd(e.date) + (t.start ? "T" + t.start + ":00-03:00" : ""),
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "El Club del Chañar",
+          "address": { "@type": "PostalAddress", "addressLocality": "Río Ceballos", "addressRegion": "Córdoba", "addressCountry": "AR" }
+        },
+        "description": e.shortDescription || e.subtitle || e.title,
+        "organizer": { "@type": "Organization", "name": "El Club del Chañar", "url": base + "/" },
+        "url": base + "/#agenda"
+      };
+      if (t.end) node.endDate = ymd(e.endDate) + "T" + t.end + ":00-03:00";
+      var img = imageFor(e);
+      if (img) node.image = img.indexOf("http") === 0 ? img : base + "/" + img;
+      var kw = (e.tags && e.tags.length) ? e.tags.join(", ") : e.category;
+      if (kw) node.keywords = kw;
+      return node;
+    });
+  }
+
+  function injectEventSchema(list) {
+    var prev = document.querySelector('script[data-jsonld="events"]');
+    if (prev && prev.parentNode) prev.parentNode.removeChild(prev);
+    if (!list || !list.length) return;
+    var script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.setAttribute("data-jsonld", "events");
+    script.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": eventSchema(list) });
+    document.head.appendChild(script);
+  }
+
   /* ---------- render de la sección ---------- */
   function render() {
     var body = document.querySelector("[data-agenda-body]");
@@ -246,6 +301,7 @@
       if (agenda.hideWhenEmpty && section) section.hidden = true;
       if (emptyEl) emptyEl.hidden = false;
       if (actions) actions.hidden = true;
+      injectEventSchema([]);
       return;
     }
     if (section) section.hidden = false;
@@ -257,6 +313,7 @@
       cards.push(buildCard(e, false));
     });
     cards.forEach(function (c) { body.appendChild(c); });
+    injectEventSchema(state.all);
 
     if (state.total > limit && actions) {
       actions.hidden = false;
@@ -264,7 +321,7 @@
       if (more && !more.getAttribute("href").startsWith("http")) {
         var number = (cfg.contact && cfg.contact.whatsapp) || "";
         more.href = "https://wa.me/" + number + "?text=" +
-          encodeURIComponent("Hola, quiero ver toda la agenda de El Club del Chañar.");
+          encodeURIComponent("Hola, quiero pedir la agenda completa de El Club del Chañar.");
         more.target = "_blank";
         more.rel = "noopener noreferrer";
       }
@@ -302,6 +359,7 @@
     state.featured = selected.featured;
     state.rest = selected.rest;
     state.total = selected.total;
+    state.all = selected.all;
   }
 
   function load() {
