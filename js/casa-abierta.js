@@ -98,7 +98,7 @@
 
         if (navDesktop) {
           if (item.cta) {
-            navDesktop.appendChild(el("a", { href: item.href, textContent: item.label, className: "masthead__cta" }));
+            navDesktop.appendChild(el("a", { href: item.href, textContent: item.label, className: "masthead__cta", "data-nav-link": item.link || "" }));
           } else if (!hasChildren) {
             navDesktop.appendChild(el("a", { href: item.href, textContent: item.label, "data-nav-link": item.link || "" }));
           } else {
@@ -125,7 +125,7 @@
 
         if (navMobile) {
           if (item.cta) {
-            navMobile.appendChild(el("a", { href: item.href, textContent: item.label, className: "mobile-menu__cta" }));
+            navMobile.appendChild(el("a", { href: item.href, textContent: item.label, className: "mobile-menu__cta", "data-nav-link": item.link || "" }));
           } else if (!hasChildren) {
             navMobile.appendChild(el("a", { href: item.href, textContent: item.label, "data-nav-link": item.link || "" }));
           } else {
@@ -1035,6 +1035,16 @@
     var mobileCta = document.querySelector("[data-mobile-cta]");
     var navLinks = Array.prototype.slice.call(document.querySelectorAll("[data-nav-link]"));
     var spySections = ["propuestas", "agenda", "empresas", "la-casa", "anfitriones", "experiencias", "como-funciona", "preguntas", "consultar"];
+    /* Cada sección pertenece a una opción del menú principal: así el menú
+       queda coherente con el orden de la página y siempre hay un activo. */
+    var spyOwner = {
+      "propuestas": "propuestas", "la-casa": "propuestas",
+      "agenda": "agenda", "experiencias": "agenda",
+      "empresas": "empresas",
+      "anfitriones": "anfitriones",
+      "como-funciona": "preguntas", "preguntas": "preguntas",
+      "consultar": "consultar"
+    };
     var mobileCtaCfg = (cfg.ui && cfg.ui.mobileCta) || {};
 
     function currentSection() {
@@ -1049,8 +1059,22 @@
 
     function updateActiveNav() {
       var current = currentSection();
+      var owner = spyOwner[current] || current;
       navLinks.forEach(function (link) {
-        link.classList.toggle("is-active", link.getAttribute("data-nav-link") === current);
+        /* Las sub-opciones de escena comparten destino: no se marcan. */
+        if (link.hasAttribute("data-nav-scene")) {
+          link.classList.remove("is-active");
+          link.removeAttribute("aria-current");
+          return;
+        }
+        var value = link.getAttribute("data-nav-link");
+        var inSub = !!link.closest(".nav-sub, .mobile-sub");
+        /* Nivel 1: la opción principal de la sección. Nivel 2: la
+           sub-opción exacta, solo si apunta a otra sección que la principal. */
+        var active = inSub ? (value === current && current !== owner) : (value === owner);
+        link.classList.toggle("is-active", active);
+        if (active) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
       });
     }
 
