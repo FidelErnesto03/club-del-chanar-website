@@ -160,21 +160,46 @@
         if (b) b.setAttribute("aria-expanded", "false");
       });
     }
+    var navCloseTimer = 0;
+    var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    function cancelNavClose() { if (navCloseTimer) { clearTimeout(navCloseTimer); navCloseTimer = 0; } }
+    function scheduleNavClose() { cancelNavClose(); navCloseTimer = setTimeout(closeNavGroups, 160); }
+
     navGroups.forEach(function (group) {
       var toggle = group.querySelector(".nav-group__toggle");
       if (toggle) {
         toggle.addEventListener("click", function () {
           var isOpen = group.classList.contains("is-open");
+          /* En dispositivos híbridos (hover + táctil), el clic que sigue al
+             hover no debe cerrar lo que el hover acaba de abrir. */
+          if (isOpen && group.__hoverAt && (Date.now() - group.__hoverAt) < 700) {
+            group.__hoverAt = 0;
+            return;
+          }
           closeNavGroups();
           if (!isOpen) { group.classList.add("is-open"); toggle.setAttribute("aria-expanded", "true"); }
         });
       }
-      if (window.matchMedia("(hover: hover)").matches) {
-        group.addEventListener("mouseenter", function () { closeNavGroups(); group.classList.add("is-open"); if (toggle) toggle.setAttribute("aria-expanded", "true"); });
-        group.addEventListener("mouseleave", function () { group.classList.remove("is-open"); if (toggle) toggle.setAttribute("aria-expanded", "false"); });
+      /* Hover solo en dispositivos con puntero fino; en táctil manda el clic. */
+      if (canHover) {
+        group.addEventListener("mouseenter", function () {
+          cancelNavClose();
+          closeNavGroups();
+          group.classList.add("is-open");
+          group.__hoverAt = Date.now();
+          if (toggle) toggle.setAttribute("aria-expanded", "true");
+        });
+        group.addEventListener("mouseleave", scheduleNavClose);
       }
     });
     document.addEventListener("click", function (e) { if (!e.target.closest(".nav-group")) closeNavGroups(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { cancelNavClose(); closeNavGroups(); }
+    });
+    /* Cerrar al elegir una opción o sub-opción */
+    Array.prototype.slice.call(document.querySelectorAll(".nav-sub a, .mobile-sub a")).forEach(function (a) {
+      a.addEventListener("click", function () { cancelNavClose(); closeNavGroups(); });
+    });
     Array.prototype.slice.call(document.querySelectorAll(".mobile-group")).forEach(function (g) {
       var b = g.querySelector(".mobile-group__toggle");
       if (b) b.addEventListener("click", function () {
