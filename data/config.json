@@ -10,11 +10,57 @@
     }
   },
   "nav": [
-    { "label": "El Club", "href": "#propuestas", "link": "propuestas" },
-    { "label": "Agenda", "href": "#agenda", "link": "agenda" },
-    { "label": "Empresas", "href": "#empresas", "link": "empresas" },
-    { "label": "Organizá aquí", "href": "#anfitriones", "link": "anfitriones" },
-    { "label": "Preguntas", "href": "#preguntas", "link": "preguntas" },
+    {
+      "label": "El Club",
+      "href": "#propuestas",
+      "link": "propuestas",
+      "children": [
+        { "label": "Las cuatro formas", "href": "#propuestas", "link": "propuestas" },
+        { "label": "Encuentros privados", "href": "#propuestas", "link": "propuestas", "scene": "private" },
+        { "label": "Jornadas de equipo", "href": "#propuestas", "link": "propuestas", "scene": "business" },
+        { "label": "Experiencias", "href": "#propuestas", "link": "propuestas", "scene": "experiences" },
+        { "label": "Club Lab", "href": "#propuestas", "link": "propuestas", "scene": "lab" },
+        { "label": "Cada Rincón", "href": "#la-casa", "link": "la-casa" }
+      ]
+    },
+    {
+      "label": "Agenda",
+      "href": "#agenda",
+      "link": "agenda",
+      "children": [
+        { "label": "Próximamente en El Club", "href": "#agenda", "link": "agenda" },
+        { "label": "Cómo funciona", "href": "#como-funciona", "link": "como-funciona" }
+      ]
+    },
+    {
+      "label": "Empresas",
+      "href": "#empresas",
+      "link": "empresas",
+      "children": [
+        { "label": "Jornadas de equipo", "href": "#empresas", "link": "empresas" },
+        { "label": "Usos e información", "href": "#empresas", "link": "empresas" },
+        { "label": "Consultar jornada", "href": "#consultar", "link": "consultar" }
+      ]
+    },
+    {
+      "label": "Organizá aquí",
+      "href": "#anfitriones",
+      "link": "anfitriones",
+      "children": [
+        { "label": "Proponer una experiencia", "href": "#anfitriones", "link": "anfitriones" },
+        { "label": "Preguntas frecuentes", "href": "#preguntas", "link": "preguntas" }
+      ]
+    },
+    {
+      "label": "Preguntas",
+      "href": "#preguntas",
+      "link": "preguntas",
+      "children": [
+        { "label": "Preguntas frecuentes", "href": "#preguntas", "link": "preguntas" },
+        { "label": "Ubicación", "href": "#preguntas", "link": "preguntas" },
+        { "label": "Experiencias pasadas", "href": "#experiencias", "link": "experiencias" }
+      ]
+    },
     { "label": "Consultar", "href": "#consultar", "cta": true }
   ],
   "ui": {
@@ -115,6 +161,7 @@
     "logoWatermark": false
   },
   "offers": {
+    "kicker": "El Club",
     "title": "¿Qué querés que suceda?",
     "clarification": "Mientras estás, es todo tuyo. Un solo grupo habita el Club cada vez.",
     "items": [
@@ -173,6 +220,7 @@
     ]
   },
   "agenda": {
+    "kicker": "Agenda",
     "title": "Próximamente en El Club",
     "subtitle": "Algunas cosas se reservan. Otras simplemente suceden.",
     "endpoint": "",
@@ -198,6 +246,7 @@
     "eventIdLabel": "EVENTO"
   },
   "business": {
+    "kicker": "Empresas",
     "title": "Un día fuera de la oficina puede cambiar la conversación.",
     "text": "El Club recibe equipos pequeños que necesitan pensar, planificar, decidir o trabajar juntos sin las interrupciones del día a día.",
     "usesLabel": "Se usa para",
@@ -228,6 +277,7 @@
     "priceLabel": ""
   },
   "hosts": {
+    "kicker": "Anfitriones",
     "title": "¿Tenés algo interesante para compartir?",
     "text": "Si enseñás, cocinás, investigás, creás, guiás o tenés una comunidad alrededor de algo que vale la pena vivir, podemos organizarlo juntos.",
     "examples": [
@@ -288,6 +338,7 @@
     }
   ],
   "howItWorks": {
+    "kicker": "Proceso",
     "title": "Cómo funciona",
     "intro": "Como con alguien de confianza: contás qué imaginás y lo armamos juntos.",
     "tracks": [
@@ -313,6 +364,7 @@
     ]
   },
   "experiencias": {
+    "kicker": "Experiencias",
     "title": "Así se vive El Club",
     "intro": "Encuentros que ya vivieron el Club. Cada foto es una historia real.",
     "imageDir": "assets/img/experiencias/",
@@ -349,6 +401,7 @@
     }
   ],
   "inquiry": {
+    "kicker": "Consulta",
     "title": "Contanos qué querés que suceda.",
     "intro": "Cada encuentro se arma a medida. Contanos qué tenés en mente.",
     "fieldLabels": {

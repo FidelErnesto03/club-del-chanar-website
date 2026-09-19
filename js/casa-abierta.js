@@ -72,33 +72,162 @@
       if (heroSecondary && cfg.hero.ctaSecondaryHref) heroSecondary.href = cfg.hero.ctaSecondaryHref;
     }
 
-    /* -- Navegación (desktop + móvil) desde config (§13) -- */
-    if (cfg.nav) {
+    /* -- Navegación jerárquica (opciones + sub-opciones) (§13) -- */
+    var CARET = '<path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>';
+
+    function navChildLink(child) {
+      var a = el("a", { href: child.href, textContent: child.label, "data-nav-link": child.link || "" });
+      if (child.scene) {
+        a.setAttribute("data-nav-scene", child.scene);
+        a.addEventListener("click", function () {
+          setTimeout(function () { if (scenes[child.scene]) setScene(child.scene); }, 260);
+        });
+      }
+      return a;
+    }
+
+    function buildNav() {
       var navDesktop = document.querySelector("[data-nav]");
       var navMobile = document.querySelector("[data-mobile-nav]");
       if (navDesktop) navDesktop.innerHTML = "";
       if (navMobile) navMobile.innerHTML = "";
-      cfg.nav.forEach(function (item) {
+      var uid = 0;
+
+      (cfg.nav || []).forEach(function (item) {
+        var hasChildren = item.children && item.children.length;
+
         if (navDesktop) {
-          var link = el("a", {
-            href: item.href,
-            textContent: item.label,
-            "data-nav-link": item.link || ""
-          });
-          if (item.cta) link.className = "masthead__cta";
-          navDesktop.appendChild(link);
+          if (item.cta) {
+            navDesktop.appendChild(el("a", { href: item.href, textContent: item.label, className: "masthead__cta" }));
+          } else if (!hasChildren) {
+            navDesktop.appendChild(el("a", { href: item.href, textContent: item.label, "data-nav-link": item.link || "" }));
+          } else {
+            uid++;
+            var subId = "nav-sub-" + uid;
+            var group = el("div", { className: "nav-group" });
+            var toggle = el("button", {
+              className: "nav-group__toggle",
+              type: "button",
+              "aria-expanded": "false",
+              "aria-haspopup": "true",
+              "aria-controls": subId,
+              "data-nav-link": item.link || ""
+            });
+            toggle.appendChild(el("span", { textContent: item.label }));
+            toggle.appendChild(el("svg", { viewBox: "0 0 24 24", "aria-hidden": "true", className: "nav-group__caret", innerHTML: CARET }));
+            var sub = el("ul", { className: "nav-sub", id: subId });
+            item.children.forEach(function (child) { sub.appendChild(el("li", null, navChildLink(child))); });
+            group.appendChild(toggle);
+            group.appendChild(sub);
+            navDesktop.appendChild(group);
+          }
         }
+
         if (navMobile) {
-          var mLink = el("a", {
-            href: item.href,
-            textContent: item.label,
-            "data-nav-link": item.link || ""
-          });
-          if (item.cta) mLink.className = "mobile-menu__cta";
-          navMobile.appendChild(mLink);
+          if (item.cta) {
+            navMobile.appendChild(el("a", { href: item.href, textContent: item.label, className: "mobile-menu__cta" }));
+          } else if (!hasChildren) {
+            navMobile.appendChild(el("a", { href: item.href, textContent: item.label, "data-nav-link": item.link || "" }));
+          } else {
+            uid++;
+            var mSubId = "mnav-sub-" + uid;
+            var mGroup = el("div", { className: "mobile-group" });
+            var mToggle = el("button", {
+              className: "mobile-group__toggle",
+              type: "button",
+              "aria-expanded": "false",
+              "aria-controls": mSubId
+            });
+            mToggle.appendChild(el("span", { textContent: item.label }));
+            mToggle.appendChild(el("svg", { viewBox: "0 0 24 24", "aria-hidden": "true", className: "mobile-group__caret", innerHTML: CARET }));
+            var mSub = el("div", { className: "mobile-sub", id: mSubId });
+            item.children.forEach(function (child) { mSub.appendChild(navChildLink(child)); });
+            mGroup.appendChild(mToggle);
+            mGroup.appendChild(mSub);
+            navMobile.appendChild(mGroup);
+          }
         }
       });
     }
+    buildNav();
+
+    /* Desplegables (desktop) + acordeón (móvil) */
+    var navGroups = Array.prototype.slice.call(document.querySelectorAll(".nav-group"));
+    function closeNavGroups() {
+      navGroups.forEach(function (g) {
+        g.classList.remove("is-open");
+        var b = g.querySelector(".nav-group__toggle");
+        if (b) b.setAttribute("aria-expanded", "false");
+      });
+    }
+    navGroups.forEach(function (group) {
+      var toggle = group.querySelector(".nav-group__toggle");
+      if (toggle) {
+        toggle.addEventListener("click", function () {
+          var isOpen = group.classList.contains("is-open");
+          closeNavGroups();
+          if (!isOpen) { group.classList.add("is-open"); toggle.setAttribute("aria-expanded", "true"); }
+        });
+      }
+      if (window.matchMedia("(hover: hover)").matches) {
+        group.addEventListener("mouseenter", function () { closeNavGroups(); group.classList.add("is-open"); if (toggle) toggle.setAttribute("aria-expanded", "true"); });
+        group.addEventListener("mouseleave", function () { group.classList.remove("is-open"); if (toggle) toggle.setAttribute("aria-expanded", "false"); });
+      }
+    });
+    document.addEventListener("click", function (e) { if (!e.target.closest(".nav-group")) closeNavGroups(); });
+    Array.prototype.slice.call(document.querySelectorAll(".mobile-group")).forEach(function (g) {
+      var b = g.querySelector(".mobile-group__toggle");
+      if (b) b.addEventListener("click", function () {
+        var open = g.classList.toggle("is-open");
+        b.setAttribute("aria-expanded", String(open));
+      });
+    });
+
+    /* -- Kickers de sección -- */
+    [
+      ["[data-offers-kicker]", cfg.offers],
+      ["[data-agenda-kicker]", cfg.agenda],
+      ["[data-business-kicker]", cfg.business],
+      ["[data-hosts-kicker]", cfg.hosts],
+      ["[data-experiencias-kicker]", cfg.experiencias],
+      ["[data-how-kicker]", cfg.howItWorks],
+      ["[data-inquiry-kicker]", cfg.inquiry]
+    ].forEach(function (pair) { setText(pair[0], pair[1] && pair[1].kicker); });
+
+    /* -- Revelado dinámico de componentes al entrar en foco -- */
+    var revealObserver = null;
+    function showAllReveals() {
+      Array.prototype.slice.call(document.querySelectorAll("[data-reveal]")).forEach(function (elm) { elm.classList.add("is-in"); });
+    }
+    function observeReveals() {
+      if (reduceMotion.matches || !("IntersectionObserver" in window)) { showAllReveals(); return; }
+      if (!revealObserver) {
+        revealObserver = new IntersectionObserver(function (entries) {
+          var batch = entries.filter(function (e) { return e.isIntersecting; });
+          batch.sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+          batch.forEach(function (entry, i) {
+            entry.target.style.transitionDelay = (i * 80) + "ms";
+            entry.target.classList.add("is-in");
+            revealObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+      }
+      Array.prototype.slice.call(document.querySelectorAll("[data-reveal]:not(.is-in)")).forEach(function (elm) { revealObserver.observe(elm); });
+    }
+    window.ClubReveal = {
+      activate: function (root) {
+        var scope = root || document;
+        [
+          ".section-kicker", ".agenda__heading", ".agenda-card", ".empresas__lead", ".empresas__list",
+          ".hosts__inner > *", ".coordination__heading", ".coordination__track", ".gallery__heading",
+          ".gallery__stage", ".faq__item", ".faq__location", ".consult__lead", ".inquiry",
+          ".encounters__top > *", ".casa__header", ".casa__cards > *"
+        ].forEach(function (sel) {
+          Array.prototype.slice.call(scope.querySelectorAll(sel)).forEach(function (elm) { elm.setAttribute("data-reveal", ""); });
+        });
+        observeReveals();
+      }
+    };
 
     /* -- Hero location (clickeable a Google Maps) -- */
     if (cfg.location) {
@@ -800,8 +929,14 @@
 
     /* -- Agenda: carga y render vía events.js (§20–§42) -- */
     if (window.ClubEvents && window.ClubEvents.init) {
-      window.ClubEvents.init(cfg);
+      var agendaReady = window.ClubEvents.init(cfg);
+      if (agendaReady && agendaReady.then) {
+        agendaReady.then(function () { window.ClubReveal.activate(document); });
+      }
     }
+
+    /* -- Revelado: activar sobre el contenido ya poblado -- */
+    window.ClubReveal.activate(document);
 
     /* -- Analítica: helper compartido (§75–§76) -- */
     function track(name, params) {
