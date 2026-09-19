@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Manrope:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Manrope:wght@400;500;600&display=swap" />
-<link rel="stylesheet" href="css/casa-abierta.css?v=54" />
+<link rel="stylesheet" href="css/casa-abierta.css?v=55" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -135,6 +135,7 @@
   <section class="encounters" id="propuestas" aria-labelledby="encounters-title">
     <div class="encounters__controls">
       <div class="encounters__top">
+        <p class="section-kicker" data-offers-kicker></p>
         <h2 id="encounters-title" class="encounters__title" data-offers-title>¿Qué querés que suceda?</h2>
         <p class="encounters__clarification" data-offers-clarification></p>
         <div class="scene-tabs" role="tablist" aria-label="Formas de vivir el Club" data-scene-tabs></div>
@@ -170,6 +171,7 @@
   <!-- §20 Próximamente en El Club — Agenda populated by JS (events.js) -->
   <section class="agenda" id="agenda" aria-labelledby="agenda-title">
     <div class="agenda__heading">
+      <p class="section-kicker" data-agenda-kicker></p>
       <h2 id="agenda-title" data-agenda-title></h2>
       <p data-agenda-subtitle></p>
     </div>
@@ -196,6 +198,7 @@
   <section class="empresas" id="empresas" aria-labelledby="empresas-title">
     <div class="empresas__inner">
       <div class="empresas__lead">
+        <p class="section-kicker" data-business-kicker></p>
         <h2 id="empresas-title" data-business-title></h2>
         <p data-business-text></p>
         <a class="btn btn--primary empresas__cta" href="#consultar" data-business-cta data-source="empresas">
@@ -266,6 +269,7 @@
   <!-- §46 Organizá algo aquí — Anfitriones -->
   <section class="hosts" id="anfitriones" aria-labelledby="hosts-title">
     <div class="hosts__inner">
+      <p class="section-kicker" data-hosts-kicker></p>
       <h2 id="hosts-title" data-hosts-title></h2>
       <p data-hosts-text></p>
       <ul class="hosts__examples" data-hosts-examples></ul>
@@ -279,6 +283,7 @@
   <!-- §49 Experiencias — carrusel con cambio automático -->
   <section class="gallery" id="experiencias" aria-labelledby="gallery-title">
     <div class="gallery__heading">
+      <p class="section-kicker" data-experiencias-kicker></p>
       <h2 id="gallery-title" data-experiencias-title>Así se vive El Club</h2>
       <p data-experiencias-intro>Encuentros que ya vivieron el Club. Cada foto es una historia real.</p>
     </div>
@@ -303,6 +308,7 @@
   <!-- §51 Cómo funciona — populated by JS -->
   <section class="coordination" id="como-funciona" aria-labelledby="coordination-title">
     <div class="coordination__heading">
+      <p class="section-kicker" data-how-kicker></p>
       <h2 id="coordination-title" data-how-title></h2>
       <p data-how-intro></p>
     </div>
@@ -319,6 +325,7 @@
   <!-- §6.9 Preguntas y ubicación — populated by JS -->
   <section class="faq" id="preguntas" aria-labelledby="faq-title">
     <div class="faq__heading">
+      <p class="section-kicker">Preguntas</p>
       <h2 id="faq-title">Preguntas y ubicación</h2>
       <p>Lo que necesitás saber antes de escribirnos.</p>
     </div>
@@ -347,6 +354,7 @@
   <section class="consult" id="consultar" aria-labelledby="consult-title">
     <div class="consult__inner">
       <div class="consult__lead">
+        <p class="section-kicker" data-inquiry-kicker></p>
         <h2 id="consult-title" data-inquiry-title></h2>
         <p data-inquiry-intro></p>
       </div>
@@ -496,6 +504,6 @@
 </a>
 
 <script src="js/events.js?v=3" defer></script>
-<script src="js/casa-abierta.js?v=27" defer></script>
+<script src="js/casa-abierta.js?v=28" defer></script>
 </body>
 </html>

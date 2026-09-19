@@ -1179,11 +1179,11 @@ textarea:focus-visible {
    §6.7 Cómo se coordina
    ============================================================ */
 .coordination {
-  min-height: auto;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   padding: clamp(56px, 8vh, 96px) var(--margin);
   background: var(--sand);
   text-align: center;
@@ -1426,11 +1426,11 @@ textarea:focus-visible {
    §6.8 Galería
    ============================================================ */
 .gallery {
-  min-height: auto;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   padding: clamp(56px, 8vh, 96px) var(--margin);
   background: var(--earth);
   color: var(--text-light);
@@ -1621,10 +1621,10 @@ textarea:focus-visible {
    §6.9 Preguntas y ubicación
    ============================================================ */
 .faq {
-  min-height: auto;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   padding: clamp(56px, 8vh, 96px) var(--margin);
   background: var(--sand);
   border-top: 1px solid var(--line);
@@ -1804,7 +1804,7 @@ textarea:focus-visible {
    §6.10 Consulta final
    ============================================================ */
 .consult {
-  min-height: auto;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2271,6 +2271,10 @@ a[target="_blank"]::after {
    Agenda — Próximamente en El Club (§20–§42)
    ============================================================ */
 .agenda {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: clamp(48px, 7vh, 88px) var(--margin);
   background: var(--sand);
 }
@@ -2400,6 +2404,10 @@ a[target="_blank"]::after {
    Club Empresas (§43–§45)
    ============================================================ */
 .empresas {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: clamp(48px, 7vh, 88px) var(--margin);
   background: var(--earth);
   color: var(--text-light);
@@ -2456,6 +2464,10 @@ a[target="_blank"]::after {
    Anfitriones — Organizá algo aquí (§46–§47)
    ============================================================ */
 .hosts {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: clamp(48px, 7vh, 88px) var(--margin);
   background: var(--sand);
   border-top: 1px solid var(--line);
@@ -2525,4 +2537,168 @@ a[target="_blank"]::after {
   }
   .empresas__lists { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   Navegación por secciones — pantalla completa + snap
+   ============================================================ */
+html {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 72px;
+}
+section[id] { scroll-snap-align: start; }
+.hero { scroll-snap-align: start; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-snap-type: none; }
+}
+
+/* ============================================================
+   Kicker de sección (imagen corporativa editorial)
+   ============================================================ */
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--wood);
+}
+.section-kicker::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: var(--amber);
+}
+.empresas .section-kicker,
+.gallery .section-kicker,
+.consult .section-kicker { color: var(--amber); }
+.section-kicker:empty { display: none; }
+
+/* ============================================================
+   Revelado dinámico al entrar en foco
+   ============================================================ */
+.has-js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+}
+.has-js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .has-js [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* ============================================================
+   Menú principal con sub-opciones (desktop)
+   ============================================================ */
+.nav-group { position: relative; }
+.nav-group__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--sand-82);
+  transition: color 200ms var(--ease);
+}
+.nav-group__toggle:hover,
+.nav-group.is-open .nav-group__toggle,
+.nav-group__toggle.is-active { color: var(--amber); }
+.nav-group__caret {
+  width: 15px;
+  height: 15px;
+  transition: transform 200ms var(--ease);
+}
+.nav-group.is-open .nav-group__caret { transform: rotate(180deg); }
+
+.nav-sub {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  min-width: 232px;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid var(--amber-16);
+  background: var(--earth-94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 18px 40px var(--charcoal-30);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 180ms var(--ease), transform 180ms var(--ease), visibility 180ms;
+  z-index: 60;
+}
+.nav-group.is-open .nav-sub {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-sub li { list-style: none; }
+.nav-sub a {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--sand-82);
+  transition: background-color 160ms var(--ease), color 160ms var(--ease);
+}
+.nav-sub a:hover,
+.nav-sub a.is-active {
+  background: var(--amber-16);
+  color: var(--amber);
+}
+
+/* ============================================================
+   Menú móvil con sub-opciones (acordeón)
+   ============================================================ */
+.mobile-group { width: 100%; max-width: 420px; }
+.mobile-menu .mobile-group__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 24px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-muted-light);
+  transition: color 200ms var(--ease);
+}
+.mobile-menu .mobile-group__toggle:hover,
+.mobile-menu .mobile-group.is-open .mobile-group__toggle { color: var(--amber); }
+.mobile-group__caret {
+  width: 18px;
+  height: 18px;
+  transition: transform 200ms var(--ease);
+}
+.mobile-group.is-open .mobile-group__caret { transform: rotate(180deg); }
+.mobile-sub {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 300ms var(--ease-out);
+}
+.mobile-group.is-open .mobile-sub { max-height: 520px; }
+.mobile-menu .mobile-sub a {
+  display: block;
+  padding: 8px 24px 8px 44px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--sand-62);
+  transition: color 180ms var(--ease);
+}
+.mobile-menu .mobile-sub a::after { display: none; }
+.mobile-menu .mobile-sub a:hover,
+.mobile-menu .mobile-sub a.is-active { color: var(--amber); }
 
