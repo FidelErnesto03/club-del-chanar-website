@@ -33,7 +33,7 @@
   }
 
   function init() {
-    fetch("data/config.json?v=15")
+    fetch("data/config.json?v=16")
       .then(function (r) { return r.json(); })
       .then(function (cfg) { bootstrap(cfg); })
       .catch(function (err) {
@@ -1035,6 +1035,10 @@
     var mobileCta = document.querySelector("[data-mobile-cta]");
     var navLinks = Array.prototype.slice.call(document.querySelectorAll("[data-nav-link]"));
     var spySections = ["propuestas", "agenda", "empresas", "la-casa", "anfitriones", "experiencias", "como-funciona", "preguntas", "consultar"];
+    /* El menú de §13 es simplificado (5 opciones + CTA). Las secciones que no
+       tienen opción propia se reflejan en la opción de su grupo, para que
+       siempre haya un estado activo coherente. */
+    var spyOwner = { "la-casa": "propuestas", "experiencias": "agenda", "como-funciona": "preguntas" };
     var mobileCtaCfg = (cfg.ui && cfg.ui.mobileCta) || {};
 
     function currentSection() {
@@ -1049,15 +1053,23 @@
 
     function updateActiveNav() {
       var current = currentSection();
+      var owner = spyOwner[current] || current;
       var hash = window.location.hash;
       navLinks.forEach(function (link) {
         var value = link.getAttribute("data-nav-link");
         var inSub = !!link.closest(".nav-sub, .mobile-sub");
-        /* Nivel 1: la opción de la sección actual. Nivel 2: la sub-opción
-           del ancla en la que estamos, dentro de esa misma sección. */
+        /* Las sub-opciones de escena comparten destino con su opción padre:
+           no se marcan para no resaltar cuatro ítems a la vez. */
+        if (link.hasAttribute("data-nav-scene")) {
+          link.classList.remove("is-active");
+          link.removeAttribute("aria-current");
+          return;
+        }
+        /* Nivel 1: la opción del grupo de la sección actual. Nivel 2: la
+           sub-opción, cuando estamos en el ancla que le corresponde. */
         var active = inSub
-          ? (value === current && hash === link.getAttribute("href"))
-          : (value === current);
+          ? (value === owner && hash === link.getAttribute("href"))
+          : (value === owner);
         link.classList.toggle("is-active", active);
         if (active) link.setAttribute("aria-current", "true");
         else link.removeAttribute("aria-current");

@@ -10,7 +10,17 @@
     }
   },
   "nav": [
-    { "label": "El Club", "href": "#propuestas", "link": "propuestas" },
+    {
+      "label": "El Club",
+      "href": "#propuestas",
+      "link": "propuestas",
+      "children": [
+        { "label": "Encuentros privados", "href": "#propuestas", "link": "propuestas", "scene": "private" },
+        { "label": "Jornadas de equipo", "href": "#propuestas", "link": "propuestas", "scene": "business" },
+        { "label": "Experiencias", "href": "#propuestas", "link": "propuestas", "scene": "experiences" },
+        { "label": "Club Lab", "href": "#propuestas", "link": "propuestas", "scene": "lab" }
+      ]
+    },
     { "label": "Agenda", "href": "#agenda", "link": "agenda" },
     {
       "label": "Empresas",
@@ -21,10 +31,7 @@
         { "label": "Qué encontrás", "href": "#empresas-info", "link": "empresas" }
       ]
     },
-    { "label": "Cada Rincón", "href": "#la-casa", "link": "la-casa" },
     { "label": "Organizá aquí", "href": "#anfitriones", "link": "anfitriones" },
-    { "label": "Experiencias", "href": "#experiencias", "link": "experiencias" },
-    { "label": "Cómo funciona", "href": "#como-funciona", "link": "como-funciona" },
     {
       "label": "Preguntas",
       "href": "#preguntas",
