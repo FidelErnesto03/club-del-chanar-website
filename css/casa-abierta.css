@@ -2643,6 +2643,16 @@ section[id] { scroll-snap-align: start; }
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
+/* Puente invisible: cubre el hueco entre el botón y el panel para que el
+   mouse no salga del grupo al bajar hacia las sub-opciones. */
+.nav-sub::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -16px;
+  height: 16px;
+}
 .nav-sub li { list-style: none; }
 .nav-sub a {
   display: block;
