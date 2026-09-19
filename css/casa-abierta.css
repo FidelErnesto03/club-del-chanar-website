@@ -64,6 +64,7 @@
   --reading: 720px;
   --gap: 24px;
   --margin: clamp(20px, 5vw, 72px);
+  --header-h: 77px;
 }
 
 /* -- Reset -- */
@@ -105,7 +106,7 @@ h3 { font-size: var(--title-m); }
 
 p { max-width: 68ch; text-wrap: pretty; }
 
-section[id] { scroll-margin-top: 72px; }
+section[id] { scroll-margin-top: 0; }
 
 /* -- Focus (§11.1) -- */
 a:focus-visible,
@@ -611,7 +612,7 @@ textarea:focus-visible {
 .encounters {
   display: grid;
   grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
-  height: 100svh;
+  height: calc(100svh - var(--header-h));
   overflow: hidden;
   background: var(--earth);
   color: var(--text-light);
@@ -789,8 +790,8 @@ textarea:focus-visible {
    §6.5 El Club — menú gráfico + galería
    ============================================================ */
 .casa {
-  height: 100svh;
-  max-height: 100svh;
+  height: calc(100svh - var(--header-h));
+  max-height: calc(100svh - var(--header-h));
   overflow: hidden;
   background: var(--sand);
   display: flex;
@@ -1179,7 +1180,7 @@ textarea:focus-visible {
    §6.7 Cómo se coordina
    ============================================================ */
 .coordination {
-  min-height: 100svh;
+  min-height: calc(100svh - var(--header-h));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1426,7 +1427,7 @@ textarea:focus-visible {
    §6.8 Galería
    ============================================================ */
 .gallery {
-  min-height: 100svh;
+  min-height: calc(100svh - var(--header-h));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1621,7 +1622,7 @@ textarea:focus-visible {
    §6.9 Preguntas y ubicación
    ============================================================ */
 .faq {
-  min-height: 100svh;
+  min-height: calc(100svh - var(--header-h));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1804,7 +1805,7 @@ textarea:focus-visible {
    §6.10 Consulta final
    ============================================================ */
 .consult {
-  min-height: 100svh;
+  min-height: calc(100svh - var(--header-h));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2165,7 +2166,7 @@ a[target="_blank"]::after {
    Responsive (§10)
    ============================================================ */
 @media (max-width: 1199px) {
-  .encounters { grid-template-columns: 1fr; height: auto; min-height: 100svh; }
+  .encounters { grid-template-columns: 1fr; height: auto; min-height: calc(100svh - var(--header-h)); }
   .encounters__controls { padding: 80px var(--margin) 40px; overflow: visible; }
   .scene-stage { min-height: 70vh; }
   .casa__heading { grid-template-columns: 1fr; gap: 24px; }
@@ -2271,7 +2272,7 @@ a[target="_blank"]::after {
    Agenda — Próximamente en El Club (§20–§42)
    ============================================================ */
 .agenda {
-  min-height: 100svh;
+  min-height: calc(100svh - var(--header-h));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2404,7 +2405,7 @@ a[target="_blank"]::after {
    Club Empresas (§43–§45)
    ============================================================ */
 .empresas {
-  min-height: 100svh;
+  min-height: calc(100svh - var(--header-h));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2464,7 +2465,7 @@ a[target="_blank"]::after {
    Anfitriones — Organizá algo aquí (§46–§47)
    ============================================================ */
 .hosts {
-  min-height: 100svh;
+  min-height: calc(100svh - var(--header-h));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2543,7 +2544,7 @@ a[target="_blank"]::after {
    ============================================================ */
 html {
   scroll-snap-type: y proximity;
-  scroll-padding-top: 72px;
+  scroll-padding-top: var(--header-h);
 }
 section[id] { scroll-snap-align: start; }
 .hero { scroll-snap-align: start; }
