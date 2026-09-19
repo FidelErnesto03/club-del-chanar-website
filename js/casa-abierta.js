@@ -613,6 +613,26 @@
       if (faqLocation) faqLocation.classList.add("is-revealed");
     }
 
+    /* -- Datos estructurados: FAQPage desde config (§64, §77) -- */
+    if (cfg.faq && cfg.faq.length) {
+      var faqLd = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": cfg.faq.map(function (item) {
+          return {
+            "@type": "Question",
+            "name": item.question,
+            "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+          };
+        })
+      };
+      var faqScript = document.createElement("script");
+      faqScript.type = "application/ld+json";
+      faqScript.setAttribute("data-jsonld", "faq");
+      faqScript.textContent = JSON.stringify(faqLd);
+      document.head.appendChild(faqScript);
+    }
+
     /* -- Club Empresas (§43–§45) -- */
     if (cfg.business) {
       setText("[data-business-title]", cfg.business.title);

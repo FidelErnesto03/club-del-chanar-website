@@ -26,24 +26,38 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Place",
-  "name": "El Club del Chañar",
-  "description": "Casa privada para encuentros, experiencias, talleres y jornadas de equipos pequeños en Lomas del Chañar, Río Ceballos, Córdoba.",
-  "url": "https://clubdelchanar.com/",
-  "image": "https://clubdelchanar.com/assets/img/carousel/casa-entre-arboles.webp",
-  "telephone": "+5493515643361",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Río Ceballos",
-    "addressRegion": "Córdoba",
-    "addressCountry": "AR"
-  },
-  "geo": { "@type": "GeoCoordinates", "latitude": "-31.23", "longitude": "-64.19" },
-  "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Encuentros privados", "description": "Hasta 45 personas, uso exclusivo por turno" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Jornadas para empresas", "description": "Equipos de 6 a 20 personas (hasta 25), uso exclusivo" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Club Lab", "description": "Encuentros de trabajo sobre problemas reales, grupos pequeños" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Experiencias", "description": "Actividades programadas con anfitriones invitados" } }
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://clubdelchanar.com/#venue",
+      "name": "El Club del Chañar",
+      "description": "Casa privada para encuentros, experiencias, talleres y jornadas de equipos pequeños en Lomas del Chañar, Río Ceballos, Córdoba.",
+      "url": "https://clubdelchanar.com/",
+      "image": "https://clubdelchanar.com/assets/img/carousel/casa-entre-arboles.webp",
+      "telephone": "+5493515643361",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Río Ceballos",
+        "addressRegion": "Córdoba",
+        "addressCountry": "AR"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": "-31.23", "longitude": "-64.19" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Sierras Chicas, Córdoba" },
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Encuentros privados", "description": "Hasta 45 personas, uso exclusivo por turno" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Jornadas para empresas", "description": "Equipos de 6 a 20 personas (hasta 25), uso exclusivo" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Club Lab", "description": "Encuentros de trabajo sobre problemas reales, grupos pequeños" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Experiencias", "description": "Actividades programadas con anfitriones invitados" } }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://clubdelchanar.com/#website",
+      "name": "El Club del Chañar",
+      "url": "https://clubdelchanar.com/",
+      "inLanguage": "es-AR",
+      "publisher": { "@id": "https://clubdelchanar.com/#venue" }
+    }
   ]
 }
 </script>
@@ -481,7 +495,7 @@
   <span data-mobile-cta-text></span>
 </a>
 
-<script src="js/events.js?v=2" defer></script>
-<script src="js/casa-abierta.js?v=26" defer></script>
+<script src="js/events.js?v=3" defer></script>
+<script src="js/casa-abierta.js?v=27" defer></script>
 </body>
 </html>
