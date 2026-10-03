@@ -2,13 +2,27 @@
    El Club del Chañar — Casa Abierta
    JS-driven: config.json as SINGLE source of truth (§13)
    Populates: hero, certainty, encounters, casa,
-   coordination, gallery, FAQ, form, footer — all from config
+   gallery, FAQ, form, footer — all from config
    ============================================================ */
 (function () {
   "use strict";
 
   var root = document.documentElement;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* -- Imágenes responsive desde manifest de derivados (V12) -- */
+  function applyResponsive(img, src, sizes) {
+    if (!img) return;
+    img.src = src;
+    var m = window.ClubImgManifest;
+    if (!m) return;
+    var rel = String(src).replace(/^assets\/img\//, "");
+    var widths = m[rel];
+    if (!widths || !widths.length) return;
+    var base = "assets/img/_derived/" + rel.replace(/\.webp$/, "");
+    img.srcset = widths.map(function (w) { return base + "-" + w + ".webp " + w + "w"; }).join(", ");
+    if (sizes) img.sizes = sizes;
+  }
 
   /* -- Helpers -- */
   function el(tag, attrs, children) {
@@ -33,7 +47,7 @@
   }
 
   function init() {
-    fetch("data/config.json?v=16")
+    fetch("data/config.json?v=20")
       .then(function (r) { return r.json(); })
       .then(function (cfg) { bootstrap(cfg); })
       .catch(function (err) {
@@ -54,9 +68,17 @@
       /* Carrusel: poblar slides desde config */
       var carouselImages = cfg.hero.carousel || [cfg.hero.image];
       var slides = Array.prototype.slice.call(document.querySelectorAll("[data-hero-slide]"));
+      var heroMobile = window.matchMedia("(max-width: 899px)").matches;
       carouselImages.forEach(function (src, i) {
         if (slides[i]) {
-          slides[i].src = src;
+          /* En móvil, el recorte de cobertura exige más resolución que la variante elegida por ancho (H04) */
+          if (heroMobile) {
+            slides[i].removeAttribute("srcset");
+            slides[i].removeAttribute("sizes");
+            slides[i].src = src;
+          } else {
+            applyResponsive(slides[i], src, "100vw");
+          }
           slides[i].alt = i === 0 ? (cfg.hero.imageAlt || "") : "";
         }
       });
@@ -111,7 +133,8 @@
               "aria-expanded": "false",
               "aria-haspopup": "true",
               "aria-controls": subId,
-              "data-nav-link": item.link || ""
+              "data-nav-link": item.link || "",
+              "data-nav-href": item.href || ""
             });
             toggle.appendChild(el("span", { textContent: item.label }));
             toggle.appendChild(el("svg", { viewBox: "0 0 24 24", "aria-hidden": "true", className: "nav-group__caret", innerHTML: CARET }));
@@ -165,10 +188,23 @@
     function cancelNavClose() { if (navCloseTimer) { clearTimeout(navCloseTimer); navCloseTimer = 0; } }
     function scheduleNavClose() { cancelNavClose(); navCloseTimer = setTimeout(closeNavGroups, 160); }
 
+    function goToSection(href) {
+      if (!href) return;
+      if (location.hash === href) {
+        var target = document.querySelector(href);
+        if (target) target.scrollIntoView();
+      } else {
+        location.hash = href;
+      }
+    }
+
     navGroups.forEach(function (group) {
       var toggle = group.querySelector(".nav-group__toggle");
       if (toggle) {
         toggle.addEventListener("click", function () {
+          /* La opción principal navega a su sección; el submenú se revela con hover o foco */
+          var href = toggle.getAttribute("data-nav-href");
+          if (href) { closeNavGroups(); goToSection(href); return; }
           var isOpen = group.classList.contains("is-open");
           /* En dispositivos híbridos (hover + táctil), el clic que sigue al
              hover no debe cerrar lo que el hover acaba de abrir. */
@@ -191,6 +227,14 @@
         });
         group.addEventListener("mouseleave", scheduleNavClose);
       }
+      /* Acceso por teclado: al enfocar el grupo se revela el submenú */
+      group.addEventListener("focusin", function () {
+        cancelNavClose();
+        closeNavGroups();
+        group.classList.add("is-open");
+        if (toggle) toggle.setAttribute("aria-expanded", "true");
+      });
+      group.addEventListener("focusout", scheduleNavClose);
     });
     document.addEventListener("click", function (e) { if (!e.target.closest(".nav-group")) closeNavGroups(); });
     document.addEventListener("keydown", function (e) {
@@ -213,9 +257,7 @@
       ["[data-offers-kicker]", cfg.offers],
       ["[data-agenda-kicker]", cfg.agenda],
       ["[data-business-kicker]", cfg.business],
-      ["[data-hosts-kicker]", cfg.hosts],
       ["[data-experiencias-kicker]", cfg.experiencias],
-      ["[data-how-kicker]", cfg.howItWorks],
       ["[data-inquiry-kicker]", cfg.inquiry]
     ].forEach(function (pair) { setText(pair[0], pair[1] && pair[1].kicker); });
 
@@ -244,7 +286,7 @@
         var scope = root || document;
         [
           ".section-kicker", ".agenda__heading", ".agenda-card", ".empresas__lead", ".empresas__list",
-          ".hosts__inner > *", ".coordination__heading", ".coordination__track", ".gallery__heading",
+          ".gallery__heading",
           ".gallery__stage", ".faq__item", ".faq__location", ".consult__lead", ".inquiry",
           ".encounters__top > *", ".casa__header", ".casa__cards > *"
         ].forEach(function (sel) {
@@ -331,7 +373,7 @@
         card.className = "casa__card";
         card.setAttribute("data-space-index", i);
         var img = document.createElement("img");
-        img.src = space.imageDir + "01.webp";
+        applyResponsive(img, space.imageDir + "01.webp", "(min-width: 1200px) 200px, 150px");
         img.alt = space.imageAlt;
         img.loading = "lazy";
         card.appendChild(img);
@@ -378,6 +420,7 @@
     function openCasaGallery(i) {
       casaState.active = i;
       casaState.index = 0;
+      casaState.lastTrigger = casaCards ? casaCards.querySelector('.casa__card[data-space-index="' + i + '"]') : null;
       var space = casaSpaces[i];
       loadCasaImages(space.imageDir, function (images) {
         casaState.images = images;
@@ -430,6 +473,10 @@
       if (casaMenu) casaMenu.classList.remove("is-hidden");
       if (casaHeader) casaHeader.classList.remove("is-hidden");
       casaState.active = -1;
+      /* Devolver el foco a la portada que abrió la galería */
+      setTimeout(function () {
+        if (casaState.lastTrigger) casaState.lastTrigger.focus();
+      }, 420);
     }
 
     /* Mostrar imagen en posición i */
@@ -439,6 +486,7 @@
       setTimeout(function () {
         casaImage.src = casaState.images[i];
         casaImage.alt = casaSpaces[casaState.active].imageAlt;
+        applyResponsive(casaImage, casaState.images[i], "(min-width: 1200px) 1100px, 80vw");
         casaImage.classList.remove("is-swapping");
       }, 200);
       casaState.index = i;
@@ -494,47 +542,6 @@
       else if (e.key === "Escape") closeCasaGallery();
     });
 
-    /* -- Cómo funciona: dos recorridos (§51) -- */
-    if (cfg.howItWorks) {
-      setText("[data-how-title]", cfg.howItWorks.title);
-      setText("[data-how-intro]", cfg.howItWorks.intro);
-      var tracksContainer = document.querySelector("[data-how-tracks]");
-      if (tracksContainer) {
-        tracksContainer.innerHTML = "";
-        (cfg.howItWorks.tracks || []).forEach(function (track) {
-          var group = el("div", { className: "coordination__track" });
-          if (track.label) group.appendChild(el("h3", { className: "coordination__track-label", textContent: track.label }));
-          var ol = el("ol", { className: "coordination__steps" });
-          (track.steps || []).forEach(function (text, i) {
-            var li = el("li");
-            li.appendChild(el("span", { className: "step__number", textContent: String(i + 1) }));
-            li.appendChild(el("p", { textContent: text }));
-            ol.appendChild(li);
-          });
-          group.appendChild(ol);
-          tracksContainer.appendChild(group);
-        });
-        var revealTracks = function () {
-          Array.prototype.slice.call(tracksContainer.querySelectorAll(".coordination__steps")).forEach(function (ol) {
-            ol.classList.add("is-revealed");
-          });
-        };
-        if ("IntersectionObserver" in window) {
-          var tracksObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                revealTracks();
-                tracksObserver.unobserve(tracksContainer);
-              }
-            });
-          }, { threshold: 0.2 });
-          tracksObserver.observe(tracksContainer);
-        } else {
-          revealTracks();
-        }
-      }
-    }
-
     /* -- Experiencias: carrusel automático con descubrimiento dinámico -- */
     if (cfg.experiencias) {
       setText("[data-experiencias-title]", cfg.experiencias.title);
@@ -546,6 +553,9 @@
     var galleryIndex = 0;
     var galleryTimer = null;
     var galleryInterval = 5000;
+    if (cfg.experiencias && cfg.experiencias.intervalMs) {
+      galleryInterval = Number(cfg.experiencias.intervalMs) || galleryInterval;
+    }
 
     function buildGalleryCarousel(items) {
       if (!carousel || !items.length) return;
@@ -553,19 +563,19 @@
       var altBase = exp.alt || "Encuentro real en El Club del Chañar";
 
       galleryData = items.map(function (item) {
-        return { src: item.src, alt: altBase, caption: item.caption || "" };
+        return { src: item.src, alt: item.caption || altBase, caption: item.caption || "" };
       });
 
       /* Slides */
       carousel.innerHTML = "";
       items.forEach(function (item, i) {
         var slide = el("div", { className: "gallery__slide" + (i === 0 ? " is-active" : "") });
-        slide.appendChild(el("img", { src: item.src, alt: altBase, loading: "lazy" }));
-        if (item.caption) {
-          slide.appendChild(el("div", { className: "gallery__slide-caption", textContent: item.caption }));
-        }
+        var gimg = el("img", { alt: item.caption || altBase, loading: "lazy" });
+        applyResponsive(gimg, item.src, "100vw");
+        slide.appendChild(gimg);
         carousel.appendChild(slide);
       });
+      updateGalleryMeta(0);
 
       /* Dots */
       if (dotsContainer) {
@@ -609,6 +619,15 @@
       }
     }
 
+    var galleryCaption = document.querySelector("[data-gallery-caption]");
+    var galleryCounter = document.querySelector("[data-gallery-counter]");
+
+    function updateGalleryMeta(idx) {
+      var item = galleryData[idx];
+      if (galleryCaption) galleryCaption.textContent = (item && item.caption) ? item.caption : "";
+      if (galleryCounter) galleryCounter.textContent = galleryData.length ? (idx + 1) + " / " + galleryData.length : "";
+    }
+
     function showGallerySlide(idx) {
       var slides = carousel ? carousel.querySelectorAll(".gallery__slide") : [];
       var dots = dotsContainer ? dotsContainer.querySelectorAll(".gallery__dot") : [];
@@ -618,6 +637,7 @@
         s.setAttribute("aria-hidden", active ? "false" : "true");
       });
       dots.forEach(function (d, di) { d.classList.toggle("is-active", di === idx); });
+      updateGalleryMeta(idx);
       galleryIndex = idx;
     }
 
@@ -647,8 +667,12 @@
       });
     }
 
-    /* Descubrir imágenes: index.json (carga paralela) con fallback secuencial */
-    if (cfg.experiencias && cfg.experiencias.imageDir) {
+    /* Curaduría editorial desde config (preferida) o descubrimiento por carpeta */
+    if (cfg.experiencias && Array.isArray(cfg.experiencias.items) && cfg.experiencias.items.length) {
+      buildGalleryCarousel(cfg.experiencias.items.map(function (it) {
+        return { src: it.src, caption: it.caption || "" };
+      }));
+    } else if (cfg.experiencias && cfg.experiencias.imageDir) {
       var expDir = cfg.experiencias.imageDir;
       var expItems = [];
 
@@ -717,7 +741,12 @@
             "aria-controls": "faq-" + i
           });
           btn.appendChild(el("span", { textContent: item.question }));
-          btn.appendChild(el("svg", { className: "faq__icon", "aria-hidden": "true", viewBox: "0 0 24 24" }));
+          btn.appendChild(el("svg", {
+            className: "faq__icon",
+            "aria-hidden": "true",
+            viewBox: "0 0 24 24",
+            innerHTML: '<path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+          }));
           var answer = el("div", { className: "faq__answer", id: "faq-" + i, role: "region" });
           var answerInner = el("div", { className: "faq__answer-inner" });
           answerInner.appendChild(el("p", { textContent: item.answer }));
@@ -804,17 +833,18 @@
         infoList.innerHTML = "";
         (cfg.business.info || []).forEach(function (item) { infoList.appendChild(el("li", { textContent: item })); });
       }
-    }
-
-    /* -- Anfitriones (§46–§47) -- */
-    if (cfg.hosts) {
-      setText("[data-hosts-title]", cfg.hosts.title);
-      setText("[data-hosts-text]", cfg.hosts.text);
-      setText("[data-hosts-cta-label]", cfg.hosts.cta);
-      var examplesList = document.querySelector("[data-hosts-examples]");
-      if (examplesList) {
-        examplesList.innerHTML = "";
-        (cfg.hosts.examples || []).forEach(function (item) { examplesList.appendChild(el("li", { textContent: item })); });
+      /* Agrupación editorial de condiciones (H05) */
+      var groupsEl = document.querySelector("[data-business-groups]");
+      if (groupsEl && cfg.business.groups && cfg.business.groups.length) {
+        groupsEl.innerHTML = "";
+        cfg.business.groups.forEach(function (g) {
+          var box = el("div", { className: "empresas__group" });
+          if (g.label) box.appendChild(el("h4", { className: "empresas__group-label", textContent: g.label }));
+          var ul = el("ul", { className: "empresas__group-list" });
+          (g.items || []).forEach(function (item) { ul.appendChild(el("li", { textContent: item })); });
+          box.appendChild(ul);
+          groupsEl.appendChild(box);
+        });
       }
     }
 
@@ -827,6 +857,9 @@
       setText("[data-success-label]", cfg.inquiry.successLabel || "Tu consulta está en camino.");
       setText("[data-success-home-label]", cfg.inquiry.successHomeLabel || "Volver al inicio");
       setText("[data-success-again-label]", cfg.inquiry.successAgainLabel || "Hacer otra consulta");
+      setText("[data-success-wa-label]", cfg.inquiry.successWaLabel || "Abrir WhatsApp");
+      setText("[data-success-edit-label]", cfg.inquiry.successEditLabel || "Editar consulta");
+      setText("[data-success-copy-label]", cfg.inquiry.successCopyLabel || "Copiar mensaje");
       setText("[data-submit-note]", cfg.inquiry.submitNote);
 
       /* WhatsApp directo link */
@@ -1011,14 +1044,14 @@
           if (cfg.hero && cfg.hero.logoPresentation && logoPresentation) {
             setTimeout(function () {
               logoPresentation.hidden = false;
-              /* Después de la animación (3200ms), mostrar marca de agua */
+              /* Salida breve (1100ms), sin solapar el H1 */
               setTimeout(function () {
                 logoPresentation.hidden = true;
                 if (cfg.hero && cfg.hero.logoWatermark && watermark) watermark.hidden = false;
                 /* Iniciar carrusel después de la presentación del logo */
                 startCarousel();
-              }, 3200);
-            }, 600);
+              }, 1100);
+            }, 150);
           } else {
             /* Sin presentación de logo, iniciar carrusel directo */
             if (cfg.hero && cfg.hero.logoWatermark && watermark) watermark.hidden = false;
@@ -1034,11 +1067,10 @@
     var masthead = document.querySelector("[data-masthead]");
     var mobileCta = document.querySelector("[data-mobile-cta]");
     var navLinks = Array.prototype.slice.call(document.querySelectorAll("[data-nav-link]"));
-    var spySections = ["propuestas", "agenda", "empresas", "la-casa", "anfitriones", "experiencias", "como-funciona", "preguntas", "consultar"];
-    /* El menú de §13 es simplificado (5 opciones + CTA). Las secciones que no
-       tienen opción propia se reflejan en la opción de su grupo, para que
-       siempre haya un estado activo coherente. */
-    var spyOwner = { "la-casa": "propuestas", "experiencias": "agenda", "como-funciona": "preguntas" };
+    var spySections = ["propuestas", "agenda", "empresas", "la-casa", "experiencias", "preguntas", "consultar"];
+    /* Cada sección tiene ahora su propia opción en el menú, por lo que el
+       resaltado se resuelve directamente con el id de la sección. */
+    var spyOwner = {};
     var mobileCtaCfg = (cfg.ui && cfg.ui.mobileCta) || {};
 
     function currentSection() {
@@ -1082,12 +1114,15 @@
       if (current === "agenda") {
         setText("[data-mobile-cta-text]", mobileCtaCfg.agenda || "Ver próximos");
         mobileCta.href = "#agenda";
+        mobileCta.removeAttribute("data-preselect");
       } else if (current === "empresas") {
         setText("[data-mobile-cta-text]", mobileCtaCfg.empresas || "Consultar jornada");
         mobileCta.href = "#consultar";
+        mobileCta.setAttribute("data-preselect", "business");
       } else {
         setText("[data-mobile-cta-text]", mobileCtaCfg.default || "Consultar");
         mobileCta.href = "#consultar";
+        mobileCta.removeAttribute("data-preselect");
       }
     }
 
@@ -1104,7 +1139,9 @@
             var rect = consultSection.getBoundingClientRect();
             inConsult = rect.top < window.innerHeight && rect.bottom > 0;
           }
-          mobileCta.classList.toggle("is-visible", pastHero && !inConsult && window.innerWidth < 900);
+          /* La barra repite el destino de Agenda y cubre el opt-in (H02) */
+          var inAgenda = current === "agenda";
+          mobileCta.classList.toggle("is-visible", pastHero && !inConsult && !inAgenda && window.innerWidth < 900);
           updateMobileCta(current);
         }
         updateActiveNav();
@@ -1143,8 +1180,11 @@
         if (mobileMenu.hidden && !mobileMenu.classList.contains("is-open")) return;
         if (e.key === "Escape") { toggleMenu(false); burger.focus(); return; }
         if (e.key === "Tab") {
-          var links = Array.prototype.slice.call(mobileMenu.querySelectorAll("a"));
-          var first = links[0], last = links[links.length - 1];
+          var focusables = Array.prototype.slice.call(
+            mobileMenu.querySelectorAll("a, button, [tabindex]:not([tabindex='-1'])")
+          ).filter(function (n) { return n.getClientRects().length; });
+          if (!focusables.length) return;
+          var first = focusables[0], last = focusables[focusables.length - 1];
           if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
           else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
         }
@@ -1189,7 +1229,8 @@
     /* -- Hero CTA -- */
     var heroConsult = document.querySelector("[data-hero-cta-primary]");
     if (heroConsult) heroConsult.addEventListener("click", function () {
-      track("click_whatsapp", { source: "hero" });
+      /* El CTA primario navega a Agenda, no abre WhatsApp (V11) */
+      track("click_agenda", { source: "hero" });
     });
     var heroSecondary = document.querySelector("[data-hero-cta-secondary]");
     if (heroSecondary && offerItems.length) {
@@ -1208,6 +1249,20 @@
     var sceneTimer = 0;
     var sceneActiveLayer = "a";
     var sceneFirstLoad = true;
+
+    /* La elección manual (click o teclado) detiene la rotación y refleja el estado */
+    function markSceneManual() {
+      sceneManualOverride = true;
+      sceneUserPaused = true;
+      stopSceneAuto();
+      var rb = document.querySelector("[data-scenes-rotate]");
+      if (rb) {
+        rb.setAttribute("aria-pressed", "true");
+        rb.setAttribute("aria-label", "Reanudar la rotación de propuestas");
+        var rbl = rb.querySelector(".rotation-toggle__label");
+        if (rbl) rbl.textContent = "Reanudar la rotación de propuestas";
+      }
+    }
 
     function setScene(key) {
       var s = scenes[key];
@@ -1236,7 +1291,7 @@
         if (sceneFirstLoad) {
           /* Primera carga: imagen directa en capa A */
           if (sceneImageA) {
-            sceneImageA.src = s.src;
+            applyResponsive(sceneImageA, s.src, "(min-width: 1200px) 62vw, 100vw");
             sceneImageA.alt = s.alt;
             void sceneImageA.offsetWidth;
             sceneImageA.classList.add("is-active");
@@ -1244,7 +1299,7 @@
           sceneFirstLoad = false;
         } else {
           if (inactiveLayer) {
-            inactiveLayer.src = s.src;
+            applyResponsive(inactiveLayer, s.src, "(min-width: 1200px) 62vw, 100vw");
             inactiveLayer.alt = s.alt;
             void inactiveLayer.offsetWidth;
             inactiveLayer.classList.add("is-active");
@@ -1296,6 +1351,7 @@
             e.preventDefault();
             sceneButtons[nextIdx].focus();
             setScene(sceneButtons[nextIdx].getAttribute("data-scene"));
+            markSceneManual();
           }
         });
       });
@@ -1305,10 +1361,11 @@
     var sceneAutoTimer = 0;
     var sceneAutoPaused = false;
     var sceneUserPaused = false;
-    var sceneInterval = 2800;
+    var sceneManualOverride = false;
+    var sceneInterval = 7000;
 
     function startSceneAuto() {
-      if (reduceMotion.matches || sceneAutoPaused || sceneUserPaused || sceneButtons.length < 2) return;
+      if (reduceMotion.matches || sceneAutoPaused || sceneUserPaused || sceneManualOverride || sceneButtons.length < 2) return;
       stopSceneAuto();
       sceneAutoTimer = setInterval(function () {
         var current = -1;
@@ -1347,9 +1404,9 @@
         btn.addEventListener("focusin", function () { sceneAutoPaused = true; stopSceneAuto(); });
         btn.addEventListener("focusout", function () { sceneAutoPaused = false; startSceneAuto(); });
       });
-      /* Click manual reinicia el ciclo */
+      /* La elección manual prevalece: no se revierte automáticamente */
       sceneButtons.forEach(function (btn) {
-        btn.addEventListener("click", function () { stopSceneAuto(); startSceneAuto(); });
+        btn.addEventListener("click", function () { markSceneManual(); });
       });
       /* Auto-play solo cuando la sección está visible */
       if ("IntersectionObserver" in window) {
@@ -1428,6 +1485,7 @@
       if (!item) return;
       lbImage.src = item.src;
       lbImage.alt = item.alt;
+      applyResponsive(lbImage, item.src, "90vw");
       lbCaption.textContent = item.caption;
       lbCounter.textContent = (lbIndex + 1) + (cfg.ui && cfg.ui.lightboxCounterSeparator ? cfg.ui.lightboxCounterSeparator : "") + lbData.length;
     }
@@ -1523,11 +1581,24 @@
     );
     setupRotationToggle(
       document.querySelector("[data-scenes-rotate]"),
-      function () { sceneUserPaused = false; startSceneAuto(); },
+      function () { sceneUserPaused = false; sceneManualOverride = false; startSceneAuto(); },
       function () { sceneUserPaused = true; stopSceneAuto(); },
       "Pausar la rotación de propuestas",
       "Reanudar la rotación de propuestas"
     );
+
+    /* Pausar timers cuando la pestaña no está visible (§8) */
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        stopCarousel();
+        stopGalleryAuto();
+        stopSceneAuto();
+      } else {
+        startCarousel();
+        startGalleryAuto();
+        startSceneAuto();
+      }
+    });
 
     /* -- Ampliar imagen (Experiencias) con acceso por teclado -- */
     var galleryExpand = document.querySelector("[data-gallery-expand]");
@@ -1553,6 +1624,7 @@
     var formError = form.querySelector("[data-form-error]");
     var fieldsEl = form.querySelector("[data-fields]");
     var formData = {};
+    var lastMessage = "";
 
     var shiftOptions = Array.prototype.slice.call(form.querySelectorAll('select[name="shift"] option[data-for]'));
     var peopleInput = form.elements.people;
@@ -1793,11 +1865,19 @@
       track("click_business", { source: "empresas" });
       preselectType("business");
     });
-    var hostsCta = document.querySelector("[data-hosts-cta]");
-    if (hostsCta) hostsCta.addEventListener("click", function () {
-      track("click_host", { source: "anfitriones" });
-      preselectType("host");
-    });
+
+    /* CTA fijo móvil: preserva el contexto de origen (V09) */
+    if (mobileCta) {
+      mobileCta.addEventListener("click", function () {
+        var pre = mobileCta.getAttribute("data-preselect");
+        if (pre) {
+          track("click_business", { source: "mobile_cta" });
+          preselectType(pre);
+        } else if (currentSection() === "agenda") {
+          track("click_agenda", { source: "mobile_cta" });
+        }
+      });
+    }
 
     /* Submit → WhatsApp (§55) */
     form.addEventListener("submit", function (e) {
@@ -1822,26 +1902,44 @@
 
       var text = message.join("\n");
       var url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(text);
+      lastMessage = text;
 
       track("submit_inquiry", { type: formData.eventType, people: formData.people });
 
-      if (preparing) preparing.hidden = false;
+      /* Enlace explícito y estable: no depende del retorno de window.open (V15) */
+      var successWa = form.querySelector("[data-success-wa]");
+      if (successWa) successWa.href = url;
+      if (fallbackText) fallbackText.value = text;
+      var fbWaDirect = form.querySelector("[data-fallback-wa]");
+      if (fbWaDirect) fbWaDirect.href = url;
+
+      /* Apertura directa dentro del gesto del usuario, sin diferir 800 ms */
+      try { window.open(url, "_blank", "noopener,noreferrer"); } catch (err) { /* el enlace explícito queda disponible */ }
+
       if (fieldsEl) fieldsEl.hidden = true;
-
-      setTimeout(function () {
-        var win = window.open(url, "_blank", "noopener,noreferrer");
-        if (preparing) preparing.hidden = true;
-
-        if (!win || win.closed || typeof win.closed === "undefined") {
-          if (fallback) {
-            fallback.hidden = false;
-            if (fallbackText) fallbackText.value = text;
-          }
-        } else {
-          if (successEl) successEl.hidden = false;
-        }
-      }, 800);
+      if (successEl) successEl.hidden = false;
     });
+
+    /* Copiar mensaje después de preparar, sin depender de la apertura externa (H06) */
+    var successCopy = form.querySelector("[data-success-copy]");
+    if (successCopy) {
+      successCopy.addEventListener("click", function () {
+        var span = successCopy.querySelector("span");
+        var done = function () { if (span) span.textContent = (cfg.ui && cfg.ui.copySuccessLabel) || "Copiado"; };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(lastMessage).then(done).catch(done);
+        } else { done(); }
+      });
+    }
+    /* Editar consulta conservando todos los valores (H06) */
+    var successEdit = form.querySelector("[data-success-edit]");
+    if (successEdit) {
+      successEdit.addEventListener("click", function () {
+        if (successEl) successEl.hidden = true;
+        if (fieldsEl) fieldsEl.hidden = false;
+        if (eventTypeInputEl) eventTypeInputEl.focus();
+      });
+    }
 
     /* Hacer otra consulta — restaurar formulario */
     var againBtn = form.querySelector("[data-success-again]");

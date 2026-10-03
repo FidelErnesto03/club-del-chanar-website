@@ -7,11 +7,12 @@
 <meta name="theme-color" content="#3D312A" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="El Club del Chañar — Encuentros, experiencias y jornadas en Río Ceballos" />
-<meta property="og:description" content="Encuentros privados, experiencias y jornadas para grupos pequeños entre árboles, en Río Ceballos, Córdoba." />
+<meta property="og:description" content="Casa privada para encuentros, experiencias, talleres y jornadas de equipos pequeños en Río Ceballos, Córdoba." />
 <meta property="og:image" content="https://clubdelchanar.com/assets/img/hero/casa-entre-arboles.webp" />
 <meta property="og:image:width" content="1600" />
 <meta property="og:image:height" content="754" />
 <meta property="og:locale" content="es_AR" />
+<meta property="og:site_name" content="El Club del Chañar" />
 <meta property="og:url" content="https://clubdelchanar.com" />
 <meta name="twitter:card" content="summary_large_image" />
 <title>El Club del Chañar — Encuentros, experiencias y jornadas en Río Ceballos</title>
@@ -20,9 +21,9 @@
 <link rel="preload" as="image" href="assets/img/carousel/casa-entre-arboles.webp" fetchpriority="high" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Manrope:wght@400;500;600&display=swap" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Manrope:wght@400;500;600&display=swap" />
-<link rel="stylesheet" href="css/casa-abierta.css?v=59" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="css/casa-abierta.css?v=85" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,7 +42,6 @@
         "addressRegion": "Córdoba",
         "addressCountry": "AR"
       },
-      "geo": { "@type": "GeoCoordinates", "latitude": "-31.23", "longitude": "-64.19" },
       "areaServed": { "@type": "AdministrativeArea", "name": "Sierras Chicas, Córdoba" },
       "makesOffer": [
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Encuentros privados", "description": "Hasta 45 personas, uso exclusivo por turno" } },
@@ -107,20 +107,20 @@
       <img src="assets/img/logo.webp" width="60" height="60" alt="" />
     </div>
 
-    <a class="hero__location" data-hero-location href="#" target="_blank" rel="noopener noreferrer"></a>
+    <a class="hero__location" data-hero-location href="https://maps.app.goo.gl/AUNZ2LM9cGRfkHcA6" target="_blank" rel="noopener noreferrer">Lomas del Chañar<br />Río Ceballos · Córdoba</a>
 
     <div class="hero__content">
-      <h1 id="hero-title" data-hero-title></h1>
-      <p class="hero__subtitle" data-hero-subtitle></p>
-      <p class="hero__facts" data-hero-facts></p>
+      <h1 id="hero-title" data-hero-title>Una casa para encontrarse, trabajar, aprender y crear.</h1>
+      <p class="hero__subtitle" data-hero-subtitle>Encuentros privados, experiencias y jornadas para grupos pequeños entre árboles, en Río Ceballos.</p>
+      <p class="hero__facts" data-hero-facts>Río Ceballos · Privados hasta 45 · Equipos hasta 25 · Uso exclusivo</p>
     </div>
 
     <div class="hero__actions">
       <a class="btn btn--primary" href="#agenda" data-hero-cta-primary>
-        <span data-hero-cta-primary-text></span>
+        <span data-hero-cta-primary-text>Ver qué está pasando</span>
       </a>
       <a class="btn btn--secondary" href="#propuestas" data-hero-cta-secondary>
-        <span data-hero-cta-secondary-text></span>
+        <span data-hero-cta-secondary-text>Organizar un encuentro</span>
       </a>
     </div>
 
@@ -137,8 +137,13 @@
       <div class="encounters__top">
         <p class="section-kicker" data-offers-kicker></p>
         <h2 id="encounters-title" class="encounters__title" data-offers-title>¿Qué querés que suceda?</h2>
-        <p class="encounters__clarification" data-offers-clarification></p>
-        <div class="scene-tabs" role="tablist" aria-label="Formas de vivir el Club" data-scene-tabs></div>
+        <p class="encounters__clarification" data-offers-clarification>Mientras estás, es todo tuyo. Un solo grupo habita el Club cada vez.</p>
+        <div class="scene-tabs" role="tablist" aria-label="Formas de vivir el Club" data-scene-tabs>
+          <button class="scene-tab is-active" type="button" role="tab">Encuentros privados</button>
+          <button class="scene-tab" type="button" role="tab">Jornadas de equipo</button>
+          <button class="scene-tab" type="button" role="tab">Experiencias</button>
+          <button class="scene-tab" type="button" role="tab">Club Lab</button>
+        </div>
         <button class="rotation-toggle encounters__rotate" type="button" data-scenes-rotate aria-pressed="false" aria-label="Pausar la rotación de propuestas">
           <svg class="rotation-toggle__pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           <svg class="rotation-toggle__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z" fill="currentColor"/></svg>
@@ -147,22 +152,22 @@
       </div>
     </div>
     <div class="scene-stage" id="scene-stage" role="tabpanel">
-      <img class="scene-stage__image scene-stage__image--a is-active" src="" alt="" data-scene-image-a />
-      <img class="scene-stage__image scene-stage__image--b" src="" alt="" data-scene-image-b />
+      <img class="scene-stage__image scene-stage__image--a is-active" src="assets/img/casa/jardin/01.webp" alt="Grupo reunido en el jardín del Club, bajo la sombra del árbol central, durante un encuentro social" data-scene-image-a />
+      <img class="scene-stage__image scene-stage__image--b" alt="" data-scene-image-b />
       <div class="scene-stage__overlay" aria-hidden="true"></div>
       <div class="scene-stage__vignette" aria-hidden="true"></div>
       <div class="scene-stage__bottom">
+        <div class="scene-stage__info" data-scene-info>
+          <p class="scene-stage__message" data-scene-message>Tu gente, tu tiempo y todo el Club para ustedes. Celebraciones y encuentros en un espacio que no se comparte con otros grupos.</p>
+          <p class="scene-stage__meta" data-scene-meta>Hasta 45 personas · Uso exclusivo · Formatos a coordinar</p>
+          <a class="btn btn--primary scene-stage__cta" href="#consultar" data-scene-cta>
+            <span data-scene-cta-text>Consultar encuentro</span>
+          </a>
+        </div>
         <a class="encounters__next" href="#agenda" aria-label="Ver qué está pasando">
           <span>Ver qué está pasando</span>
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <div class="scene-stage__info" data-scene-info>
-          <p class="scene-stage__message" data-scene-message></p>
-          <p class="scene-stage__meta" data-scene-meta></p>
-          <a class="btn btn--primary scene-stage__cta" href="#consultar" data-scene-cta>
-            <span data-scene-cta-text></span>
-          </a>
-        </div>
       </div>
     </div>
   </section>
@@ -172,23 +177,36 @@
   <section class="agenda" id="agenda" aria-labelledby="agenda-title">
     <div class="agenda__heading">
       <p class="section-kicker" data-agenda-kicker></p>
-      <h2 id="agenda-title" data-agenda-title></h2>
-      <p data-agenda-subtitle></p>
+      <h2 id="agenda-title" data-agenda-title>Próximamente en El Club</h2>
+      <p data-agenda-subtitle>Algunas cosas se reservan. Otras simplemente suceden.</p>
     </div>
 
     <div class="agenda__body" data-agenda-body></div>
 
     <div class="agenda__empty" data-agenda-empty hidden>
-      <p class="agenda__empty-title" data-agenda-empty-title></p>
-      <p class="agenda__empty-text" data-agenda-empty-text></p>
+      <p class="agenda__empty-title" data-agenda-empty-title>Estamos preparando lo próximo.</p>
+      <p class="agenda__empty-text" data-agenda-empty-text>Seguinos o escribinos para enterarte primero.</p>
       <a class="btn btn--primary" data-agenda-empty-cta href="#consultar">
-        <span data-agenda-empty-cta-label></span>
+        <span data-agenda-empty-cta-label>Consultar por WhatsApp</span>
       </a>
     </div>
 
     <div class="agenda__actions" data-agenda-actions hidden>
       <a class="btn btn--secondary" data-agenda-more href="#agenda">
-        <span data-agenda-more-label></span>
+        <span data-agenda-more-label>Pedir la agenda completa por WhatsApp</span>
+      </a>
+    </div>
+
+    <div class="agenda__foot">
+      <p class="agenda__optin">
+        <a data-agenda-optin href="https://wa.me/5493515643361?text=Hola%2C%20quiero%20que%20me%20avisen%20de%20nuevas%20experiencias%20en%20El%20Club%20del%20Cha%C3%B1ar." target="_blank" rel="noopener noreferrer">
+          <span data-agenda-optin-label>Avisame de nuevas experiencias</span>
+        </a>
+      </p>
+
+      <a class="agenda__next" href="#empresas" aria-label="Para equipos y empresas">
+        <span>Para equipos y empresas</span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </section>
@@ -199,20 +217,28 @@
     <div class="empresas__inner">
       <div class="empresas__lead">
         <p class="section-kicker" data-business-kicker></p>
-        <h2 id="empresas-title" data-business-title></h2>
-        <p data-business-text></p>
-        <a class="btn btn--primary empresas__cta" href="#consultar" data-business-cta data-source="empresas">
-          <span data-business-cta-label></span>
-        </a>
+        <h2 id="empresas-title" data-business-title>Un día fuera de la oficina puede cambiar la conversación.</h2>
+        <p data-business-text>El Club recibe equipos pequeños que necesitan pensar, planificar, decidir o trabajar juntos sin las interrupciones del día a día.</p>
+        <div class="empresas__actions">
+          <a class="btn btn--primary empresas__cta" href="#consultar" data-business-cta data-source="empresas">
+            <span data-business-cta-label>Consultar jornada de equipo</span>
+          </a>
+          <a class="empresas__next" href="#la-casa" aria-label="Recorré cada rincón">
+            <span>Recorré cada rincón</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
       </div>
       <div class="empresas__lists">
         <div class="empresas__list" id="empresas-usos">
-          <h3 data-business-uses-label></h3>
-          <ul data-business-uses></ul>
+          <h3 data-business-uses-label>Se usa para</h3>
+          <ul data-business-uses><li>Planificación</li><li>Estrategia</li><li>Retrospectivas</li><li>Workshops</li><li>Capacitación</li><li>Innovación</li><li>Reuniones de dirección</li></ul>
         </div>
         <div class="empresas__list" id="empresas-info">
-          <h3 data-business-info-label></h3>
-          <ul data-business-info></ul>
+          <h3 data-business-info-label>Qué encontrás</h3>
+          <div class="empresas__groups" data-business-groups>
+            <ul data-business-info><li>Traslado opcional desde Córdoba zona norte (a coordinar)</li><li>6–20 personas recomendado</li><li>Hasta 25 personas</li><li>Uso exclusivo</li><li>WiFi</li><li>Galería</li><li>Jardín</li><li>Terraza</li><li>Cocina</li><li>Pantalla / proyección según disponibilidad</li><li>Catering opcional mediante terceros</li></ul>
+          </div>
         </div>
       </div>
     </div>
@@ -232,8 +258,8 @@
       <div class="casa__invite">
         <p>Cinco espacios, una sola experiencia. Recorrelos.</p>
       </div>
-      <a class="casa__next" href="#anfitriones" aria-label="Organizá algo aquí">
-        <span>Organizá algo aquí</span>
+      <a class="casa__next" href="#experiencias" aria-label="Ver experiencias">
+        <span>Ver experiencias</span>
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -245,7 +271,7 @@
         <span>Espacios</span>
       </button>
       <div class="casa__stage">
-        <img class="casa__image" src="" alt="" data-casa-image />
+        <img class="casa__image" alt="" data-casa-image />
         <button class="casa__nav casa__nav--prev" data-casa-prev type="button" aria-label="Imagen anterior">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -266,26 +292,12 @@
   </section>
 
 
-  <!-- §46 Organizá algo aquí — Anfitriones -->
-  <section class="hosts" id="anfitriones" aria-labelledby="hosts-title">
-    <div class="hosts__inner">
-      <p class="section-kicker" data-hosts-kicker></p>
-      <h2 id="hosts-title" data-hosts-title></h2>
-      <p data-hosts-text></p>
-      <ul class="hosts__examples" data-hosts-examples></ul>
-      <a class="btn btn--primary hosts__cta" data-hosts-cta href="#consultar" target="_blank" rel="noopener noreferrer" data-source="hosts">
-        <span data-hosts-cta-label></span>
-      </a>
-    </div>
-  </section>
-
-
   <!-- §49 Experiencias — carrusel con cambio automático -->
   <section class="gallery" id="experiencias" aria-labelledby="gallery-title">
     <div class="gallery__heading">
       <p class="section-kicker" data-experiencias-kicker></p>
       <h2 id="gallery-title" data-experiencias-title>Así se vive El Club</h2>
-      <p data-experiencias-intro>Encuentros que ya vivieron el Club. Cada foto es una historia real.</p>
+      <p data-experiencias-intro>Encuentros que ya sucedieron en El Club, documentados con material real.</p>
     </div>
     <div class="gallery__stage">
       <div class="gallery__carousel" data-gallery-carousel></div>
@@ -297,28 +309,17 @@
         <svg class="rotation-toggle__play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z" fill="currentColor"/></svg>
       </button>
     </div>
-    <div class="gallery__dots" data-gallery-dots></div>
-    <a class="gallery__next" href="#como-funciona" aria-label="Cómo funciona">
-      <span>Cómo funciona</span>
+    <div class="gallery__meta">
+      <p class="gallery__caption" data-gallery-caption></p>
+      <div class="gallery__nav">
+        <div class="gallery__dots" data-gallery-dots></div>
+        <span class="gallery__counter" data-gallery-counter aria-live="polite"></span>
+      </div>
+    </div>
+    <a class="gallery__next" href="#preguntas" aria-label="Resolvé tus dudas">
+      <span>Resolvé tus dudas</span>
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
-  </section>
-
-
-  <!-- §51 Cómo funciona — populated by JS -->
-  <section class="coordination" id="como-funciona" aria-labelledby="coordination-title">
-    <div class="coordination__heading">
-      <p class="section-kicker" data-how-kicker></p>
-      <h2 id="coordination-title" data-how-title></h2>
-      <p data-how-intro></p>
-    </div>
-    <div class="coordination__tracks" data-how-tracks></div>
-    <div class="coordination__actions">
-      <a class="coordination__next" href="#preguntas" aria-label="Resolvé tus dudas">
-        <span>Resolvé tus dudas</span>
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
   </section>
 
 
@@ -355,22 +356,22 @@
     <div class="consult__inner">
       <div class="consult__lead">
         <p class="section-kicker" data-inquiry-kicker></p>
-        <h2 id="consult-title" data-inquiry-title></h2>
-        <p data-inquiry-intro></p>
+        <h2 id="consult-title" data-inquiry-title>Contanos qué querés que suceda.</h2>
+        <p data-inquiry-intro>Cada encuentro se arma a medida. Contanos qué tenés en mente.</p>
       </div>
 
       <form class="inquiry" data-inquiry novalidate>
         <div class="inquiry__fields" data-fields>
           <div class="inquiry__row">
             <label class="field">
-              <span class="field__label" data-field-label="eventType"></span>
+              <span class="field__label" data-field-label="eventType">Tipo de encuentro</span>
               <select class="field__input" name="eventType" autocomplete="off" required aria-describedby="err-eventType" data-event-type-select>
-                <option value="" data-event-type-placeholder></option>
+                <option value="" data-event-type-placeholder>Elegí una opción</option><option value="private">Encuentro privado</option><option value="business">Jornada de empresa</option><option value="lab">Club Lab</option><option value="experiencia">Experiencia programada</option><option value="host">Quiero organizar una experiencia</option><option value="otro">Otro</option>
               </select>
               <p class="field__error" id="err-eventType" role="alert"></p>
             </label>
             <label class="field">
-              <span class="field__label" data-field-label="date"></span>
+              <span class="field__label" data-field-label="date">Fecha estimada</span>
               <input class="field__input" name="date" type="date" autocomplete="off" required aria-describedby="err-date" />
               <p class="field__error" id="err-date" role="alert"></p>
             </label>
@@ -378,35 +379,35 @@
 
           <div class="inquiry__row">
             <label class="field">
-              <span class="field__label" data-field-label="shift"></span>
+              <span class="field__label" data-field-label="shift">Turno</span>
               <select class="field__input" name="shift" autocomplete="off" required disabled aria-describedby="err-shift">
-                <option value="" data-shift-placeholder></option>
+                <option value="" data-shift-placeholder>Primero elegí el tipo</option>
               </select>
               <p class="field__error" id="err-shift" role="alert"></p>
             </label>
             <label class="field">
-              <span class="field__label" data-field-label="people"></span>
+              <span class="field__label" data-field-label="people">Cantidad de personas</span>
               <input class="field__input" name="people" type="number" min="1" inputmode="numeric" autocomplete="off" required aria-describedby="hint-people err-people" />
-              <p class="field__hint" id="hint-people" data-people-hint></p>
+              <p class="field__hint" id="hint-people" data-people-hint>Hasta 45 personas</p>
               <p class="field__error" id="err-people" role="alert"></p>
             </label>
           </div>
 
           <div class="inquiry__row">
             <label class="field">
-              <span class="field__label" data-field-label="name"></span>
+              <span class="field__label" data-field-label="name">Nombre</span>
               <input class="field__input" name="name" type="text" autocomplete="name" required aria-describedby="err-name" />
               <p class="field__error" id="err-name" role="alert"></p>
             </label>
             <label class="field">
-              <span class="field__label" data-field-label="whatsapp"></span>
+              <span class="field__label" data-field-label="whatsapp">WhatsApp</span>
               <input class="field__input" name="whatsapp" type="tel" autocomplete="tel" required aria-describedby="err-whatsapp" data-field-placeholder="whatsapp" />
               <p class="field__error" id="err-whatsapp" role="alert"></p>
             </label>
           </div>
 
           <label class="field">
-            <span class="field__label" data-field-label="detail"></span>
+            <span class="field__label" data-field-label="detail">Detalle</span>
             <textarea class="field__input field__textarea" name="detail" rows="2" data-field-placeholder="detail"></textarea>
           </label>
 
@@ -415,25 +416,34 @@
           <div class="inquiry__actions">
             <a class="consult__wa-direct" data-wa-direct target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 8.5c.3-.8 1-1 1.5-1 .3 0 .5.2.7.6l.5 1.2c.1.3 0 .6-.2.8l-.4.4c.4 1 1.2 1.8 2.2 2.2l.4-.4c.2-.2.5-.3.8-.2l1.2.5c.4.2.6.4.6.7 0 .5-.2 1.2-1 1.5-.8.3-2.8-.1-4.5-1.8S8.2 9.3 8.5 8.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-wa-direct-label></span>
+              <span data-wa-direct-label>o escribinos directo por WhatsApp</span>
             </a>
             <button class="btn btn--primary" type="submit" data-submit>
-              <span data-submit-label></span>
+              <span data-submit-label>Enviar consulta por WhatsApp</span>
             </button>
           </div>
-          <p class="inquiry__note" data-submit-note></p>
+          <p class="inquiry__note" data-submit-note>Se abre WhatsApp con tu consulta ya armada. No enviamos nada sin vos.</p>
         </div>
 
         <div class="inquiry__preparing" data-preparing hidden>
-          <p data-preparing-label></p>
+          <p data-preparing-label>Preparamos tu consulta…</p>
         </div>
 
         <div class="inquiry__success" data-success hidden aria-live="polite">
           <div class="inquiry__success-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <p data-success-label></p>
+          <p data-success-label>Tu mensaje está preparado. En WhatsApp, revisalo y tocá Enviar.</p>
           <div class="inquiry__success-actions">
+            <a class="btn btn--primary" href="#" target="_blank" rel="noopener noreferrer" data-success-wa>
+              <span data-success-wa-label></span>
+            </a>
+            <button class="btn btn--secondary" type="button" data-success-copy>
+              <span data-success-copy-label></span>
+            </button>
+            <button class="btn btn--secondary" type="button" data-success-edit>
+              <span data-success-edit-label></span>
+            </button>
             <button class="btn btn--secondary" type="button" data-success-again>
               <span data-success-again-label></span>
             </button>
@@ -444,11 +454,11 @@
         </div>
 
         <div class="inquiry__fallback" data-fallback hidden aria-live="polite">
-          <p data-fallback-notice></p>
+          <p data-fallback-notice>No se pudo abrir WhatsApp automáticamente. Copiá el mensaje y escribinos:</p>
           <textarea class="inquiry__fallback-text" data-fallback-text rows="6" readonly aria-label="Mensaje generado para WhatsApp"></textarea>
           <div class="inquiry__fallback-actions">
-            <button class="btn btn--primary" type="button" data-copy-message><span data-fallback-copy-label></span></button>
-            <a class="btn btn--secondary" href="#" target="_blank" rel="noopener noreferrer" data-fallback-wa><span data-fallback-open-label></span></a>
+            <button class="btn btn--primary" type="button" data-copy-message><span data-fallback-copy-label>Copiar mensaje</span></button>
+            <a class="btn btn--secondary" href="#" target="_blank" rel="noopener noreferrer" data-fallback-wa><span data-fallback-open-label>Abrir WhatsApp</span></a>
           </div>
         </div>
       </form>
@@ -467,11 +477,11 @@
       <nav class="footer__nav" aria-label="Navegación del pie" data-footer-nav></nav>
     </div>
     <div class="footer__middle">
-      <div class="footer__location" data-footer-location></div>
-      <div class="footer__contact" data-footer-contact></div>
+      <div class="footer__location" data-footer-location>Lomas del Chañar · Río Ceballos · Córdoba</div>
+      <div class="footer__contact" data-footer-contact><a href="https://wa.me/5493515643361" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="mailto:clubdelchanar@gmail.com">Email</a></div>
     </div>
     <div class="footer__bottom">
-      <p class="footer__notice" data-footer-notice></p>
+      <p class="footer__notice" data-footer-notice>Consultas sujetas a disponibilidad y confirmación humana.</p>
       <button class="footer__top-btn" type="button" aria-label="Volver arriba" data-back-to-top>
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
@@ -498,12 +508,31 @@
   <span class="lightbox__counter" data-lightbox-counter></span>
 </div>
 
+<!-- Detalle de evento -->
+<div class="event-modal" data-event-modal hidden>
+  <div class="event-modal__backdrop" data-event-close></div>
+  <div class="event-modal__box" role="dialog" aria-modal="true" aria-labelledby="event-modal-title">
+    <button class="event-modal__close" type="button" data-event-close aria-label="Cerrar detalle">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <p class="event-modal__category" data-event-category></p>
+    <h3 class="event-modal__title" id="event-modal-title" data-event-title></h3>
+    <p class="event-modal__meta" data-event-meta></p>
+    <p class="event-modal__desc" data-event-desc></p>
+    <ul class="event-modal__tags" data-event-tags></ul>
+    <a class="btn btn--primary event-modal__cta" data-event-cta href="#" target="_blank" rel="noopener noreferrer">
+      <span data-event-cta-label></span>
+    </a>
+  </div>
+</div>
+
 <!-- CTA fijo inferior móvil (AC-5) -->
 <a class="mobile-cta" href="#consultar" data-mobile-cta>
-  <span data-mobile-cta-text></span>
+  <span data-mobile-cta-text>Consultar</span>
 </a>
 
-<script src="js/events.js?v=3" defer></script>
-<script src="js/casa-abierta.js?v=32" defer></script>
+<script src="js/img-manifest.js?v=1" defer></script>
+<script src="js/events.js?v=7" defer></script>
+<script src="js/casa-abierta.js?v=39" defer></script>
 </body>
 </html>

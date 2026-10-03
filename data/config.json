@@ -15,33 +15,75 @@
       "href": "#propuestas",
       "link": "propuestas",
       "children": [
-        { "label": "Encuentros privados", "href": "#propuestas", "link": "propuestas", "scene": "private" },
-        { "label": "Jornadas de equipo", "href": "#propuestas", "link": "propuestas", "scene": "business" },
-        { "label": "Experiencias", "href": "#propuestas", "link": "propuestas", "scene": "experiences" },
-        { "label": "Club Lab", "href": "#propuestas", "link": "propuestas", "scene": "lab" }
+        {
+          "label": "Encuentros privados",
+          "href": "#propuestas",
+          "link": "propuestas",
+          "scene": "private"
+        },
+        {
+          "label": "Jornadas de equipo",
+          "href": "#propuestas",
+          "link": "propuestas",
+          "scene": "business"
+        },
+        {
+          "label": "Experiencias del Club",
+          "href": "#propuestas",
+          "link": "propuestas",
+          "scene": "experiences"
+        },
+        {
+          "label": "Club Lab",
+          "href": "#propuestas",
+          "link": "propuestas",
+          "scene": "lab"
+        }
       ]
     },
-    { "label": "Agenda", "href": "#agenda", "link": "agenda" },
+    {
+      "label": "Agenda",
+      "href": "#agenda",
+      "link": "agenda"
+    },
     {
       "label": "Empresas",
       "href": "#empresas",
-      "link": "empresas",
-      "children": [
-        { "label": "Se usa para", "href": "#empresas-usos", "link": "empresas" },
-        { "label": "Qué encontrás", "href": "#empresas-info", "link": "empresas" }
-      ]
+      "link": "empresas"
     },
-    { "label": "Organizá aquí", "href": "#anfitriones", "link": "anfitriones" },
+    {
+      "label": "Cada Rincón",
+      "href": "#la-casa",
+      "link": "la-casa"
+    },
+    {
+      "label": "Experiencias",
+      "href": "#experiencias",
+      "link": "experiencias"
+    },
     {
       "label": "Preguntas",
       "href": "#preguntas",
       "link": "preguntas",
       "children": [
-        { "label": "Preguntas frecuentes", "href": "#preguntas", "link": "preguntas" },
-        { "label": "Ubicación", "href": "#ubicacion", "link": "preguntas" }
+        {
+          "label": "Preguntas frecuentes",
+          "href": "#preguntas",
+          "link": "preguntas"
+        },
+        {
+          "label": "Ubicación",
+          "href": "#ubicacion",
+          "link": "preguntas"
+        }
       ]
     },
-    { "label": "Consultar", "href": "#consultar", "link": "consultar", "cta": true }
+    {
+      "label": "Consultar",
+      "href": "#consultar",
+      "link": "consultar",
+      "cta": true
+    }
   ],
   "ui": {
     "galleryAriaPrefix": "Abrir imagen: ",
@@ -63,12 +105,16 @@
       "view_offer": "view_offer",
       "view_event": "view_event",
       "click_event": "click_event",
+      "click_agenda": "click_agenda",
       "click_whatsapp": "click_whatsapp",
       "submit_inquiry": "submit_inquiry",
-      "click_business": "click_business",
-      "click_host": "click_host"
+      "click_business": "click_business"
     },
-    "originParams": ["source", "product", "event"]
+    "originParams": [
+      "source",
+      "product",
+      "event"
+    ]
   },
   "whatsappMessage": {
     "greeting": "Hola, quiero consultar una fecha en El Club del Chañar.",
@@ -111,21 +157,53 @@
   },
   "advanceNoticeDays": 15,
   "shifts": [
-    { "id": "diurno", "label": "Diurno · 10:30 a 16:30", "for": "private" },
-    { "id": "sunset", "label": "Sunset · 16:30 a 22:30", "for": "private" },
-    { "id": "corporativo", "label": "Jornada completa · 09:00 a 18:00", "for": "business" },
-    { "id": "media-jornada", "label": "Media jornada · 09:00 a 13:00", "for": "business" },
-    { "id": "lab", "label": "A coordinar (Lab)", "for": "lab" },
-    { "id": "experiencia", "label": "A coordinar (experiencia)", "for": "experiencia" },
-    { "id": "host", "label": "A coordinar", "for": "host" },
-    { "id": "otro", "label": "A coordinar", "for": "otro" }
+    {
+      "id": "diurno",
+      "label": "Diurno · 10:30 a 16:30",
+      "for": "private"
+    },
+    {
+      "id": "sunset",
+      "label": "Sunset · 16:30 a 22:30",
+      "for": "private"
+    },
+    {
+      "id": "corporativo",
+      "label": "Jornada completa · 09:00 a 18:00",
+      "for": "business"
+    },
+    {
+      "id": "media-jornada",
+      "label": "Media jornada · 09:00 a 13:00",
+      "for": "business"
+    },
+    {
+      "id": "lab",
+      "label": "A coordinar (Lab)",
+      "for": "lab"
+    },
+    {
+      "id": "experiencia",
+      "label": "A coordinar (experiencia)",
+      "for": "experiencia"
+    },
+    {
+      "id": "host",
+      "label": "A coordinar",
+      "for": "host"
+    },
+    {
+      "id": "otro",
+      "label": "A coordinar",
+      "for": "otro"
+    }
   ],
   "hero": {
     "title": "Una casa para encontrarse, trabajar, aprender y crear.",
     "subtitle": "Encuentros privados, experiencias y jornadas para grupos pequeños entre árboles, en Río Ceballos.",
-    "facts": "Río Ceballos · hasta 45 personas · uso exclusivo",
+    "facts": "Río Ceballos · Privados hasta 45 · Equipos hasta 25 · Uso exclusivo",
     "image": "assets/img/carousel/casa-entre-arboles.webp",
-    "imageAlt": "El Club del Chañar visto entre árboles al final de la tarde, con luz cálida filtrándose entre el follaje",
+    "imageAlt": "Galería cubierta de El Club del Chañar al atardecer, con el árbol central integrado a la arquitectura y luces cálidas",
     "ctaPrimary": "Ver qué está pasando",
     "ctaPrimaryHref": "#agenda",
     "ctaSecondary": "Organizar un encuentro",
@@ -136,7 +214,7 @@
       "assets/img/carousel/terraza.webp",
       "assets/img/carousel/galeria-panoramica.webp"
     ],
-    "carouselInterval": 4500,
+    "carouselInterval": 8000,
     "logoPresentation": true,
     "logoWatermark": false
   },
@@ -150,11 +228,11 @@
         "tab": "Encuentros privados",
         "title": "Encuentros privados",
         "message": "Tu gente, tu tiempo y todo el Club para ustedes. Celebraciones y encuentros en un espacio que no se comparte con otros grupos.",
-        "meta": "Hasta 45 personas · Uso exclusivo · Formatos a coordinar",
+        "meta": "Hasta 45 personas · Uso exclusivo · Formatos a coordinar · Traslado opcional (Córdoba zona norte)",
         "capacity": 45,
         "type": "private",
-        "image": "assets/img/encounters/celebrar.webp",
-        "imageAlt": "Almuerzo social en la galería del Club, con mesa compartida, copas y luz cálida de tarde",
+        "image": "assets/img/casa/jardin/01.webp",
+        "imageAlt": "Grupo reunido en el jardín del Club, bajo la sombra del árbol central, durante un encuentro social",
         "cta": "Consultar encuentro",
         "ctaTarget": "#consultar"
       },
@@ -163,24 +241,24 @@
         "tab": "Jornadas de equipo",
         "title": "Jornadas de equipo",
         "message": "Sacá al equipo de la oficina por un día. Un espacio privado para pensar, planificar, decidir y trabajar sin interrupciones.",
-        "meta": "6–20 recomendado (máx 25) · Uso exclusivo · WiFi",
+        "meta": "6–20 recomendado (máx 25) · Uso exclusivo · WiFi · Traslado opcional (Córdoba zona norte)",
         "capacity": 25,
         "type": "business",
-        "image": "assets/img/encounters/pensar.webp",
-        "imageAlt": "Mesa de trabajo bajo la sombra de los árboles, entorno sereno para pensar y debatir en equipo",
+        "image": "assets/img/casa/terraza/01.webp",
+        "imageAlt": "Galería cubierta con mesas y bancos de madera sobre arena, espacio preparado para una jornada de trabajo",
         "cta": "Organizar una jornada",
         "ctaTarget": "#empresas"
       },
       {
         "id": "experiences",
-        "tab": "Experiencias",
-        "title": "Experiencias",
+        "tab": "Experiencias del Club",
+        "title": "Experiencias del Club",
         "message": "Gastronomía, cultura, creatividad, naturaleza y conocimiento. Actividades pequeñas organizadas por El Club junto con anfitriones invitados.",
-        "meta": "Agenda rotativa · Cupos limitados",
+        "meta": "Agenda rotativa · Cupos limitados · Traslado opcional (Córdoba zona norte)",
         "capacity": 25,
         "type": "experiencia",
-        "image": "assets/img/encounters/crear.webp",
-        "imageAlt": "Espacio del Club preparado para una experiencia, con mesa amplia y materiales para crear y aprender",
+        "image": "assets/img/experiencias/06.webp",
+        "imageAlt": "Encuentro en la galería cubierta, con guirnaldas, banderines y bancos de madera",
         "cta": "Ver agenda",
         "ctaTarget": "#agenda"
       },
@@ -189,11 +267,11 @@
         "tab": "Club Lab",
         "title": "Club Lab",
         "message": "Encuentros para trabajar sobre problemas reales, tecnología, negocios, ideas y decisiones.",
-        "meta": "Grupos pequeños · Sesiones de trabajo",
+        "meta": "Grupos pequeños · Sesiones de trabajo · Traslado opcional (Córdoba zona norte)",
         "capacity": 25,
         "type": "lab",
-        "image": "assets/img/casa/galeria/01.webp",
-        "imageAlt": "Galería cubierta del Club preparada para una sesión de trabajo del Club Lab",
+        "image": "assets/img/casa/galeria/05.webp",
+        "imageAlt": "Espacio cubierto con bancos de madera y pared de ladrillo, preparado para una sesión de trabajo",
         "cta": "Ver próximos Labs",
         "ctaTarget": "#agenda"
       }
@@ -210,17 +288,20 @@
     "emptyTitle": "Estamos preparando lo próximo.",
     "emptyText": "Seguinos o escribinos para enterarte primero.",
     "emptyCtaLabel": "Consultar por WhatsApp",
+    "optinLabel": "Avisame de nuevas experiencias",
+    "optinMessage": "Hola, quiero que me avisen de nuevas experiencias en El Club del Chañar.",
     "soldoutLabel": "Agotado",
     "waitlistLabel": "Lista de espera",
     "availableSuffix": "lugares",
+    "dateTbdLabel": "Fecha a confirmar",
     "categoryDefaults": {
-      "Club Lab": "assets/img/encounters/pensar.webp",
-      "Empresas": "assets/img/encounters/pensar.webp",
+      "Club Lab": "assets/img/casa/galeria/05.webp",
+      "Empresas": "assets/img/casa/terraza/01.webp",
       "Gastronomía": "assets/img/casa/servicios/01.webp",
-      "Cultura": "assets/img/casa/galeria/01.webp",
+      "Cultura": "assets/img/casa/galeria/05.webp",
       "Naturaleza": "assets/img/casa/jardin/01.webp"
     },
-    "defaultImage": "assets/img/casa/galeria/01.webp",
+    "defaultImage": "assets/img/casa/galeria/05.webp",
     "eventGreeting": "Hola. Quiero consultar por",
     "eventClosing": "en El Club del Chañar.",
     "eventIdLabel": "EVENTO"
@@ -240,6 +321,34 @@
       "Reuniones de dirección"
     ],
     "infoLabel": "Qué encontrás",
+    "groups": [
+      {
+        "label": "Escala y privacidad",
+        "items": [
+          "6–20 personas recomendado",
+          "Hasta 25 personas",
+          "Uso exclusivo"
+        ]
+      },
+      {
+        "label": "Espacios y conectividad",
+        "items": [
+          "WiFi",
+          "Galería",
+          "Jardín",
+          "Terraza",
+          "Cocina"
+        ]
+      },
+      {
+        "label": "Servicios a coordinar",
+        "items": [
+          "Traslado opcional desde Córdoba zona norte (a coordinar)",
+          "Pantalla / proyección según disponibilidad",
+          "Catering opcional mediante terceros"
+        ]
+      }
+    ],
     "info": [
       "6–20 personas recomendado",
       "Hasta 25 personas",
@@ -256,99 +365,116 @@
     "priceFrom": "",
     "priceLabel": ""
   },
-  "hosts": {
-    "kicker": "Anfitriones",
-    "title": "¿Tenés algo interesante para compartir?",
-    "text": "Si enseñás, cocinás, investigás, creás, guiás o tenés una comunidad alrededor de algo que vale la pena vivir, podemos organizarlo juntos.",
-    "examples": [
-      "gastronomía",
-      "fotografía",
-      "música",
-      "naturaleza",
-      "arte",
-      "oficios",
-      "bienestar",
-      "negocios",
-      "tecnología",
-      "conocimiento"
-    ],
-    "cta": "Proponer una experiencia",
-    "whatsappMessage": "Hola. Me gustaría proponer una experiencia para El Club del Chañar."
-  },
   "casa": [
     {
       "id": "galeria",
       "name": "Galería",
       "phrase": "Galería cubierta. El centro de una jornada cuando la conversación necesita resguardo.",
       "imageDir": "assets/img/casa/galeria/",
-      "imageAlt": "Vista de la galería con mobiliario de madera",
-      "facts": ["Cubierta", "Mesa compartida"]
+      "imageAlt": "Exterior del Club bajo la estructura de madera y hormigón: un auto clásico rojo estacionado, personas reunidas, un perro y un banner de un encuentro de autos",
+      "facts": [
+        "Cubierta",
+        "Mesa compartida"
+      ]
     },
     {
       "id": "jardin",
       "name": "Jardín y sombra",
       "phrase": "Pausas, mesas compartidas y aire entre momentos.",
       "imageDir": "assets/img/casa/jardin/",
-      "imageAlt": "Jardín con el árbol integrado, sombra y vegetación",
-      "facts": ["Árbol central", "Sombra natural"]
+      "imageAlt": "Patio trasero con terraza elevada de hormigón y barandal de madera, escalera de ladrillo, grava y vegetación; personas conversando bajo luces de guirnalda",
+      "facts": [
+        "Árbol central",
+        "Sombra natural"
+      ]
     },
     {
       "id": "terraza",
       "name": "Terraza",
       "phrase": "Una escala más abierta para cerrar la tarde.",
       "imageDir": "assets/img/casa/terraza/",
-      "imageAlt": "Terraza con vista abierta",
-      "facts": ["Vista abierta", "Aire y luz"]
+      "imageAlt": "Espacio techado con piso de arena, columnas de hormigón, bancas y mesas bajas de madera y una barra de hormigón al fondo",
+      "facts": [
+        "Vista abierta",
+        "Aire y luz"
+      ]
     },
     {
       "id": "fuego",
       "name": "Fuego y barra",
       "phrase": "El punto que reúne cuando la jornada se vuelve noche.",
       "imageDir": "assets/img/casa/fuego/",
-      "imageAlt": "Barra y zona de fuego con iluminación cálida",
-      "facts": ["Barra", "Fuego"]
+      "imageAlt": "Parrilla de ladrillo al aire libre con carnes asándose sobre brasas, bajo un techo inclinado de ladrillo y azulejos",
+      "facts": [
+        "Barra",
+        "Fuego"
+      ]
     },
     {
       "id": "servicios",
       "name": "Lo esencial",
       "phrase": "Cocina equipada, baños y todo lo que hace funcionar al lugar.",
       "imageDir": "assets/img/casa/servicios/",
-      "imageAlt": "Cocina, baños y servicios del lugar",
-      "facts": ["Cocina equipada", "Baños"]
+      "imageAlt": "Interior de cocina con mesada curva de madera, bacha de acero inoxidable, pared de ladrillo y refrigerador de vidrio",
+      "facts": [
+        "Cocina equipada",
+        "Baños"
+      ]
     }
   ],
-  "howItWorks": {
-    "kicker": "Proceso",
-    "title": "Cómo funciona",
-    "intro": "Como con alguien de confianza: contás qué imaginás y lo armamos juntos.",
-    "tracks": [
-      {
-        "label": "Encuentro privado",
-        "steps": [
-          "Elegís qué querés hacer.",
-          "Nos contás fecha y cantidad.",
-          "Revisamos disponibilidad.",
-          "Definimos formato y servicios.",
-          "Confirmamos."
-        ]
-      },
-      {
-        "label": "Experiencia programada",
-        "steps": [
-          "Elegís la experiencia.",
-          "Consultás tu lugar.",
-          "Confirmamos por WhatsApp.",
-          "Venís al Club."
-        ]
-      }
-    ]
-  },
   "experiencias": {
     "kicker": "Experiencias",
     "title": "Así se vive El Club",
-    "intro": "Encuentros que ya vivieron el Club. Cada foto es una historia real.",
+    "intro": "Encuentros que ya sucedieron en El Club, documentados con material real.",
     "imageDir": "assets/img/experiencias/",
-    "alt": "Encuentro real en El Club del Chañar"
+    "alt": "Encuentro real en El Club del Chañar",
+    "intervalMs": 6000,
+    "items": [
+      {
+        "src": "assets/img/experiencias/04.webp",
+        "caption": "Encuentro en el jardín, visto desde la terraza"
+      },
+      {
+        "src": "assets/img/carousel/galeria-arbol.webp",
+        "caption": "La galería cubierta de noche, con el árbol integrado y luces cálidas"
+      },
+      {
+        "src": "assets/img/experiencias/02.webp",
+        "caption": "Grupo reunido en la terraza, entre árboles"
+      },
+      {
+        "src": "assets/img/casa/servicios/01.webp",
+        "caption": "La cocina del Club, equipada para la jornada"
+      },
+      {
+        "src": "assets/img/experiencias/06.webp",
+        "caption": "La galería preparada para un festejo"
+      },
+      {
+        "src": "assets/img/carousel/galeria-panoramica.webp",
+        "caption": "La galería cubierta al final del día, entre el árbol y la parrilla"
+      },
+      {
+        "src": "assets/img/experiencias/03.webp",
+        "caption": "Proyección nocturna bajo las guirnaldas"
+      },
+      {
+        "src": "assets/img/carousel/terraza.webp",
+        "caption": "La terraza y el jardín al atardecer, con la escalera de madera"
+      },
+      {
+        "src": "assets/img/experiencias/01.webp",
+        "caption": "Motocicletas en la entrada del Club durante un encuentro"
+      },
+      {
+        "src": "assets/img/experiencias/05.webp",
+        "caption": "Autos clásicos en la entrada del Club"
+      },
+      {
+        "src": "assets/img/experiencias/07.webp",
+        "caption": "La parrilla encendida"
+      }
+    ]
   },
   "faq": [
     {
@@ -378,6 +504,10 @@
     {
       "question": "¿Cómo reservo?",
       "answer": "Escribinos por WhatsApp. La disponibilidad se confirma en una conversación, sin reservas automáticas."
+    },
+    {
+      "question": "¿Ofrecen traslado?",
+      "answer": "Sí. El traslado desde Córdoba zona norte es opcional; se coordina al confirmar la fecha."
     }
   ],
   "inquiry": {
@@ -398,12 +528,30 @@
       "detail": "Contanos algo sobre el encuentro que imaginás"
     },
     "options": [
-      { "value": "private", "label": "Encuentro privado" },
-      { "value": "business", "label": "Jornada de empresa" },
-      { "value": "lab", "label": "Club Lab" },
-      { "value": "experiencia", "label": "Experiencia programada" },
-      { "value": "host", "label": "Quiero organizar una experiencia" },
-      { "value": "otro", "label": "Otro" }
+      {
+        "value": "private",
+        "label": "Encuentro privado"
+      },
+      {
+        "value": "business",
+        "label": "Jornada de empresa"
+      },
+      {
+        "value": "lab",
+        "label": "Club Lab"
+      },
+      {
+        "value": "experiencia",
+        "label": "Experiencia programada"
+      },
+      {
+        "value": "host",
+        "label": "Quiero organizar una experiencia"
+      },
+      {
+        "value": "otro",
+        "label": "Otro"
+      }
     ],
     "preselect": {
       "private": "private",
@@ -438,7 +586,10 @@
       "formError": "Revisá los campos marcados."
     },
     "waDirectLabel": "o escribinos directo por WhatsApp",
-    "successLabel": "Tu consulta está en camino. Te respondemos por WhatsApp a la brevedad.",
+    "successLabel": "Tu mensaje está preparado. En WhatsApp, revisalo y tocá Enviar.",
+    "successWaLabel": "Abrir WhatsApp",
+    "successEditLabel": "Editar consulta",
+    "successCopyLabel": "Copiar mensaje",
     "successHomeLabel": "Volver al inicio",
     "eventTypePlaceholder": "Elegí una opción",
     "shiftLockedPlaceholder": "Primero elegí el tipo",
@@ -451,14 +602,30 @@
     "whatsappLabel": "WhatsApp",
     "emailLabel": "Email",
     "nav": [
-      { "label": "El Club", "href": "#propuestas" },
-      { "label": "Agenda", "href": "#agenda" },
-      { "label": "Empresas", "href": "#empresas" },
-      { "label": "Cada Rincón", "href": "#la-casa" },
-      { "label": "Organizá aquí", "href": "#anfitriones" },
-      { "label": "Experiencias", "href": "#experiencias" },
-      { "label": "Cómo funciona", "href": "#como-funciona" },
-      { "label": "Preguntas", "href": "#preguntas" }
+      {
+        "label": "El Club",
+        "href": "#propuestas"
+      },
+      {
+        "label": "Agenda",
+        "href": "#agenda"
+      },
+      {
+        "label": "Empresas",
+        "href": "#empresas"
+      },
+      {
+        "label": "Cada Rincón",
+        "href": "#la-casa"
+      },
+      {
+        "label": "Experiencias",
+        "href": "#experiencias"
+      },
+      {
+        "label": "Preguntas",
+        "href": "#preguntas"
+      }
     ]
   }
 }

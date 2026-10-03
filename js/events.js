@@ -39,6 +39,20 @@
     if (node && text != null) node.textContent = text;
   }
 
+  /* -- Imágenes responsive desde manifest de derivados (V12) -- */
+  function responsive(img, src, sizes) {
+    if (!img) return;
+    img.src = src;
+    var m = window.ClubImgManifest;
+    if (!m) return;
+    var rel = String(src).replace(/^assets\/img\//, "");
+    var widths = m[rel];
+    if (!widths || !widths.length) return;
+    var base = "assets/img/_derived/" + rel.replace(/\.webp$/, "");
+    img.srcset = widths.map(function (w) { return base + "-" + w + ".webp " + w + "w"; }).join(", ");
+    if (sizes) img.sizes = sizes;
+  }
+
   /* ---------- analítica (§75–§76) ---------- */
   function track(name, params) {
     if (!cfg || !cfg.analytics || cfg.analytics.enabled === false) return;
@@ -57,6 +71,16 @@
     return typeof value === "string" && value.trim().length > 0;
   }
 
+  /* Disponibilidad: ausente = desconocido; negativo se normaliza a 0; mayor a capacidad se limita (H07) */
+  function normalizeAvailable(value, capacity) {
+    if (value == null || value === "") return null;
+    var n = Number(value);
+    if (isNaN(n)) return null;
+    if (n < 0) return 0;
+    if (capacity > 0 && n > capacity) return capacity;
+    return n;
+  }
+
   function parseDate(value) {
     if (!isNonEmpty(value)) return null;
     /* Fechas "YYYY-MM-DD" se interpretan como locales para evitar el
@@ -71,11 +95,10 @@
     try {
       if (!raw || typeof raw !== "object") return null;
       if (!isNonEmpty(raw.id) || !isNonEmpty(raw.status) || !isNonEmpty(raw.title)) return null;
-      var date = parseDate(raw.date);
-      if (!date) return null;
+      var date = parseDate(raw.date); /* puede ser null: evento sin fecha (Fecha a confirmar) */
 
       var endDate = parseDate(raw.endDate) || date;
-      endDate.setHours(23, 59, 59, 999);
+      if (endDate) endDate.setHours(23, 59, 59, 999);
 
       var status = String(raw.status).trim().toLowerCase();
 
@@ -89,12 +112,14 @@
         shortDescription: isNonEmpty(raw.shortDescription)
           ? raw.shortDescription
           : (isNonEmpty(raw.subtitle) ? raw.subtitle : ""),
+        teaser: isNonEmpty(raw.teaser) ? raw.teaser : "",
+        longDescription: isNonEmpty(raw.longDescription) ? raw.longDescription : "",
         date: date,
         endDate: endDate,
         time: isNonEmpty(raw.time) ? raw.time : "",
         price: isNonEmpty(raw.priceLabel) ? raw.priceLabel : (raw.price != null ? String(raw.price) : ""),
         capacity: Number(raw.capacity) || 0,
-        available: (raw.available != null && raw.available !== "") ? Number(raw.available) : null,
+        available: normalizeAvailable(raw.available, Number(raw.capacity) || 0),
         host: isNonEmpty(raw.host) ? raw.host : "",
         image: isNonEmpty(raw.image) ? raw.image : "",
         ctaLabel: isNonEmpty(raw.ctaLabel) ? raw.ctaLabel : "",
@@ -151,16 +176,20 @@
   /* ---------- selección y orden (§25, §61) ---------- */
   function selectEvents(list) {
     var now = new Date();
-    var upcoming = list.filter(function (e) {
+    var visible = list.filter(function (e) {
       /* §24: solo published/soldout se muestran; draft, cancelled y finished se excluyen en silencio */
-      return (e.status === "published" || e.status === "soldout") && e.endDate >= now;
+      return e.status === "published" || e.status === "soldout";
     });
-    upcoming.sort(function (a, b) { return a.date - b.date; });
+    /* Con fecha: solo los próximos (endDate >= hoy). Sin fecha: siempre visibles (Fecha a confirmar). */
+    var dated = visible.filter(function (e) { return !!e.date && e.endDate >= now; });
+    var undated = visible.filter(function (e) { return !e.date; });
+    dated.sort(function (a, b) { return a.date - b.date; });
+    var ordered = dated.concat(undated); /* los sin fecha van después de los que ya tienen fecha */
 
-    var nearest = upcoming[0] || null;
+    var nearest = dated[0] || null;
     var featured = nearest;
 
-    var featuredList = upcoming.filter(function (e) { return e.featured; });
+    var featuredList = dated.filter(function (e) { return e.featured; });
     if (featuredList.length) {
       var candidate = featuredList[0]; /* el más próximo de los destacados */
       /* §61: no adelantar un destacado lejano sobre uno que sucede pronto */
@@ -168,8 +197,8 @@
       if (nearest && (candidate.date - nearest.date) <= windowMs) featured = candidate;
     }
 
-    var rest = upcoming.filter(function (e) { return e !== featured; });
-    return { featured: featured, rest: rest, total: upcoming.length, all: upcoming };
+    var rest = ordered.filter(function (e) { return e !== featured; });
+    return { featured: featured, rest: rest, total: ordered.length, all: ordered };
   }
 
   /* ---------- render de una tarjeta (§23) ---------- */
@@ -182,33 +211,40 @@
 
     var img = el("img", {
       className: "agenda-card__image",
-      src: imageFor(event),
       alt: event.title + (event.category ? " — " + event.category : "") + " en El Club del Chañar",
       loading: "lazy",
       decoding: "async"
     });
+    responsive(img, imageFor(event), isFeatured ? "(min-width: 900px) 50vw, 100vw" : "(min-width: 900px) 33vw, 104px");
     card.appendChild(el("div", { className: "agenda-card__media" }, img));
 
     var body = el("div", { className: "agenda-card__body" });
 
-    if (event.date) body.appendChild(el("p", { className: "agenda-card__date", textContent: formatDay(event.date) }));
+    body.appendChild(el("p", { className: "agenda-card__date" + (event.date ? "" : " agenda-card__date--tbd"), textContent: event.date ? formatDay(event.date) : (agenda.dateTbdLabel || "Fecha a confirmar") }));
     if (event.category) body.appendChild(el("p", { className: "agenda-card__category", textContent: event.category.toUpperCase() }));
-    body.appendChild(el("h3", { className: "agenda-card__title", textContent: event.title }));
-    if (event.shortDescription) body.appendChild(el("p", { className: "agenda-card__desc", textContent: event.shortDescription }));
+    var titleBtn = el("button", { type: "button", className: "agenda-card__title agenda-card__title-btn", textContent: event.title, "aria-haspopup": "dialog" });
+    titleBtn.addEventListener("click", function () { openEventDetail(event, titleBtn); });
+    body.appendChild(titleBtn);
+    var teaser = event.teaser || event.shortDescription;
+    if (teaser) body.appendChild(el("p", { className: "agenda-card__desc", textContent: teaser }));
 
+    var soldOut = event.status === "soldout" || event.available === 0;
     var facts = el("ul", { className: "agenda-card__facts" });
     if (event.time) facts.appendChild(el("li", { textContent: event.time }));
     if (event.price) facts.appendChild(el("li", { textContent: event.price }));
-    if (event.status === "soldout") {
+    if (soldOut) {
       facts.appendChild(el("li", { className: "agenda-card__fact--soldout", textContent: agenda.soldoutLabel || "Agotado" }));
-    } else if (event.available != null && event.available > 0 && event.capacity > 0) {
-      facts.appendChild(el("li", { textContent: event.available + " " + (agenda.availableSuffix || "lugares") }));
-    } else if (event.capacity > 0) {
-      facts.appendChild(el("li", { textContent: event.capacity + " " + (agenda.availableSuffix || "lugares") }));
+    } else if (event.available != null && event.available > 0) {
+      facts.appendChild(el("li", {
+        className: "agenda-card__fact--avail",
+        textContent: event.available + " " + (agenda.availableSuffix || "lugares")
+      }));
+    } else {
+      facts.appendChild(el("li", { className: "agenda-card__fact--unknown", textContent: agenda.availabilityUnknownLabel || "Cupos a confirmar" }));
     }
     if (facts.children.length) body.appendChild(facts);
 
-    var ctaLabel = event.status === "soldout"
+    var ctaLabel = soldOut
       ? (agenda.waitlistLabel || "Lista de espera")
       : (event.ctaLabel || "Quiero participar");
     var cta = el("a", {
@@ -229,6 +265,80 @@
     return card;
   }
 
+  /* ---------- Detalle de evento (modal accesible) ---------- */
+  var eventModal = null, eventModalTrigger = null, eventModalFocusables = [];
+  var modalBackground = [
+    document.querySelector("header"),
+    document.querySelector("main"),
+    document.querySelector("footer"),
+    document.querySelector(".mobile-cta")
+  ];
+
+  function setModalBackgroundInert(on) {
+    modalBackground.forEach(function (n) {
+      if (!n) return;
+      if (on) n.setAttribute("inert", "");
+      else n.removeAttribute("inert");
+    });
+  }
+
+  function openEventDetail(event, trigger) {
+    var modal = document.querySelector("[data-event-modal]");
+    if (!modal) return;
+    eventModal = modal; eventModalTrigger = trigger;
+    setText("[data-event-category]", event.category ? event.category.toUpperCase() : "");
+    setText("[data-event-title]", event.title);
+    var meta = [];
+    meta.push(event.date ? formatLong(event.date) : (agenda.dateTbdLabel || "Fecha a confirmar"));
+    if (event.time) meta.push(event.time);
+    if (event.status === "soldout" || event.available === 0) meta.push(agenda.soldoutLabel || "Agotado");
+    else if (event.available != null && event.available > 0) meta.push(event.available + " " + (agenda.availableSuffix || "lugares"));
+    else meta.push(agenda.availabilityUnknownLabel || "Cupos a confirmar");
+    if (event.host) meta.push(event.host);
+    setText("[data-event-meta]", meta.join(" · "));
+    var desc = [event.shortDescription, event.longDescription].filter(isNonEmpty).join(" ");
+    setText("[data-event-desc]", desc);
+    var tagsEl = modal.querySelector("[data-event-tags]");
+    if (tagsEl) {
+      tagsEl.innerHTML = "";
+      (event.tags || []).forEach(function (t) { tagsEl.appendChild(el("li", { textContent: t })); });
+    }
+    var cta = modal.querySelector("[data-event-cta]");
+    if (cta) {
+      cta.href = whatsappUrl(event);
+      setText("[data-event-cta-label]", (event.status === "soldout" || event.available === 0)
+        ? (agenda.waitlistLabel || "Lista de espera")
+        : (event.ctaLabel || "Quiero participar"));
+    }
+    modal.hidden = false;
+    modal.setAttribute("aria-modal", "true");
+    setModalBackgroundInert(true);
+    eventModalFocusables = Array.prototype.slice.call(modal.querySelectorAll("button, [href]"));
+    var close = modal.querySelector("button[data-event-close]");
+    if (close) close.focus();
+  }
+
+  function closeEventDetail() {
+    if (!eventModal) return;
+    eventModal.hidden = true;
+    eventModal.removeAttribute("aria-modal");
+    setModalBackgroundInert(false);
+    if (eventModalTrigger) eventModalTrigger.focus();
+    eventModal = null;
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (!eventModal) return;
+    if (e.key === "Escape") { closeEventDetail(); return; }
+    if (e.key === "Tab") {
+      var f = eventModalFocusables.filter(function (n) { return n.getClientRects().length; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
   /* ---------- datos estructurados: Event (§64) ---------- */
   function ymd(d) {
     var m = d.getMonth() + 1, day = d.getDate();
@@ -247,7 +357,7 @@
 
   function eventSchema(list) {
     var base = (cfg.site && cfg.site.url) ? String(cfg.site.url).replace(/\/$/, "") : "";
-    return list.map(function (e) {
+    return list.filter(function (e) { return !!e.date; }).map(function (e) {
       var t = timeParts(e.time);
       var node = {
         "@type": "Event",
@@ -313,6 +423,20 @@
       cards.push(buildCard(e, false));
     });
     cards.forEach(function (c) { body.appendChild(c); });
+
+    /* Adaptar la grilla al número real de eventos (CA-06) */
+    var secondary = cards.length - 1;
+    if (cards.length === 1) {
+      body.classList.add("is-single");
+      body.style.gridTemplateRows = "";
+      var featOnly = body.querySelector(".agenda-card--featured");
+      if (featOnly) featOnly.style.gridRow = "";
+    } else {
+      body.classList.remove("is-single");
+      body.style.gridTemplateRows = "repeat(" + secondary + ", minmax(0, 1fr))";
+      var feat = body.querySelector(".agenda-card--featured");
+      if (feat) feat.style.gridRow = "1 / span " + secondary;
+    }
     injectEventSchema(state.all);
 
     if (state.total > limit && actions) {
@@ -388,6 +512,12 @@
     setText("[data-agenda-empty-text]", agenda.emptyText);
     setText("[data-agenda-empty-cta-label]", agenda.emptyCtaLabel);
     setText("[data-agenda-more-label]", agenda.showMoreLabel);
+    setText("[data-agenda-optin-label]", agenda.optinLabel);
+    var optin = document.querySelector("[data-agenda-optin]");
+    if (optin && cfg.contact && cfg.contact.whatsapp) {
+      optin.href = "https://wa.me/" + cfg.contact.whatsapp + "?text=" +
+        encodeURIComponent(agenda.optinMessage || "Hola, quiero que me avisen de nuevas experiencias en El Club del Chañar.");
+    }
 
     var emptyCta = document.querySelector("[data-agenda-empty-cta]");
     if (emptyCta && cfg.contact && cfg.contact.whatsapp) {
@@ -409,6 +539,8 @@
     agenda = cfg.agenda || {};
     var section = document.getElementById("agenda");
     if (!section) return Promise.resolve();
+    var modal = document.querySelector("[data-event-modal]");
+    if (modal) modal.querySelectorAll("[data-event-close]").forEach(function (n) { n.addEventListener("click", closeEventDetail); });
     hydrateTexts();
     return load().then(function () { render(); });
   }
